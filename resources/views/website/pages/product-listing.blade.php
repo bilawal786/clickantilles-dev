@@ -15,24 +15,6 @@
                 <!-- .woocommerce-breadcrumb -->
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main">
-                        {{--                        <div class="shop-archive-header">--}}
-                        {{--                            <div class="jumbotron">--}}
-                        {{--                                <div class="jumbotron-img">--}}
-                        {{--                                    <img width="416" height="283" alt="" src="assets/images/products/jumbo.jpg" class="jumbo-image alignright">--}}
-                        {{--                                </div>--}}
-                        {{--                                <div class="jumbotron-caption">--}}
-                        {{--                                    <h3 class="jumbo-title">Virtual Reality Headsets</h3>--}}
-                        {{--                                    <p class="jumbo-subtitle">Nullam dignissim elit ut urna rutrum, a fermentum mi auctor. Mauris efficitur magna orci, et dignissim lacus scelerisque sit amet. Proin malesuada tincidunt nisl ac commodo. Vivamus eleifend porttitor ex sit amet suscipit. Vestibulum at ullamcorper lacus, vel facilisis arcu. Aliquam erat volutpat.--}}
-                        {{--                                        <br>--}}
-                        {{--                                        <br>Maecenas in sodales nisl. Pellentesque ac nibh mi. Ut lobortis odio nulla, congue rhoncus risus facilisis eget. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.--}}
-                        {{--                                        <a href="#">read more <i class="tm tm-long-arrow-right"></i></a>--}}
-                        {{--                                    </p>--}}
-                        {{--                                </div>--}}
-                        {{--                                <!-- .jumbotron-caption -->--}}
-                        {{--                            </div>--}}
-                        {{--                            <!-- .jumbotron -->--}}
-                        {{--                        </div>--}}
-                        {{--                        <!-- .shop-archive-header -->--}}
                         <div class="shop-control-bar">
                             <!-- .handheld-sidebar-toggle -->
                             <h1 class="woocommerce-products-header__title page-title">{{$title}}</h1>
@@ -49,7 +31,8 @@
                                                 @include('website.include.product-widget')
                                             @endforeach
                                         @else
-                                            <p style="text-align: center !important; padding: 30px">Aucun produit trouvé</p>
+                                            <p style="text-align: center !important; padding: 30px">Aucun produit
+                                                trouvé</p>
                                         @endif
                                     </div>
                                 </div>

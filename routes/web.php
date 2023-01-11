@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
 Route::group(['middleware' => ['auth', 'web', 'pro']], function() {
 
     Route::get('/pro/products', 'Front\WebsiteController@proProducts')->name('front.pro.products');
+    Route::get('/pro/subscription', 'Front\ProUserController@proSubscription')->name('pro.subscribed');
+    Route::get('/subscription/payment/success', 'Front\ProUserController@paymentSuccess')->name('subscription.payment.success');
 
 
 });

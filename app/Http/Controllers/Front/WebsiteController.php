@@ -30,7 +30,7 @@ class WebsiteController extends Controller
     {
         $title = "Produits professionnels";
         $products = Products::latest()->where('product_section', 'Click Pro')->paginate(15);
-        return view('website.pages.product-listing', compact('title', 'products'));
+        return view('website.pages.pro-products-listing', compact('title', 'products'));
     }
 
     public function sourcingProducts()

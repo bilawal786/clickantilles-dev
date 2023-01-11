@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
 //            0 Admin, 1 user , 2 PROUSER
             $table->integer('role')->default(1);
+            $table->integer('pro_subscribed')->default(0);
             $table->string('fname');
             $table->string('lname')->nullable();
             $table->string('email')->unique();

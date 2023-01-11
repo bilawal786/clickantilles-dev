@@ -17,7 +17,11 @@ class ProMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::user()->role == '1'){
-            return redirect()->route('front.index');
+            $notification = array(
+                'messege' => 'Unauthorized',
+                'alert-type' => 'error'
+            );
+            return redirect()->route('front.index')->with($notification);
         }else{
             return $next($request);
         }
