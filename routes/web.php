@@ -30,6 +30,8 @@ Route::get('/product/search', 'Front\WebsiteController@productSearch')->name('pr
 
 Route::get('/0/product/{slug}/{id}', 'Front\WebsiteController@singleProduct')->name('front.single.product');
 Route::get('/track-order', 'Front\WebsiteController@trackOrder')->name('front.track.order');
+Route::get('/aboutus', 'Front\WebsiteController@aboutus')->name('front.aboutus');
+Route::get('/returnpolicy', 'Front\WebsiteController@returnpolicy')->name('return.policy');
 Route::get('/cart', 'Front\WebsiteController@cart')->name('front.cart');
 
 
@@ -48,6 +50,14 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
     Route::resource('subcategory', 'Admin\SubCategoryController');
     Route::resource('product', 'Admin\ProductController');
     Route::post('/fetchsubcategory', 'Admin\ProductController@fetchsubcategory')->name('fetchsubcategory');
+
+    Route::get('generalsettings','Admin\SettingsController@index')->name('general.settings');
+    Route::get('generalsettings/pages','Admin\SettingsController@pages')->name('settings.pages');
+    Route::post('updatesettings','Admin\SettingsController@update')->name('update.settings');
+    Route::post('updatepages','Admin\SettingsController@updatepages')->name('page.update');
+
+    Route::get('simpleusers','Admin\UsersController@simpleusers')->name('simple.users');
+    Route::get('prousers','Admin\UsersController@prousers')->name('pro.users');
 
 });
 

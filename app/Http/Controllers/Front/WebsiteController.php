@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Products;
+use App\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Stripe;
@@ -193,6 +194,16 @@ class WebsiteController extends Controller
         $order->update();
         \Cart::clear();
         return view('website.pages.payment_success', compact('order'));
+    }
+
+    public function aboutus(){
+        $settings = Settings::first();
+        return view('website.pages.aboutus',compact('settings'));
+    }
+
+    public function returnpolicy(){
+        $settings = Settings::first();
+        return view('website.pages.returnpolicy',compact('settings'));
     }
 
 }

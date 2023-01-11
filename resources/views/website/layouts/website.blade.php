@@ -55,6 +55,9 @@
         }
     </style>
 </head>
+<?php
+$settings = App\Settings::first();
+?>
 <body class="woocommerce-active @yield('body-type') can-uppercase">
 <div id="app">
     <div id="page" class="hfeed site">
@@ -90,7 +93,7 @@
                 <div class="row">
                     <div class="site-branding">
                         <a href="/" class="custom-logo-link" rel="home">
-                            <img src="{{asset('frontend/assets/images/logo.png')}}" alt="">
+                            <img src="{{$settings->logo}}" alt="">
                         </a>
                         <!-- /.custom-logo-link -->
                     </div>
@@ -370,18 +373,21 @@
                         <div class="footer-social-icons">
                             <ul class="social-icons nav">
                                 <li class="nav-item">
-                                    <a class="sm-icon-label-link nav-link" href="#">
+                                    <a class="sm-icon-label-link nav-link" href="{{$settings->facebook}}">
                                         <i class="fa fa-facebook"></i> Facebook</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="sm-icon-label-link nav-link" href="#">
+                                    <a class="sm-icon-label-link nav-link" href="{{$settings->twitter}}">
                                         <i class="fa fa-twitter"></i> Twitter</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="sm-icon-label-link nav-link" href="#">
-                                        <i class="fa fa-google-plus"></i> Google+</a>
+                                    <a class="sm-icon-label-link nav-link" href="{{$settings->instagram}}">
+                                        <i class="fa fa-instagram"></i> Instagram</a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a class="sm-icon-label-link nav-link" href="{{$settings->utube}}">
+                                        <i class="fa fa-youtube"></i> Youtube</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- .footer-social-icons -->
@@ -394,7 +400,7 @@
                         <div class="footer-contact">
                             <div class="footer-logo">
                                 <a href="/" class="custom-logo-link" rel="home">
-                                    <img src="{{asset('frontend/assets/images/logo.png')}}" alt="">
+                                    <img src="{{$settings->logo}}" alt="">
                                 </a>
                             </div>
                             <!-- .footer-logo -->
@@ -406,10 +412,8 @@
                                             </span>
                                         <div class="media-body">
                                             <span class="call-us-title">Vous avez des questions ? Appelez-nous 24h/24 et 7j/7!</span>
-                                            <span class="call-us-text">(800) 8001-8588, (0600) 874 548</span>
-                                            <address class="footer-contact-address">17 Princess Road, London, Greater
-                                                London
-                                                NW1 8JR, UK
+                                            <span class="call-us-text">{{$settings->phone1}}, {{$settings->phone2}}</span>
+                                            <address class="footer-contact-address">{{$settings->address}}
                                             </address>
                                         </div>
                                         <!-- .media-body -->
@@ -476,7 +480,7 @@
                             <div class="columns">
                                 <aside class="widget clearfix">
                                     <div class="body">
-                                        <h4 class="widget-title">Service client</h4>
+                                        <h4 class="widget-title">Client de Service</h4>
                                         <div class="menu-footer-menu-3-container">
                                             <ul id="menu-footer-menu-3" class="menu">
                                                 <li class="menu-item">
@@ -492,10 +496,10 @@
                                                     <a href="#">Liste de souhaits</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="#">À propos de nous</a>
+                                                    <a href="{{route('front.aboutus')}}">À propos de nous</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="#">Retours/échange</a>
+                                                    <a href="{{route('return.policy')}}">Retours/échange</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a href="#">FAQs</a>
@@ -517,7 +521,7 @@
                 <!-- .footer-widgets-block -->
                 <div class="site-info">
                     <div class="col-full">
-                        <div class="copyright">Copyright &copy; 2023 <a href="#">Ikae Digital</a>. Tous les droits sont
+                        <div class="copyright"><a href="#">{!! $settings->footer !!}</a>. Tous les droits sont
                             réservés.
                         </div>
                         <!-- .credit -->
