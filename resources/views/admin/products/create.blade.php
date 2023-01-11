@@ -1,0 +1,173 @@
+@extends('layouts.app')
+@section('content')
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p>Ajouter un nouveau produit</p>
+                        </div>
+                        <form class="forms-sample" method="post" action="{{route('product.store')}}"
+                              enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Titre</label>
+                                        <input type="text" required class="form-control" name="title"
+                                               placeholder="Produit Titre">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">SKU</label>
+                                        <input type="number" class="form-control" name="sku" readonly
+                                               value="{{rand(100000, 900000)}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Catégorie</label>
+                                        <select onchange="maincategorychange(this)" required class="form-control"
+                                                name="category_id" id="">
+                                            <option value="">Choisir une catégorie</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Sous-catégorie</label>
+                                        <select class="form-control subcategory" name="subcategory_id" id=""></select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Rubrique produit</label>
+                                        <select required class="form-control" name="product_section" id="">
+                                            <option value="Discounted Product">Produit à prix réduit</option>
+                                            <option value="Click Pro">Cliquez Pro</option>
+                                            <option value="Sourcing Product">Sourcing Product</option>
+                                            <option value="Click Goodies">Click Goodies</option>
+                                            <option value="CLick Emballages">CLick Emballages</option>
+                                            <option value="Click Concept">Click Concept</option>
+                                            <option value="Click Baby">Click Baby</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Prix</label>
+                                        <input required type="number" class="form-control" name="price"
+                                               placeholder="Prix ​​du produit">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Ancien prix</label>
+                                        <input type="number" class="form-control" name="oldprice"
+                                               placeholder="Ancien prix">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Stocker</label>
+                                        <input required type="number" class="form-control" name="stock"
+                                               placeholder="Stocker">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Produit Unité</label>
+                                        <input required type="text" class="form-control" name="unit"
+                                               placeholder="Produit Unité">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Matériau du produit</label>
+                                        <input required type="text" class="form-control" name="material"
+                                               placeholder="Matériau du produit">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Couleur du produit</label>
+                                        <input required type="color" class="form-control" name="color"
+                                               placeholder="Couleur du produit">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">L'image sélectionnée (1000 * 1000)</label>
+                                        <input required type="file" class="form-control" name="photo1"
+                                               placeholder="Product Old Price">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Galerie (1000 * 1000)</label>
+                                        <input type="file" class="form-control" name="gallery[]" multiple
+                                               placeholder="Product Old Price">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Brève description</label>
+                                        <textarea required id="" name="short_description"
+                                                  class="form-control summernote" cols="30" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">URL YouTube de la vidéo du produit</label>
+                                        <input type="url" class="form-control" name="video"
+                                               placeholder="Product Video Url">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Longue description</label>
+                                        <textarea name="description" class="form-control summernote" id="" cols="30"
+                                                  rows="10"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-success mr-2">Sauver</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('script')
+    <script>
+        function maincategorychange(elem) {
+            $('.subcategory').html('<option value="">Catégorie enfant</option>');
+            event.preventDefault();
+            let id = elem.value;
+            let _token = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: "{{route('fetchsubcategory')}}",
+                type: "POST",
+                data: {
+                    id: id,
+                    _token: _token
+                },
+                success: function (response) {
+                    $.each(response, function (i, item) {
+                        console.log(item.name);
+                        $('.subcategory').append('<option value="' + item.id + '">' + item.name + '</option>');
+                    });
+                },
+            });
+        }
+    </script>
+@endsection
