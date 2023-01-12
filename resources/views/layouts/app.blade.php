@@ -44,6 +44,10 @@
         .nav-item:hover{
             background-color: transparent;
         }
+        .nav > li > a:focus, .nav > li > a:hover {
+            text-decoration: none;
+            background-color: transparent;
+        }
     </style>
 </head>
 <body>

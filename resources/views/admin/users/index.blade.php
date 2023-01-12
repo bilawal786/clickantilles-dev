@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5>Utilisateurs</h5>
-                        <button data-toggle="modal" data-target="#myModal" class="btn btn-primary float-right">Ajouter nouveau</button>
+{{--                        <button data-toggle="modal" data-target="#myModal" class="btn btn-primary float-right">Ajouter nouveau</button>--}}
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
@@ -38,13 +38,13 @@
                                         <button data-toggle="modal" data-target="#editModal{{$user->id}}" id="edit" class="btn btn-sm btn-primary"  title="edit">
                                             <i class="fa fa-pencil"></i>
                                         </button>
-                                        <form class="float-left pr-1" action="{{route('category.destroy', $user->id)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"  class="btn btn-sm btn-danger"  title="delete">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </form>
+{{--                                        <form class="float-left pr-1" action="{{route('category.destroy', $user->id)}}" method="post">--}}
+{{--                                            @csrf--}}
+{{--                                            @method('DELETE')--}}
+{{--                                            <button type="submit"  class="btn btn-sm btn-danger"  title="delete">--}}
+{{--                                                <i class="fa fa-trash"></i>--}}
+{{--                                            </button>--}}
+{{--                                        </form>--}}
                                     </td>
                                     <div class="modal fade" id="editModal{{$user->id}}" role="dialog">
                                         <div class="modal-dialog">
