@@ -53,6 +53,10 @@
         .menu-active{
             background-color: #0563d1; color: white
         }
+        .single-product .single-product-meta .ribbon {
+            height: 32px;
+            max-width: 150px;
+        }
     </style>
 </head>
 <?php
@@ -93,7 +97,7 @@ $settings = App\Settings::first();
                 <div class="row">
                     <div class="site-branding">
                         <a href="/" class="custom-logo-link" rel="home">
-                            <img src="{{$settings->logo}}" alt="">
+                            <img src="{{asset($settings->logo)}}" alt="">
                         </a>
                         <!-- /.custom-logo-link -->
                     </div>
@@ -225,7 +229,7 @@ $settings = App\Settings::first();
                                         PRODUCTS</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="COMPUTERS &amp; LAPTOPS" href="#">À PROPOS DE NOUS</a>
+                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.aboutus')}}">À PROPOS DE NOUS</a>
                                 </li>
 {{--                                <li class="menu-item animate-dropdown">--}}
 {{--                                    <a title="COMPUTERS &amp; LAPTOPS" href="#">NOUS CONTACTER</a>--}}
@@ -300,7 +304,7 @@ $settings = App\Settings::first();
                                                 PRODUCTS</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
-                                            <a title="COMPUTERS &amp; LAPTOPS" href="#">À PROPOS DE NOUS</a>
+                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.aboutus')}}">À PROPOS DE NOUS</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -400,7 +404,7 @@ $settings = App\Settings::first();
                         <div class="footer-contact">
                             <div class="footer-logo">
                                 <a href="/" class="custom-logo-link" rel="home">
-                                    <img src="{{$settings->logo}}" alt="">
+                                    <img src="{{asset($settings->logo)}}" alt="">
                                 </a>
                             </div>
                             <!-- .footer-logo -->
@@ -484,13 +488,10 @@ $settings = App\Settings::first();
                                         <div class="menu-footer-menu-3-container">
                                             <ul id="menu-footer-menu-3" class="menu">
                                                 <li class="menu-item">
-                                                    <a href="#">Mon compte</a>
+                                                    <a href="{{route('user.dashboard')}}">Mon compte</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="#">Suivi de commande</a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a href="#">Magasin</a>
+                                                    <a href="{{route('front.track.order')}}">Suivi de commande</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a href="#">Liste de souhaits</a>

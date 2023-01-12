@@ -46,7 +46,8 @@ class CreateProductsTable extends Migration
             $table->longText('quantity')->nullable();
             $table->longText('state')->nullable();
 
-            $table->longText('product_section')->nullable();
+            $table->string('product_section')->nullable();
+            $table->string('pro_category')->nullable();
             $table->timestamps();
         });
     }

@@ -136,31 +136,31 @@
                                 <span>Parcourir les catégories Pro</span>
                                 <ul>
                                     <li class="cat-item">
-                                        <a href="">
+                                        <a href="{{route('pro.filter.products', ['section' => 'Click Selection'])}}">
                                             <span class="no-child"></span>Click Selection</a>
                                     </li>
                                     <li class="cat-item">
-                                        <a href="">
+                                        <a href="{{route('pro.filter.products', ['section' => 'Click Destockage'])}}">
                                             <span class="no-child"></span>Click Destockage</a>
                                     </li>
                                     <li class="cat-item">
-                                        <a href="">
+                                        <a href="{{route('pro.filter.products', ['section' => 'Click Home'])}}">
                                             <span class="no-child"></span>Click Home</a>
                                     </li>
                                     <li class="cat-item">
-                                        <a href="">
+                                        <a href="{{route('pro.filter.products', ['section' => 'Click Kitchen'])}}">
                                             <span class="no-child"></span>Click Kitchen</a>
                                     </li>
                                     <li class="cat-item">
-                                        <a href="">
+                                        <a href="{{route('pro.filter.products', ['section' => 'Click Bathroom'])}}">
                                             <span class="no-child"></span>Click Bathroom</a>
                                     </li>
                                     <li class="cat-item">
-                                        <a href="">
+                                        <a href="{{route('pro.filter.products', ['section' => 'Click Office'])}}">
                                             <span class="no-child"></span>Click Office</a>
                                     </li>
                                     <li class="cat-item">
-                                        <a href="">
+                                        <a href="{{route('pro.filter.products', ['section' => 'Click Event'])}}">
                                             <span class="no-child"></span>Click Event</a>
                                     </li>
                                 </ul>

@@ -53,7 +53,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Rubrique produit</label>
-                                        <select required class="form-control" name="product_section" id="">
+                                        <select onchange="changeProductSection(this)" required class="form-control" name="product_section" id="">
                                             <option {{$product->product_section == "Discounted Product" ? "selected" : ""}} value="Discounted Product">Produit à prix réduit</option>
                                             <option {{$product->product_section == "Click Pro" ? "selected" : ""}} value="Click Pro">Cliquez Pro</option>
                                             <option {{$product->product_section == "Sourcing Product" ? "selected" : ""}} value="Sourcing Product">Sourcing Product</option>
@@ -64,6 +64,22 @@
                                         </select>
                                     </div>
                                 </div>
+                                @if($product->pro_category)
+                                <div class="col-md-6 pro_category">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Catégorie Pro</label>
+                                        <select  class="form-control pro-attr" name="pro_category" id="">
+                                            <option value="">Sélectionnez Catégorie Pro</option>
+                                            <option {{$product->pro_category == "Click Selection" ? "selected" : ""}} value="Click Selection">Click Selection</option>
+                                            <option {{$product->pro_category == "Click Destockage" ? "selected" : ""}} value="Click Destockage">Click Destockage</option>
+                                            <option {{$product->pro_category == "Click Kitchen" ? "selected" : ""}} value="Click Kitchen">Click Kitchen</option>
+                                            <option {{$product->pro_category == "Click Bathroom" ? "selected" : ""}} value="Click Bathroom">Click Bathroom</option>
+                                            <option {{$product->pro_category == "CLick Office" ? "selected" : ""}} value="CLick Office">CLick Office</option>
+                                            <option {{$product->pro_category == "Click Event" ? "selected" : ""}} value="Click Event">Click Event</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @endif
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Prix</label>
@@ -174,6 +190,17 @@
                     });
                 },
             });
+        }
+
+        function changeProductSection(elem){
+            let type = $(elem).val();
+            if(type == "Click Pro"){
+                $(".pro_category").show()
+                $(".pro-attr").prop('required',true);
+            }else {
+                $(".pro_category").hide()
+                $(".pro-attr").prop('required',false);
+            }
         }
     </script>
 @endsection

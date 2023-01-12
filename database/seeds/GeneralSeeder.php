@@ -55,7 +55,7 @@ class GeneralSeeder extends Seeder
             'phone2'     => '(0600) 874 548',
             'email'     => 'info@clickantilles.com',
             'logo'     => 'frontend/assets/images/logo.png',
-            'footer'    => 'à été créé en 1992. Il y a 2 responsables de Magasin (Grand-Camps et Basse-Terre). Maroquinerie (Sacs, chaussures, accessoires), 100% Cuir, fait main. Ce sont des séries limitées.',
+            'footer'    => 'A été créé en 1992. Il y a 2 responsables de Magasin (Grand-Camps et Basse-Terre). Maroquinerie (Sacs, chaussures, accessoires), 100% Cuir, fait main. Ce sont des séries limitées.',
             'facebook'    => 'https://facebook.com/',
             'instagram'    => 'https://www.instagram.com/',
             'twitter'    => 'https://www.twitter.com/',

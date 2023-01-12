@@ -22,10 +22,10 @@
                         <div class="product">
                             <div class="single-product-wrapper">
                                 <div class="product-images-wrapper thumb-count-4">
-{{--                                            <span class="onsale">---}}
-{{--                                                <span class="woocommerce-Price-amount amount">--}}
-{{--                                                    <span class="woocommerce-Price-currencySymbol">$</span>242.99</span>--}}
-{{--                                            </span>--}}
+                                    {{--                                            <span class="onsale">---}}
+                                    {{--                                                <span class="woocommerce-Price-amount amount">--}}
+                                    {{--                                                    <span class="woocommerce-Price-currencySymbol">$</span>242.99</span>--}}
+                                    {{--                                            </span>--}}
                                     <!-- .onsale -->
                                     <div id="techmarket-single-product-gallery"
                                          class="techmarket-single-product-gallery techmarket-single-product-gallery--with-images techmarket-single-product-gallery--columns-4 images"
@@ -37,7 +37,7 @@
                                             <div
                                                 class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images"
                                                 data-columns="4">
-                                                <a href="#" class="woocommerce-product-gallery__trigger">🔍</a>
+                                                {{--                                                <a href="#" class="woocommerce-product-gallery__trigger">🔍</a>--}}
                                                 <figure class="woocommerce-product-gallery__wrapper ">
                                                     <div data-thumb="{{$product->photo1}}"
                                                          class="woocommerce-product-gallery__image">
@@ -82,7 +82,8 @@
                                                     @foreach(json_decode($product->gallery, true) as $images)
                                                         <figure data-thumb="{{'product-images/'.$images}}"
                                                                 class="techmarket-wc-product-gallery__image">
-                                                            <img width="180" height="180" src="{{asset('product-images/'.$images)}}"
+                                                            <img width="180" height="180"
+                                                                 src="{{asset('product-images/'.$images)}}"
                                                                  class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
                                                                  alt="">
                                                         </figure>
@@ -114,7 +115,7 @@
                                         </div>
                                         <div class="product-label">
                                             <div class="ribbon label green-label">
-                                                <span>A+</span>
+                                                <span>{{$product->product_section??""}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -134,6 +135,31 @@
                                     <div class="woocommerce-product-details__short-description">
                                         {!! $product->short_description !!}
                                     </div>
+{{--                                    @if($product->product_section == 'Click Pro')--}}
+{{--                                        <div>--}}
+{{--                                            <br>--}}
+{{--                                            <hr>--}}
+{{--                                            <h2 class="product_title entry-title">Personnalisation de produit</h2>--}}
+{{--                                            <br>--}}
+{{--                                            <div class="row">--}}
+{{--                                                <div class="col-md-6">--}}
+{{--                                                    <label for="">Logo</label>--}}
+{{--                                                    <input type="file" name="logo" class="form-control">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-6">--}}
+{{--                                                    <label for="">Combien de logos requis</label>--}}
+{{--                                                    <select class="form-control">--}}
+{{--                                                        <option value="">Choisis une option</option>--}}
+{{--                                                        <option value="45-inch">1</option>--}}
+{{--                                                        <option value="60-inch">2</option>--}}
+{{--                                                        <option value="60-inch">3</option>--}}
+{{--                                                        <option value="60-inch">4</option>--}}
+{{--                                                        <option value="60-inch">5</option>--}}
+{{--                                                    </select>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    @endif--}}
 
                                     <!-- .product-actions-wrapper -->
                                 </div>
@@ -151,8 +177,14 @@
                                         </div>
                                         <!-- .additional-info -->
                                         <p class="price">
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <span class="woocommerce-Price-currencySymbol"></span>{{$product->price}} €</span>
+                                            @if($product->oldprice)
+                                            <del>
+                                                            <span class="woocommerce-Price-amount amount">
+                                                               {{$product->oldprice}} €</span>
+                                            </del>
+                                            @endif
+                                            <span class="woocommerce-Price-amount amount">
+                                                        {{$product->price}} €</span>
                                         </p>
                                         <!-- .price -->
                                         <form class="variations_form cart">
@@ -179,13 +211,13 @@
                                                     <div class="quantity">
                                                         <label for="quantity-input">Quantité</label>
                                                         <input id="quantity" type="number" name="quantity"
-                                                               min="1" value="1" title="Qty" max="{{$product->stock}}" class="input-text qty text"
+                                                               min="1" value="1" title="Qty" max="{{$product->stock}}"
+                                                               class="input-text qty text"
                                                                size="4">
                                                     </div>
                                                     <button type="button" onclick="addtocart(this, {{$product->id}})"
-                                                        class="single_add_to_cart_button button alt wc-variation-selection-needed"
-                                                        >Ajouter au panier
-                                                    </button>
+                                                            class="single_add_to_cart_button button alt wc-variation-selection-needed"
+                                                    >Ajouter au panier</button>
                                                     <input type="hidden" value="2471" name="add-to-cart">
                                                     <input type="hidden" value="2471" name="product_id">
                                                     <input type="hidden" value="0" class="variation_id"
@@ -406,26 +438,26 @@
 @endsection
 @section('script')
     <script>
-        function addtocart(elem, product_id){
+        function addtocart(elem, product_id) {
             $(elem).html("Chargement..");
 
             let quantity = $("#quantity").val();
-            let _token   = $('meta[name="csrf-token"]').attr('content');
+            let _token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
                 url: "{{route('addtocart')}}",
-                type:"POST",
-                data:{
-                    product_id:product_id,
+                type: "POST",
+                data: {
+                    product_id: product_id,
                     quantity: quantity,
                     _token: _token
                 },
-                success:function(response){
+                success: function (response) {
                     $(elem).html("Ajouter au panier");
                     toastr.info("Ajouté au panier avec succès");
                     mycartitems();
                 },
-                error:function (response){
+                error: function (response) {
                     $(elem).html("Ajouter au panier");
                     toastr.error("Produit déjà dans le panier");
                 },

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Products;
 use App\ProSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,5 +46,10 @@ class ProUserController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('front.pro.products')->with($notification);
+    }
+    public function filterProPrducts($section){
+        $title = "Produits professionnels";
+        $products = Products::latest()->where('product_section', 'Click Pro')->where('pro_category', $section)->paginate(15);
+        return view('website.pages.pro-products-listing', compact('title', 'products'));
     }
 }

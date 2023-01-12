@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="{{asset('backend/assets/css/shared/style.css')}}">
     <!-- endinject -->
     <!-- Layout styles -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{asset('backend/assets/css/demo_1/style.css')}}">
     <!-- End Layout styles -->
     <link rel="shortcut icon" href="{{asset('backend/assets/images/favicon.ico')}}"/>
@@ -25,6 +28,23 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            position: relative;
+            min-height: 50px;
+            margin-bottom: 0px;
+            border: 0px;
+        }
+        .navbar.fixed-top + .page-body-wrapper {
+            padding-top: 0px;
+        }
+        .nav-link:hover{
+            background-color: transparent;
+        }
+        .nav-item:hover{
+            background-color: transparent;
+        }
+    </style>
 </head>
 <body>
 <div class="container-scroller" id="app">

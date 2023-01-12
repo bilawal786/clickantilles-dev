@@ -16,13 +16,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFile">Logo [1108X342]</label>
-                                <div class="input-group">
+                                <div class="">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="logo" name="logo">
                                         <label class="custom-file-label" for="exampleInputFile">Choose logo</label>
                                     </div>
                                 </div>
-                                <img style="height:44px;width:157px" class="mt-1" alt="logo" src="{{$settings->logo}}"
+                                <img style="height:44px;width:157px" class="mt-1" alt="logo" src="{{$settings->logo}}">
                             </div>
                             <div class="form-group mt-3">
                                 <label for="">Adresse</label>

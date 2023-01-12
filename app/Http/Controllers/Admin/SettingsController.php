@@ -49,7 +49,11 @@ class SettingsController extends Controller
             $img = Image::make($path)->resize(1180,342)->save($path);
         }
         $settings->save();
-        return redirect('generalsettings');
+        $notification = array(
+            'messege' => 'Sauvegarde réussie!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function updatepages(Request $request){
@@ -60,6 +64,10 @@ class SettingsController extends Controller
         $settings->help = $request->help;
         $settings->return = $request->return;
         $settings->save();
-        return redirect()->back();
+        $notification = array(
+            'messege' => 'Sauvegarde réussie!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }

@@ -59,6 +59,9 @@ class ProductController extends Controller
         $product->unit = $request->unit;
         $product->video = $request->video;
         $product->product_section = $request->product_section;
+        if ($request->product_section == "Click Pro"){
+            $product->pro_category = $request->pro_category??"Click Selection";
+        }
         if ($request->hasfile('photo1')) {
             $image1 = $request->file('photo1');
             $name1 = time() . 'photo1' . '.' . $image1->getClientOriginalExtension();
@@ -139,6 +142,9 @@ class ProductController extends Controller
         $product->unit = $request->unit;
         $product->video = $request->video;
         $product->product_section = $request->product_section;
+        if ($request->product_section == "Click Pro"){
+            $product->pro_category = $request->pro_category??"Click Selection";
+        }
         if ($request->hasfile('photo1')) {
             $image1 = $request->file('photo1');
             $name1 = time() . 'photo1' . '.' . $image1->getClientOriginalExtension();

@@ -47,7 +47,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Rubrique produit</label>
-                                        <select required class="form-control" name="product_section" id="">
+                                        <select  onchange="changeProductSection(this)" required class="form-control" name="product_section" id="">
+                                            <option value="">Sélectionnez la section du produit</option>
                                             <option value="Discounted Product">Produit à prix réduit</option>
                                             <option value="Click Pro">Cliquez Pro</option>
                                             <option value="Sourcing Product">Sourcing Product</option>
@@ -55,6 +56,20 @@
                                             <option value="CLick Emballages">CLick Emballages</option>
                                             <option value="Click Concept">Click Concept</option>
                                             <option value="Click Baby">Click Baby</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pro_category" style="display: none">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Catégorie Pro</label>
+                                        <select  class="form-control pro-attr" name="pro_category" id="">
+                                            <option value="">Sélectionnez Catégorie Pro</option>
+                                            <option value="Click Selection">Click Selection</option>
+                                            <option value="Click Destockage">Click Destockage</option>
+                                            <option value="Click Kitchen">Click Kitchen</option>
+                                            <option value="Click Bathroom">Click Bathroom</option>
+                                            <option value="CLick Office">CLick Office</option>
+                                            <option value="Click Event">Click Event</option>
                                         </select>
                                     </div>
                                 </div>
@@ -168,6 +183,17 @@
                     });
                 },
             });
+        }
+
+        function changeProductSection(elem){
+            let type = $(elem).val();
+            if(type == "Click Pro"){
+                $(".pro_category").show()
+                $(".pro-attr").prop('required',true);
+            }else {
+                $(".pro_category").hide()
+                $(".pro-attr").prop('required',false);
+            }
         }
     </script>
 @endsection
