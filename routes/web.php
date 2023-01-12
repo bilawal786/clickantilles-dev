@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Front\WebsiteController@index')->name('front.index');
+Route::get('/image-maker/0', function (){
+    return view('website.pages.image-maker');
+});
 Route::post('/addtocart', 'Front\WebsiteController@addtocart')->name('addtocart');
+Route::post('/get-customized-image', 'Front\WebsiteController@getCustomizeImage')->name('get-customized-image');
 Route::get('/cartitems', 'Front\WebsiteController@cartitems')->name('cartitems');
 Route::post('/removecart', 'Front\WebsiteController@removecart')->name('removecart');
 Route::get('/removecart/{id}', 'Front\WebsiteController@removecartweb')->name('removecartweb');

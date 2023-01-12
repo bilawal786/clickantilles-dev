@@ -23,6 +23,10 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,900" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset('frontend/assets/images/fav-icon.png')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
     <style>
         .myul {
             width: 100%;
@@ -536,12 +540,13 @@ $settings = App\Settings::first();
         <!-- .site-footer -->
     </div>
 </div>
-<script type="text/javascript" src="{{asset('frontend/assets/js/jquery.min.js')}}"></script>
+
+{{--<script type="text/javascript" src="{{asset('frontend/assets/js/jquery.min.js')}}"></script>--}}
 <script type="text/javascript" src="{{asset('frontend/assets/js/tether.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/jquery-migrate.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/hidemaxlistitem.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/assets/js/jquery-ui.min.js')}}"></script>
+{{--<script type="text/javascript" src="{{asset('frontend/assets/js/jquery-ui.min.js')}}"></script>--}}
 <script type="text/javascript" src="{{asset('frontend/assets/js/hidemaxlistitem.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/jquery.easing.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/scrollup.min.js')}}"></script>

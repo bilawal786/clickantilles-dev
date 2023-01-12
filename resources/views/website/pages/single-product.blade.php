@@ -135,31 +135,17 @@
                                     <div class="woocommerce-product-details__short-description">
                                         {!! $product->short_description !!}
                                     </div>
-{{--                                    @if($product->product_section == 'Click Pro')--}}
-{{--                                        <div>--}}
-{{--                                            <br>--}}
-{{--                                            <hr>--}}
-{{--                                            <h2 class="product_title entry-title">Personnalisation de produit</h2>--}}
-{{--                                            <br>--}}
-{{--                                            <div class="row">--}}
-{{--                                                <div class="col-md-6">--}}
-{{--                                                    <label for="">Logo</label>--}}
-{{--                                                    <input type="file" name="logo" class="form-control">--}}
-{{--                                                </div>--}}
-{{--                                                <div class="col-md-6">--}}
-{{--                                                    <label for="">Combien de logos requis</label>--}}
-{{--                                                    <select class="form-control">--}}
-{{--                                                        <option value="">Choisis une option</option>--}}
-{{--                                                        <option value="45-inch">1</option>--}}
-{{--                                                        <option value="60-inch">2</option>--}}
-{{--                                                        <option value="60-inch">3</option>--}}
-{{--                                                        <option value="60-inch">4</option>--}}
-{{--                                                        <option value="60-inch">5</option>--}}
-{{--                                                    </select>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    @endif--}}
+                                    <img src="" id="blah" alt="">
+
+                                    @if($product->product_section == 'Click Pro')
+                                        <div>
+                                            <br>
+                                            <hr>
+                                            <button type="button" class="single_add_to_cart_button button alt wc-variation-selection-needed" data-toggle="modal"
+                                                    data-target="#myModal">Personnalisation de produit
+                                            </button>
+                                        </div>
+                                    @endif
 
                                     <!-- .product-actions-wrapper -->
                                 </div>
@@ -178,10 +164,10 @@
                                         <!-- .additional-info -->
                                         <p class="price">
                                             @if($product->oldprice)
-                                            <del>
+                                                <del>
                                                             <span class="woocommerce-Price-amount amount">
                                                                {{$product->oldprice}} €</span>
-                                            </del>
+                                                </del>
                                             @endif
                                             <span class="woocommerce-Price-amount amount">
                                                         {{$product->price}} €</span>
@@ -215,9 +201,11 @@
                                                                class="input-text qty text"
                                                                size="4">
                                                     </div>
+                                                    <input type="hidden" value="" id="customize-image" name="customize_image">
                                                     <button type="button" onclick="addtocart(this, {{$product->id}})"
                                                             class="single_add_to_cart_button button alt wc-variation-selection-needed"
-                                                    >Ajouter au panier</button>
+                                                    >Ajouter au panier
+                                                    </button>
                                                     <input type="hidden" value="2471" name="add-to-cart">
                                                     <input type="hidden" value="2471" name="product_id">
                                                     <input type="hidden" value="0" class="variation_id"
@@ -435,6 +423,58 @@
         </div>
         <!-- .col-full -->
     </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg" style="max-width: 1000px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="clothe-tshirt-maker"></div>
+                    <link rel="stylesheet" type="text/css" href="{{asset('image-maker/imageMaker.min.css')}}">
+
+
+                    <script src="{{asset('image-maker/imageMaker.min.js')}}"></script>
+                    <script>
+                        $(document).ready(function () {
+                            $('#clothe-tshirt-maker').imageMaker({
+                                merge_images: [],
+                                templates: [
+                                    {url: '{{asset($product->photo1)}}', title: '{{$product->title}}'},
+                                ],
+                                text_boxes_count: 0,
+                                downloadGeneratedImage: false,
+                                i18n: {
+                                    fontFamilyText: 'Font Family',
+                                    enterTextText: 'Enter Text',
+                                    topText: 'Top Text',
+                                    bottomText: 'Bottom Text',
+                                    sizeText: 'Size',
+                                    uperCaseText: 'UperCase',
+                                    mergeImageText: 'Télécharger le logo',
+                                    drawText: 'Draw',
+                                    addTextBoxText: 'Add TextBox',
+                                    previewText: 'Preview',
+                                    addTemplateText: 'Add template',
+                                    resetText: 'Dégager',
+                                    imageGeneratorText: 'Confirmer',
+                                    stopBrushingText: 'Stop Brushing',
+                                    canvasLoadingText: 'Canvas Loading'
+                                },
+                                onGenerate: function (data, formData) {
+                                    $("#customize-image").val(data.amm_canvas)
+                                    $('#myModal').modal('hide');
+                                    toastr.success("L'image est personnalisée, sélectionnez la quantité à ajouter au panier");
+                                },
+
+
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -442,6 +482,7 @@
             $(elem).html("Chargement..");
 
             let quantity = $("#quantity").val();
+            let image = $("#customize-image").val();
             let _token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
@@ -449,6 +490,7 @@
                 type: "POST",
                 data: {
                     product_id: product_id,
+                    image: image,
                     quantity: quantity,
                     _token: _token
                 },

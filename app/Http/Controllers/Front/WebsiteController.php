@@ -104,8 +104,20 @@ class WebsiteController extends Controller
                 return response()->json(['error' => 'Already added'], 400);
             }
         }
+        if ($request->image) {
+            $folderPath = public_path('optimize-images/');
+            $image_parts = explode(";base64,", $request->image);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $signatures = strtotime("now") . '-signature.'.$image_type;
+            $signature_localpath = $folderPath . $signatures;
+            file_put_contents($signature_localpath, $image_base64);
+            $destinationPath = 'optimize-images/';
+            $signature_img = $destinationPath.$signatures;
+        }
         $product = Products::where('id', $request->product_id)->first();
-        \Cart::add($product->id, $product->title, $product->price, $request->quantity, array('type' => $product->product_section, 'image' => $product->photo1));
+        \Cart::add($product->id, $product->title, $product->price, $request->quantity, array('type' => $product->product_section, 'image' => $product->photo1, 'optimize_image' => $signature_img??""));
         return response()->json($product);
     }
 
@@ -119,6 +131,10 @@ class WebsiteController extends Controller
             'quantity' => $cartTotalQuantity,
             'total' => $total
         ]);
+    }
+    public function getCustomizeImage(Request $request){
+//        dd("abc");
+        dd($request->all());
     }
 
     public function removecart(Request $request)
