@@ -247,9 +247,16 @@ $settings = App\Settings::first();
                     <!-- .header-compare -->
                     <ul class="header-wishlist nav navbar-nav">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('front.wishlist')}}" class="nav-link">
                                 <i class="tm tm-favorites"></i>
-                                <span id="top-cart-wishlist-count" class="value">3</span>
+                                <?php $wishlist =App\Wishlist::where('user_id', Auth::user()->id)->get();
+                                $wishlistIds = [];
+                                foreach ($wishlist as $item){
+                                    $wishlistIds[] = $item->product_id;
+                                }
+                                $wishlistcount = count($wishlist);
+                                ?>
+                                <span id="top-cart-wishlist-count" class="value">{{$wishlistcount}}</span>
                             </a>
                         </li>
                     </ul>

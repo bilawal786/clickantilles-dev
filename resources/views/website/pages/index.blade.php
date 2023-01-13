@@ -95,15 +95,14 @@
                                 </div>
                             </div>
                         </div>
+                        <?php $slides = App\Slides::first(); ?>
                         <div class="home-v4-slider home-slider">
                             <div class="slider-1"
-                                 style="background-image: url({{asset('frontend/assets/images/01.png')}});">
+                                 style="background-image: url({{asset($slides->mainbg)}});">
                                 <div class="caption">
-                                    <div class="title">Le cadeau qu'ils sont
-                                        <br>souhaiter est ici
+                                    <div class="title">{{$slides->mainbgheading}}
                                     </div>
-                                    <div class="sub-title">L'écran incurvé a un niveau de courbure équivalent à celui
-                                        d'un cercle, suit mieux la forme arrondie des yeux
+                                    <div class="sub-title">{{$slides->mainbgdescription}}
                                     </div>
                                     <div class="button">Obtenez le vôtre maintenant
                                         <i class="tm tm-long-arrow-right"></i>
@@ -177,27 +176,27 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <a href="https://www.google.com"><img
-                                                src="https://m.media-amazon.com/images/I/61BvxKSpy3L._SX3000_.jpg" class="d-block w-100"
+                                                src="{{$slides->slide1}}" class="d-block w-100"
                                                 height="500" alt="slide image 01"></a>
                                     </div>
                                     <div class="carousel-item">
                                         <a href="https://www.google.com"><img
-                                                src="https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg" class="d-block w-100"
+                                                src="{{$slides->slide2}}" class="d-block w-100"
                                                 height="500" alt="slide image 02"></a>
                                     </div>
                                     <div class="carousel-item">
                                         <a href="https://www.google.com"><img
-                                                src="https://m.media-amazon.com/images/I/71tIrZqybrL._SX3000_.jpg" class="d-block w-100"
+                                                src="{{$slides->slide3}}" class="d-block w-100"
                                                 height="500" alt="slide image 03"></a>
                                     </div>
                                     <div class="carousel-item ">
                                         <a href="https://www.google.com"><img
-                                                src="https://m.media-amazon.com/images/I/61TD5JLGhIL._SX3000_.jpg" class="d-block w-100"
+                                                src="{{$slides->slide4}}" class="d-block w-100"
                                                 height="500" alt="slide image 04"></a>
                                     </div>
                                     <div class="carousel-item">
                                         <a href="https://www.google.com"><img
-                                                src="https://m.media-amazon.com/images/I/61jovjd+f9L._SX3000_.jpg" class="d-block w-100"
+                                                src="{{$slides->slide5}}" class="d-block w-100"
                                                 height="500" alt="slide image 05"></a>
                                     </div>
                                 </div>

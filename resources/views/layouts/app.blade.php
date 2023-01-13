@@ -278,6 +278,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('settings.pages')}}">Pages</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('settings.slides')}}">Slides</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

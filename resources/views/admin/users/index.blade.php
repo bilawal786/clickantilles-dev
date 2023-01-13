@@ -15,9 +15,9 @@
                                 <th>Id</th>
                                 <th>Photo</th>
                                 <th>Prénom</th>
-                                <th>Type</th>
+                                <th>E-mail</th>
 {{--                                @if($users->role == 2)--}}
-                                <th>Subscribed</th>
+                                <th>Abonné</th>
 {{--                                @endif--}}
                                 <th>Action</th>
                             </tr>
@@ -30,7 +30,7 @@
                                         <img src="{{$user->photo}}" alt="">
                                     </td>
                                     <td>{{$user->fname??""}}</td>
-                                    <td>{{$user->role == 1 ? 'User' : 'Pro'}}</td>
+                                    <td>{{$user->email}}</td>
 {{--                                    @if($user->role == 2)--}}
                                     <td>{{$user->pro_subscribed == 0 ? 'No' : 'Yes'}}</td>
 {{--                                    @endif--}}
@@ -57,29 +57,34 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="form-group">
-                                                            <label for="exampleInputName1">First Name</label>
+                                                            <label for="exampleInputName1">Prénom</label>
                                                             <input required type="text" class="form-control" value="{{$user->fname}}" name="fname" id="exampleInputName1" placeholder="Name">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputName1">Last Name</label>
+                                                            <label for="exampleInputName1">Nom de famille</label>
                                                             <input required type="text" class="form-control" value="{{$user->lname}}" name="lname" id="exampleInputName1" placeholder="Name">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputName1">Email</label>
-                                                            <input required type="text" class="form-control" value="{{$user->lname}}" name="lname" id="exampleInputName1" placeholder="Name">
+                                                            <label for="exampleInputName1">E-mail</label>
+                                                            <input required type="text" class="form-control" value="{{$user->email}}" name="lname" id="exampleInputName1" placeholder="Name">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputName1">Phone</label>
-                                                            <input required type="text" class="form-control" value="{{$user->lname}}" name="lname" id="exampleInputName1" placeholder="Name">
+                                                            <label for="exampleInputName1">Téléphone fixe</label>
+                                                            <input required type="text" class="form-control" value="{{$user->phone}}" name="lname" id="exampleInputName1" placeholder="Name">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputName1">Address</label>
-                                                            <input required type="text" class="form-control" value="{{$user->lname}}" name="lname" id="exampleInputName1" placeholder="Name">
+                                                            <label for="exampleInputName1">Adresse</label>
+                                                            <input required type="text" class="form-control" value="{{$user->address}}" name="lname" id="exampleInputName1" placeholder="Name">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleInputName1">Country</label>
-                                                            <input required type="text" class="form-control" value="{{$user->lname}}" name="lname" id="exampleInputName1" placeholder="Name">
+                                                            <label for="exampleInputName1">Pays</label>
+                                                            <input required type="text" class="form-control" value="{{$user->country}}" name="lname" id="exampleInputName1" placeholder="Name">
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputName1">Ville</label>
+                                                            <input required type="text" class="form-control" value="{{$user->country}}" name="lname" id="exampleInputName1" placeholder="Name">
+                                                        </div>
+
                                                         <div class="form-group">
                                                             <label>Image de catégorie (220*197)</label>
                                                             <input class="form-control" required type="file" accept="image/*" name="photo" >

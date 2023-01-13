@@ -100,14 +100,14 @@
                                 <div class="summary entry-summary">
                                     <div class="single-product-header">
                                         <h1 class="product_title entry-title">{{$product->title??""}}</h1>
-                                        <a class="add-to-wishlist" href="#"> Ajouter à la liste de souhaits</a>
+                                        <a class="add-to-wishlist" onclick="addtowishlist(this, {{$product->id}})"> Ajouter à la liste de souhaits</a>
                                     </div>
                                     <!-- .single-product-header -->
                                     <div class="single-product-meta">
                                         <div class="cat-and-sku">
                                                     <span class="posted_in categories">
                                                         <a rel="tag"
-                                                           href="#">{{$product->category->name??""}} &amp; {{$product->subcategory->name??""}}</a>
+                                                           href="#">{{$product->category->name??""}} & {{$product->subcategory->name??""}}</a>
                                                     </span>
                                             <span class="sku_wrapper">SKU:
                                                         <span class="sku">{{$product->sku??""}}</span>
@@ -478,6 +478,27 @@
 @endsection
 @section('script')
     <script>
+        function addtowishlist(elem, id){
+            let _token = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: "{{route('addtowishlist')}}",
+                type: "POST",
+                data: {
+                    id: id,
+                    _token: _token
+                },
+                success: function (response) {
+                    let count = parseInt($('#top-cart-wishlist-count').html())+1 ;
+                    $('#top-cart-wishlist-count').html(count);
+                    toastr.info("Ajouté à la liste de souhaits avec succès");
+                },
+                error: function (response) {
+                    toastr.error("Produit déjà dans la liste de souhaits");
+                },
+            });
+        }
+
         function addtocart(elem, product_id) {
             $(elem).html("Chargement..");
 

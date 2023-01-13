@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\Products;
 use App\Settings;
+use App\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Stripe;
@@ -94,6 +95,37 @@ class WebsiteController extends Controller
         $cartTotalQuantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();
         return view('website.pages.cart', compact('cartitems', 'cartTotalQuantity', 'total'));
+    }
+
+    public function wishlist()
+    {
+        $wishlist = Wishlist::where('user_id', Auth::user()->id)->get();
+        $wishlistIds = [];
+        foreach ($wishlist as $item){
+            $wishlistIds[] = $item->product_id;
+        }
+        $products = Products::whereIn('id', $wishlistIds)->get();
+        return view('website.pages.wishlist', compact('products'));
+    }
+
+    public function addtowishlist(Request $request){
+        $items = Wishlist::all();
+        foreach($items as $item) {
+            if($item->product_id == $request->id && $item->user_id == Auth::user()->id){
+                return response()->json(['error' => 'Already added'], 400);
+            }
+        }
+        $item = new Wishlist();
+        $item->product_id = $request->id;
+        $item->user_id = Auth::user()->id;
+        $item->save();
+    }
+
+    public function removewish($id)
+    {
+        $wish = Wishlist::where('user_id', Auth::user()->id && 'product_id', $id)->first();
+        $wish->delete();
+        return redirect()->back();
     }
 
     public function addtocart(Request $request)

@@ -18,6 +18,7 @@ Route::get('/image-maker/0', function (){
     return view('website.pages.image-maker');
 });
 Route::post('/addtocart', 'Front\WebsiteController@addtocart')->name('addtocart');
+Route::post('/addtowishlist', 'Front\WebsiteController@addtowishlist')->name('addtowishlist');
 Route::post('/get-customized-image', 'Front\WebsiteController@getCustomizeImage')->name('get-customized-image');
 Route::get('/cartitems', 'Front\WebsiteController@cartitems')->name('cartitems');
 Route::post('/removecart', 'Front\WebsiteController@removecart')->name('removecart');
@@ -37,6 +38,8 @@ Route::get('/track-order', 'Front\WebsiteController@trackOrder')->name('front.tr
 Route::get('/aboutus', 'Front\WebsiteController@aboutus')->name('front.aboutus');
 Route::get('/returnpolicy', 'Front\WebsiteController@returnpolicy')->name('return.policy');
 Route::get('/cart', 'Front\WebsiteController@cart')->name('front.cart');
+Route::get('/wishlist', 'Front\WebsiteController@wishlist')->name('front.wishlist');
+Route::get('/removewish/{id}', 'Front\WebsiteController@removewish')->name('front.removewish');
 
 
 Auth::routes();
@@ -59,6 +62,8 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
     Route::get('generalsettings/pages','Admin\SettingsController@pages')->name('settings.pages');
     Route::post('updatesettings','Admin\SettingsController@update')->name('update.settings');
     Route::post('updatepages','Admin\SettingsController@updatepages')->name('page.update');
+    Route::get('generalsettings/slides','Admin\SettingsController@slides')->name('settings.slides');
+
 
     Route::get('simpleusers','Admin\UsersController@simpleusers')->name('simple.users');
     Route::get('prousers','Admin\UsersController@prousers')->name('pro.users');
