@@ -5,10 +5,96 @@
 @section('content')
 
     <div id="content" class="site-content">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="overlay-div"
+                     style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
+                    CONCEPT STORE
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-2">
+                <div class="overlay-div"
+                     style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
+                    CLICK
+                    PRO
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color: #5f195f; padding: 40px">
+
+            <marquee behavior="scroll" scrollamount="12" width="100%" direction="left"><p
+                    style="color: white; font-size: 25px; font-weight: bold; text-align: center !important; padding: 0px; margin: 0px">
+                    BIENVENUE SUR CLICK ANTILLES POURL’OUVERTURE DU SITE NOUS T’OFFRONS -20% SUR TOUT LE
+                    CATALOGUE!</p>
+            </marquee>
+        </div>
+
         <div class="col-full">
             <div class="row">
                 <div id="primary" style="max-width: 100% !important;" class="content-area">
                     <main id="main" class="site-main">
+                        <div class="row">
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/01.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Goodies
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/06.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Sports & Exterieur
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/02.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>High Tech
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/03.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Maison
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/04.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Cusisine
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/05.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Mode & Accessories
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="home-v4-slider home-slider">
                             <div class="slider-1"
                                  style="background-image: url({{asset('frontend/assets/images/01.png')}});">
@@ -26,245 +112,413 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="features-list">
-                            <div class="features">
-                                <div class="feature">
-                                    <div class="media">
-                                        <i class="feature-icon d-flex mr-3 tm tm-free-delivery"></i>
-                                        <div class="media-body feature-text">
-                                            <h5 class="mt-0">Livraison gratuite</h5>
-                                            <span>à partir de 50 €</span>
-                                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/01.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Goodies
+                                        </h3>
                                     </div>
                                 </div>
-                                <!-- .feature -->
-                                <div class="feature">
-                                    <div class="media">
-                                        <i class="feature-icon d-flex mr-3 tm tm-feedback"></i>
-                                        <div class="media-body feature-text">
-                                            <h5 class="mt-0">99 % client</h5>
-                                            <span>Commentaires</span>
-                                        </div>
-                                    </div>
-                                    <!-- .media -->
-                                </div>
-                                <!-- .feature -->
-                                <div class="feature">
-                                    <div class="media">
-                                        <i class="feature-icon d-flex mr-3 tm tm-free-return"></i>
-                                        <div class="media-body feature-text">
-                                            <h5 class="mt-0">365 jours</h5>
-                                            <span>pour un retour gratuit</span>
-                                        </div>
-                                    </div>
-                                    <!-- .media -->
-                                </div>
-                                <!-- .feature -->
-                                <div class="feature">
-                                    <div class="media">
-                                        <i class="feature-icon d-flex mr-3 tm tm-safe-payments"></i>
-                                        <div class="media-body feature-text">
-                                            <h5 class="mt-0">Paiement</h5>
-                                            <span>Système sécurisé</span>
-                                        </div>
-                                    </div>
-                                    <!-- .media -->
-                                </div>
-                                <!-- .feature -->
-                                <div class="feature">
-                                    <div class="media">
-                                        <i class="feature-icon d-flex mr-3 tm tm-best-brands"></i>
-                                        <div class="media-body feature-text">
-                                            <h5 class="mt-0">Seul le meilleur</h5>
-                                            <span>Marques</span>
-                                        </div>
-                                    </div>
-                                    <!-- .media -->
-                                </div>
-                                <!-- .feature -->
                             </div>
-                            <!-- .features -->
-                        </div>
-                        <!-- /.features list -->
-                        <div class="section-deals-carousel-and-products-carousel-tabs row">
-                            <section class="column-1 deals-carousel" id="sale-with-timer-carousel">
-                                <div class="deals-carousel-inner-block">
-                                    <header class="section-header">
-                                        <h2 class="section-title">
-                                            <strong>Deal</strong> of the week</h2>
-                                        <nav class="custom-slick-nav"></nav>
-                                    </header>
-                                    <!-- /.section-header -->
-                                    <div class="sale-products-with-timer-carousel deals-carousel-v1">
-                                        <div class="products-carousel">
-                                            <div class="container-fluid">
-                                                <div class="woocommerce columns-1">
-                                                    <div class="products" data-ride="tm-slick-carousel"
-                                                         data-wrap=".products"
-                                                         data-slick="{&quot;infinite&quot;:false,&quot;slidesToShow&quot;:1,&quot;slidesToScroll&quot;:1,&quot;dots&quot;:false,&quot;arrows&quot;:true,&quot;prevArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-left\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;nextArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-right\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;appendArrows&quot;:&quot;#sale-with-timer-carousel .custom-slick-nav&quot;,&quot;responsive&quot;:[{&quot;breakpoint&quot;:767,&quot;settings&quot;:{&quot;slidesToShow&quot;:1,&quot;slidesToScroll&quot;:1}},{&quot;breakpoint&quot;:1023,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesToScroll&quot;:2}}]}">
-                                                        <div class="sale-product-with-timer product">
-                                                            <a class="woocommerce-LoopProduct-link"
-                                                               href="#">
-                                                                <div class="sale-product-with-timer-header">
-                                                                    <div class="price-and-title">
-                                                                                <span class="price">
-                                                                                    <ins>
-                                                                                        <span
-                                                                                            class="woocommerce-Price-amount amount">
-                                                                                            <span
-                                                                                                class="woocommerce-Price-currencySymbol">$</span>425.89</span>
-                                                                                    </ins>
-                                                                                    <del>
-                                                                                        <span
-                                                                                            class="woocommerce-Price-amount amount">
-                                                                                            <span
-                                                                                                class="woocommerce-Price-currencySymbol">$</span>545.89</span>
-                                                                                    </del>
-                                                                                </span>
-                                                                        <!-- /.price -->
-                                                                        <h2 class="woocommerce-loop-product__title">
-                                                                            Tablet Red EliteBook Revolve</h2>
-                                                                    </div>
-                                                                    <!-- /.price-and-title -->
-                                                                    <div class="sale-label-outer">
-                                                                        <div class="sale-saved-label">
-                                                                            <span class="saved-label-text">Save</span>
-                                                                            <span class="saved-label-amount">
-                                                                                        <span
-                                                                                            class="woocommerce-Price-amount amount">
-                                                                                            <span
-                                                                                                class="woocommerce-Price-currencySymbol">$</span>120.00</span>
-                                                                                    </span>
-                                                                        </div>
-                                                                        <!-- /.sale-saved-label -->
-                                                                    </div>
-                                                                    <!-- /.sale-label-outer -->
-                                                                </div>
-                                                                <!-- /.sale-product-with-timer-header -->
-                                                                <img width="224" height="197" alt=""
-                                                                     class="wp-post-image"
-                                                                     src="{{asset('frontend/assets/images/products/1.jpg')}}">
-                                                                <div class="deal-progress">
-                                                                    <div class="deal-stock">
-                                                                        <div class="stock-sold">Already Sold:
-                                                                            <strong>0</strong>
-                                                                        </div>
-                                                                        <div class="stock-available">Available:
-                                                                            <strong>1000</strong>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- /.deal-stock -->
-                                                                    <div class="progress">
-                                                                        <span style="width:0%"
-                                                                              class="progress-bar">0</span>
-                                                                    </div>
-                                                                    <!-- /.progress -->
-                                                                </div>
-                                                                <!-- /.deal-progress -->
-                                                                <div class="deal-countdown-timer">
-                                                                    <div class="marketing-text">
-                                                                        <span class="line-1">Hurry up!</span>
-                                                                        <span class="line-2">Offers ends in:</span>
-                                                                    </div>
-                                                                    <!-- /.marketing-text -->
-                                                                    <span class="deal-time-diff" style="display:none;">28800</span>
-                                                                    <div class="deal-countdown countdown"></div>
-                                                                </div>
-                                                                <!-- /.deal-countdown-timer -->
-                                                            </a>
-                                                            <!-- /.woocommerce-LoopProduct-link -->
-                                                        </div>
-                                                        <!-- /.sale-product-with-timer -->
-                                                    </div>
-                                                    <!-- /.products -->
-                                                </div>
-                                                <!-- /.woocommerce -->
-                                            </div>
-                                            <!-- /.container-fluid -->
-                                        </div>
-                                        <!-- /.slick-list -->
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/06.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Sports & Exterieur
+                                        </h3>
                                     </div>
                                 </div>
-                                <!-- /.deals-carousel-inner-block -->
-                            </section>
-                            <!-- /.deals-carousel -->
-                            <section class="column-2 section-products-carousel-tabs tab-carousel-1">
-                                <div class="section-products-carousel-tabs-wrap">
-                                    <header class="section-header">
-                                        <ul role="tablist" class="nav justify-content-end">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" href="#tab-59f89f0881f930" data-toggle="tab">Nouveau
-                                                    Arrivées</a>
-                                            </li>
-                                        </ul>
-                                    </header>
-                                    <!-- .section-header -->
-                                    <div class="tab-content">
-                                        <div id="tab-59f89f0881f930" class="tab-pane active" role="tabpanel">
-                                            <div class="products-carousel" data-ride="tm-slick-carousel"
-                                                 data-wrap=".products"
-                                                 data-slick="{&quot;infinite&quot;:false,&quot;rows&quot;:2,&quot;slidesPerRow&quot;:5,&quot;slidesToShow&quot;:1,&quot;slidesToScroll&quot;:1,&quot;dots&quot;:true,&quot;arrows&quot;:false,&quot;responsive&quot;:[{&quot;breakpoint&quot;:1023,&quot;settings&quot;:{&quot;slidesPerRow&quot;:2}},{&quot;breakpoint&quot;:1169,&quot;settings&quot;:{&quot;slidesPerRow&quot;:4}},{&quot;breakpoint&quot;:1400,&quot;settings&quot;:{&quot;slidesPerRow&quot;:3}}]}">
-                                                <div class="container-fluid">
-                                                    <div class="woocommerce">
-                                                        <div class="products">
-                                                            @if($products->count() > 0)
-                                                                @foreach($products as $product)
-                                                                    @include('website.include.product-widget')
-                                                                @endforeach
-                                                            @else
-                                                                <p style="text-align: center !important; padding: 30px">Aucun produit trouvé</p>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                    <!-- .woocommerce -->
-                                                </div>
-                                                <!-- .container-fluid -->
-                                            </div>
-                                            <!-- .products-carousel -->
-                                        </div>
-                                    </div>
-                                    <!-- .tab-content -->
-                                </div>
-                                <!-- .section-products-carousel-tabs-wrap -->
-                            </section>
-                            <!-- .section-products-carousel-tabs -->
-                        </div>
-
-                        <!-- .fullwidth-notice -->
-                        <section class="section-top-categories section-categories-carousel" id="categories-carousel-1">
-                            <header class="section-header">
-                                <h4 class="pre-title">Mis en exergue</h4>
-                                <h2 class="section-title">Catégories principales
-                                </h2>
-                                <nav class="custom-slick-nav"></nav>
-                                <!-- .custom-slick-nav -->
-                                <a class="readmore-link" href="#">Full Catalog</a>
-                            </header>
-                            <!-- .section-header -->
-                            <div class="product-categories-1 product-categories-carousel" data-ride="tm-slick-carousel"
-                                 data-wrap=".products"
-                                 data-slick="{&quot;slidesToShow&quot;:5,&quot;slidesToScroll&quot;:1,&quot;dots&quot;:false,&quot;arrows&quot;:true,&quot;prevArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-left\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;nextArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-right\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;appendArrows&quot;:&quot;#categories-carousel-1 .custom-slick-nav&quot;,&quot;responsive&quot;:[{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesToScroll&quot;:2}},{&quot;breakpoint&quot;:1400,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesToScroll&quot;:4}}]}">
-                                <div class="woocommerce columns-5">
-                                    <div class="products">
-                                        @foreach($categories as $category)
-                                            <div class="product-category product">
-                                                <a href="{{route('products.filter', ['category_id' => $category->id])}}">
-                                                    <img width="224" height="197" alt="Audio &amp; Music"
-                                                         src="{{asset($category->photo)}}">
-                                                    <h2 class="woocommerce-loop-category__title">
-                                                        {{$category->name}}
-                                                    </h2>
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <!-- .products -->
-                                </div>
-                                <!-- .woocommerce -->
                             </div>
-                            <!-- .product-categories-carousel -->
-                        </section>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/02.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>High Tech
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/03.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Maison
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/04.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Cusisine
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-6">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/05.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Mode & Accessories
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="">
+                            <div id="amazonImageSlider"
+                                 class="home-v4-slider home-slider slick-initialized slick-slider carousel slide"
+                                 data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a href="https://www.google.com"><img
+                                                src="https://m.media-amazon.com/images/I/61BvxKSpy3L._SX3000_.jpg" class="d-block w-100"
+                                                height="500" alt="slide image 01"></a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="https://www.google.com"><img
+                                                src="https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg" class="d-block w-100"
+                                                height="500" alt="slide image 02"></a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="https://www.google.com"><img
+                                                src="https://m.media-amazon.com/images/I/71tIrZqybrL._SX3000_.jpg" class="d-block w-100"
+                                                height="500" alt="slide image 03"></a>
+                                    </div>
+                                    <div class="carousel-item ">
+                                        <a href="https://www.google.com"><img
+                                                src="https://m.media-amazon.com/images/I/61TD5JLGhIL._SX3000_.jpg" class="d-block w-100"
+                                                height="500" alt="slide image 04"></a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="https://www.google.com"><img
+                                                src="https://m.media-amazon.com/images/I/61jovjd+f9L._SX3000_.jpg" class="d-block w-100"
+                                                height="500" alt="slide image 05"></a>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#amazonImageSlider" role="button"
+                                   data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#amazonImageSlider" role="button"
+                                   data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <div class="container mb-5 section-c">
+                                <!-- Prouct Row Starts -->
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="card my-2 my-lg-0">
+                                            <h3 style="padding: 20px; margin: 0px; padding-bottom: 0px">Ventes Flash
+                                                d'hiver</h3>
+
+                                            <div class="card-body d-flex justify-content-center">
+                                                <a href="#"><img src="{{asset('frontend/assets/images/02.png')}}"
+                                                                 alt="product image 01" class="img-fluid"></a>
+                                            </div>
+
+                                            <a style="padding: 20px; margin: 0px; padding-top: 0px; color: blue"
+                                               href="">En Savoir plus</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="card my-2 my-lg-0">
+                                            <h3 style="padding: 20px; margin: 0px; padding-bottom: 0px">Blink Outdoor,
+                                                seulement 64,99</h3>
+
+                                            <div class="card-body d-flex justify-content-center">
+                                                <a href="#"><img src="{{asset('frontend/assets/images/03.png')}}"
+                                                                 alt="product image 01" class="img-fluid"></a>
+                                            </div>
+
+                                            <a style="padding: 20px; margin: 0px; padding-top: 0px; color: blue"
+                                               href="">Decouvrir</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="card my-2 my-lg-0">
+                                            <h3 style="padding: 20px; margin: 0px; padding-bottom: 0px">Offres Star</h3>
+
+                                            <div class="card-body d-flex justify-content-center">
+                                                <a href="#"><img src="{{asset('frontend/assets/images/04.png')}}"
+                                                                 alt="product image 01" class="img-fluid"></a>
+                                            </div>
+
+                                            <a style="padding: 20px; margin: 0px; padding-top: 0px; color: blue"
+                                               href="">Decouvrir</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="card my-2 my-lg-0">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h3 style="padding: 20px; margin: 0px; padding-bottom: 0px">
+                                                        Preservation de la biodiversity</h3>
+                                                    <a style="padding: 20px; margin: 0px; padding-top: 0px; color: blue"
+                                                       href="">En Savoir plus</a>
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="card-body d-flex justify-content-center">
+                                                        <a href="#"><img
+                                                                src="{{asset('frontend/assets/images/05.png')}}"
+                                                                alt="product image 01" class="img-fluid"></a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-body d-flex justify-content-center">
+                                                <a href="#"><img src="{{asset('frontend/assets/images/06.png')}}"
+                                                                 alt="product image 01" class="img-fluid"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div> <!-- Prouct Row Ends -->
+                            </div>
+                        </div>
+                        <h1 style="font-weight: bold; letter-spacing: 1px">CLICK LOCAL</h1>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/07.png')}}" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/08.png')}}" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/09.png')}}" alt="">
+                            </div>
+                        </div>
+                        <div
+                            class="container mb-5 home-v4-slider home-slider slick-initialized slick-slider carousel slide"
+                            style="margin-top: 30px; max-width: 100vw !important;">
+                            <!-- Prouct Row Starts -->
+                            <div class="row amaz-sec">
+                                <div class="col-lg-3">
+                                    <div class="card my-2 my-lg-0">
+                                        <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">Maison</h3>
+                                        <div class="row">
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#">
+                                                        <img src="{{asset('frontend/assets/images/10.png')}}"
+                                                             alt="product image 01" class="img-fluid">
+                                                    </a>
+                                                    <a href="">Couettes</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/11.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Bougies</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/12.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Fers a reasser</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/13.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Poubelles</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
+                                           href="">Voir Plus</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card my-2 my-lg-0">
+                                        <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">Papeterie</h3>
+                                        <div class="row">
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#">
+                                                        <img src="{{asset('frontend/assets/images/14.png')}}"
+                                                             alt="product image 01" class="img-fluid">
+                                                    </a>
+                                                    <a href="">Organiseurs</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/15.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Peintures</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/16.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Agrafes</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/17.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Crayons</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
+                                           href="">Voir Plus</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card my-2 my-lg-0">
+                                        <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">Livres et
+                                            manuels</h3>
+                                        <div class="row">
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#">
+                                                        <img src="{{asset('frontend/assets/images/18.png')}}"
+                                                             alt="product image 01" class="img-fluid">
+                                                    </a>
+                                                    <a href="">Jeunesse</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/19.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Scolaires</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/20.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Best-Sellers</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/21.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Livres Audio</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
+                                           href="">Voir Plus</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card my-2 my-lg-0">
+                                        <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">Jeux Video</h3>
+                                        <div class="row">
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#">
+                                                        <img src="{{asset('frontend/assets/images/22.png')}}"
+                                                             alt="product image 01" class="img-fluid">
+                                                    </a>
+                                                    <a href="">Meilleures Ventes</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/23.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Consoles de Jeux</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/24.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Precommandes</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-6" style="padding: 0px">
+                                                <div class="card-body">
+                                                    <a href="#"><img src="{{asset('frontend/assets/images/25.png')}}"
+                                                                     alt="product image 01" class="img-fluid"></a>
+                                                    <a href="">Abonnements et cartes prepayees</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
+                                           href="">Voir Plus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h1>Les bonnes affaires sur la mode homme</h1>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/07.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Vetements
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/08.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Chaussures
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/09.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Montres
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/10.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Sacs
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/11.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Accessoires
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="team-member">
+                                    <img src="{{asset('category-images/12.png')}}" alt="">
+                                    <div class="profile">
+                                        <h3>Bagages
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </main>
                     <!-- #main -->

@@ -61,6 +61,80 @@
             height: 32px;
             max-width: 150px;
         }
+        .site-header.header-v2{
+            background-color: black;
+        }
+        .site-header.header-v2 .techmarket-sticky-wrap .navbar-primary .nav > li > a {
+            color: #fff;
+        }
+        .site-header.header-v2 .stuck .navbar-primary .nav > li > a {
+            color: black;
+        }
+        #menu-navbar-primary{
+            text-align: center;
+        }
+        .header-v2 .departments-menu button i, .header-v3 .departments-menu button i, .header-v4 .departments-menu button i, .header-v5 .departments-menu button i, .header-v6 .departments-menu button i, .header-v10 .departments-menu button i {
+            padding-right: 0.8em;
+            text-shadow: #ffffff 0px 1px 0px;
+        }
+        .tm-favorites, #top-cart-wishlist-count, .tm-shopping-bag, .amount, .tm-departments-thin, .tm-login-register{
+            color: white;
+        }
+        .navbar-search .search-categories {
+            padding-right: 0em;
+        }
+        .navbar-search .search-categories {
+             background-color: white;
+        }
+        .popover-header {
+             border-top-right-radius: calc(0rem - 0px);
+        }
+        .navbar-search input[type="text"] {
+             border-top-left-radius: 0px !important;
+             border-bottom-left-radius: 0px !important;
+        }
+        .site-header{
+           z-index: auto;
+        }
+        .site-header.header-v2 .stuck{
+            display: none;
+        }
+        .btn-primary{
+            background-color: purple;
+            border: purple;
+        }
+        .overlay-div{
+            margin-bottom: -30px;
+            margin-top: -36px
+        }
+        .profile{
+            text-align: center;
+        }
+        .carousel-control-next, .carousel-control-prev {
+            top: -150px;
+        }
+        .section-c{
+            margin-top: -400px; max-width: 100vw !important;
+        }
+        .amaz-sec{
+            background-color: #e3e2e2; padding: 20px;
+        }
+        @media only screen and (max-width: 600px) {
+            .overlay-div{
+                margin-bottom: 0px; margin-top: 0px
+            }
+            .active-hh-menu .site-content::before {
+                background: transparent;
+                position: relative;
+            }
+            .section-c{
+                margin-top: -100px; max-width: 100vw !important;
+            }
+            .amaz-sec{
+               padding: 0px;
+            }
+        }
+
     </style>
 </head>
 <?php
@@ -73,6 +147,13 @@ $settings = App\Settings::first();
         <div class="top-bar top-bar-v2">
             <div class="col-full">
 
+                <!-- .nav -->
+                <ul id="menu-top-bar-left" class="nav menu-top-bar-left">
+                    <li class="hidden-sm-down menu-item animate-dropdown">
+                        <a title="Track Your Order" >
+                            VOTREA DRESSSE DE LIVRAISON :GUADELOUPE</a>
+                    </li>
+                </ul>
                 <!-- .nav -->
                 <ul id="menu-top-bar-right" class="nav menu-top-bar-right">
                     <li class="hidden-sm-down menu-item animate-dropdown">
@@ -101,7 +182,7 @@ $settings = App\Settings::first();
                 <div class="row">
                     <div class="site-branding">
                         <a href="/" class="custom-logo-link" rel="home">
-                            <img src="{{asset($settings->logo)}}" alt="">
+                            <img src="{{asset('frontend/assets/images/logo1.png')}}" alt="">
                         </a>
                         <!-- /.custom-logo-link -->
                     </div>
@@ -138,9 +219,6 @@ $settings = App\Settings::first();
                     <form class="navbar-search" method="get" action="{{route('product.search')}}">
                         <label class="sr-only screen-reader-text" for="search">Search for:</label>
                         <div class="input-group">
-                            <input type="text" id="search" class="form-control search-field product-search-field"
-                                   dir="ltr"
-                                   value="" name="search" placeholder="Rechercher des produits"/>
                             <div class="input-group-addon search-categories popover-header">
                                 <select name='product_category' id='product_cat' class='postform resizeselect'>
                                     <option value='0' selected='selected'>Aoutes catégories</option>
@@ -150,6 +228,9 @@ $settings = App\Settings::first();
                                     @endforeach
                                 </select>
                             </div>
+                            <input style="padding: 0rem" type="text" id="search" class="form-control search-field product-search-field"
+                                   dir="ltr"
+                                   value="" name="search" placeholder="  Rechercher des produits"/>
                             <!-- .input-group-addon -->
                             <div class="input-group-btn input-group-append">
                                 <input type="hidden" id="search-param" name="post_type" value="product"/>
@@ -179,7 +260,7 @@ $settings = App\Settings::first();
                                 <i class="tm tm-shopping-bag"></i>
                                 <span id="totalcartitems" class="count"></span>
                                 <span class="amount">
-                                        <span class="price-label">Votre panier</span><div class="totalcartamount"></div>€</span>
+                                        <span  style="color: white" class="price-label">Votre panier</span><div class="totalcartamount"></div>€</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-mini-cart">
                                 <li>
@@ -257,7 +338,7 @@ $settings = App\Settings::first();
                     <div class="row">
                         <div class="site-branding">
                             <a href="/" class="custom-logo-link" rel="home">
-                                <img src="{{asset('frontend/assets/images/logo.png')}}" alt="">
+                                <img src="{{asset('frontend/assets/images/logo1.png')}}" alt="">
                             </a>
                             <!-- /.custom-logo-link -->
                         </div>
