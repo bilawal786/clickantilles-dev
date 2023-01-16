@@ -54,6 +54,7 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
 
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('click_concept', 'Admin\ClickConceptController');
+    Route::resource('shipping_source', 'Admin\ShippingSourceController');
     Route::resource('subcategory', 'Admin\SubCategoryController');
     Route::resource('product', 'Admin\ProductController');
     Route::post('/fetchsubcategory', 'Admin\ProductController@fetchsubcategory')->name('fetchsubcategory');

@@ -308,6 +308,12 @@
                         <span class="menu-title">Click Concept</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('shipping_source.index')}}" class="nav-link" aria-controls="ui-basic">
+                        <i class="menu-icon typcn typcn-coffee"></i>
+                        <span class="menu-title">Source d'expédition</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- partial -->
