@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail3">Produit Volume</label>
+                                        <label for="exampleInputEmail3">Produit Volume m³</label>
                                         <input required type="number" class="form-control" name="volume"
                                                value="{{$product->volume}}">
                                     </div>
