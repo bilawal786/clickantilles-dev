@@ -190,7 +190,7 @@
                                                                     <label
                                                                         for="payment_method_bacs{{$shipping->id}}">{{$shipping->name}}</label>
                                                                     <p class="p-3">
-                                                                        {{$shipping->source}} {{$shipping->price}} €
+                                                                        Prix ​​d'expédition dans votre pays: {{$shipping->price}} €
                                                                         <br>
                                                                         Volume total de {{$shipping->source}}
                                                                         : {{$shipping->volume}} m³
