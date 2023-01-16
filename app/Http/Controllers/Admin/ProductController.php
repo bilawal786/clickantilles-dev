@@ -196,7 +196,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Products::find($id);
+        $category->delete();
+        $notification = array(
+            'messege' => 'Sauvegarde terminate!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function fetchsubcategory(Request $request){
