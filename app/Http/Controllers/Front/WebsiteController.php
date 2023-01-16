@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\Products;
 use App\Settings;
+use App\Slides;
 use App\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,10 @@ class WebsiteController extends Controller
 {
     public function index()
     {
+        $slides = Slides::first();
         $products = Products::latest()->where('product_section', 'Discounted Product')->take(10)->get();
-        $categories = Category::latest()->take(10)->get();
-        return view('website.pages.index', compact('categories', 'products'));
+        $categories = Category::latest()->get();
+        return view('website.pages.index', compact('categories', 'products', 'slides'));
     }
 
     public function discountedProducts()

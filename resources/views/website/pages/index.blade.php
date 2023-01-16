@@ -40,62 +40,19 @@
                 <div id="primary" style="max-width: 100% !important;" class="content-area">
                     <main id="main" class="site-main">
                         <div class="row">
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/01.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Goodies
-                                        </h3>
-                                    </div>
+                            @foreach($categories->whereIn('id', [1,2,3,4,5,6]) as $category)
+                                <div class="col-sm-2 col-6">
+                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">
+                                        <div class="team-member">
+                                            <img src="{{asset($category->photo)}}" alt="">
+                                            <div class="profile">
+                                                <h3>{{$category->name}}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/06.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Sports & Exterieur
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/02.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>High Tech
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/03.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Maison
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/04.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Cusisine
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/05.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Mode & Accessories
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <?php $slides = App\Slides::first(); ?>
                         <div class="home-v4-slider home-slider">
                             <div class="slider-1"
                                  style="background-image: url({{asset($slides->mainbg)}});">
@@ -107,65 +64,22 @@
                                     <div class="button">Obtenez le vôtre maintenant
                                         <i class="tm tm-long-arrow-right"></i>
                                     </div>
-                                    <div class="bottom-caption">Livraison gratuite sur US Terority</div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/01.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Goodies
-                                        </h3>
-                                    </div>
+                            @foreach($categories->whereIn('id', [6,7,8,9]) as $category)
+                                <div class="col-sm-2 col-6">
+                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">
+                                        <div class="team-member">
+                                            <img src="{{asset($category->photo)}}" alt="">
+                                            <div class="profile">
+                                                <h3>{{$category->name}}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/06.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Sports & Exterieur
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/02.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>High Tech
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/03.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Maison
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/04.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Cusisine
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 col-6">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/05.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Mode & Accessories
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <br>
                         <br>
@@ -216,68 +130,61 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="card my-2 my-lg-0">
-                                            <h3 style="padding: 20px; margin: 0px; padding-bottom: 0px">Ventes Flash
-                                                d'hiver</h3>
-
+                                            <h3 class="card-h">{{$slides->heading_1}}</h3>
                                             <div class="card-body d-flex justify-content-center">
-                                                <a href="#"><img src="{{asset('frontend/assets/images/02.png')}}"
-                                                                 alt="product image 01" class="img-fluid"></a>
+                                                <a href="{{$slides->link_1}}"><img src="{{asset($slides->image1)}}"
+                                                                                   alt="product image 01"
+                                                                                   class="img-fluid"></a>
                                             </div>
-
-                                            <a style="padding: 20px; margin: 0px; padding-top: 0px; color: blue"
-                                               href="">En Savoir plus</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3">
-                                        <div class="card my-2 my-lg-0">
-                                            <h3 style="padding: 20px; margin: 0px; padding-bottom: 0px">Blink Outdoor,
-                                                seulement 64,99</h3>
-
-                                            <div class="card-body d-flex justify-content-center">
-                                                <a href="#"><img src="{{asset('frontend/assets/images/03.png')}}"
-                                                                 alt="product image 01" class="img-fluid"></a>
-                                            </div>
-
-                                            <a style="padding: 20px; margin: 0px; padding-top: 0px; color: blue"
-                                               href="">Decouvrir</a>
+                                            <a class="card-link"
+                                               href="{{$slides->link_1}}">En Savoir plus</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="card my-2 my-lg-0">
-                                            <h3 style="padding: 20px; margin: 0px; padding-bottom: 0px">Offres Star</h3>
-
+                                            <h3 class="card-h">{{$slides->heading_2}}</h3>
                                             <div class="card-body d-flex justify-content-center">
-                                                <a href="#"><img src="{{asset('frontend/assets/images/04.png')}}"
-                                                                 alt="product image 01" class="img-fluid"></a>
+                                                <a href="{{$slides->link_2}}"><img src="{{asset($slides->image2)}}"
+                                                                                   alt="product image 01"
+                                                                                   class="img-fluid"></a>
                                             </div>
-
-                                            <a style="padding: 20px; margin: 0px; padding-top: 0px; color: blue"
-                                               href="">Decouvrir</a>
+                                            <a class="card-link"
+                                               href="{{$slides->link_2}}">Decouvrir</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="card my-2 my-lg-0">
+                                            <h3 class="card-h">{{$slides->heading_3}}</h3>
+                                            <div class="card-body d-flex justify-content-center">
+                                                <a href="{{$slides->link_3}}"><img src="{{asset($slides->image3)}}"
+                                                                                   alt="product image 01"
+                                                                                   class="img-fluid"></a>
+                                            </div>
+                                            <a class="card-link"
+                                               href="{{$slides->link_3}}">Decouvrir</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="card my-2 my-lg-0">
                                             <div class="row">
                                                 <div class="col-md-8">
-                                                    <h3 style="padding: 20px; margin: 0px; padding-bottom: 0px">
-                                                        Preservation de la biodiversity</h3>
-                                                    <a style="padding: 20px; margin: 0px; padding-top: 0px; color: blue"
-                                                       href="">En Savoir plus</a>
-
+                                                    <h3 class="card-h">
+                                                        {{$slides->heading_4}}</h3>
+                                                    <a class="card-link"
+                                                       href="{{$slides->link_4}}">En Savoir plus</a>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="card-body d-flex justify-content-center">
                                                         <a href="#"><img
-                                                                src="{{asset('frontend/assets/images/05.png')}}"
+                                                                src="{{asset($slides->image4)}}"
                                                                 alt="product image 01" class="img-fluid"></a>
                                                     </div>
-
                                                 </div>
                                             </div>
                                             <div class="card-body d-flex justify-content-center">
-                                                <a href="#"><img src="{{asset('frontend/assets/images/06.png')}}"
-                                                                 alt="product image 01" class="img-fluid"></a>
+                                                <a href="{{$slides->link_4}}"><img src="{{asset($slides->image5)}}"
+                                                                                   alt="product image 01"
+                                                                                   class="img-fluid"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -288,13 +195,13 @@
                         <h1 style="font-weight: bold; letter-spacing: 1px">CLICK LOCAL</h1>
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{asset('frontend/assets/images/07.png')}}" alt="">
+                                <img src="{{asset($slides->image6)}}" alt="">
                             </div>
                             <div class="col-md-4">
-                                <img src="{{asset('frontend/assets/images/08.png')}}" alt="">
+                                <img src="{{asset($slides->image7)}}" alt="">
                             </div>
                             <div class="col-md-4">
-                                <img src="{{asset('frontend/assets/images/09.png')}}" alt="">
+                                <img src="{{asset($slides->image8)}}" alt="">
                             </div>
                         </div>
                         <div
@@ -302,221 +209,44 @@
                             style="margin-top: 30px; max-width: 100vw !important;">
                             <!-- Prouct Row Starts -->
                             <div class="row amaz-sec">
-                                <div class="col-lg-3">
-                                    <div class="card my-2 my-lg-0">
-                                        <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">Maison</h3>
-                                        <div class="row">
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#">
-                                                        <img src="{{asset('frontend/assets/images/10.png')}}"
-                                                             alt="product image 01" class="img-fluid">
-                                                    </a>
-                                                    <a href="">Couettes</a>
-                                                </div>
+                                @foreach($categories->whereIn('id', [4,7,8,9]) as $category)
+                                    <div class="col-lg-3">
+                                        <div class="card my-2 my-lg-0">
+                                            <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">{{$category->name??""}}</h3>
+                                            <div class="row">
+                                                @foreach($category->subcategories->take(4) as $subcategory)
+                                                    <div class="col-md-6 col-6" style="padding: 0px">
+                                                        <div class="card-body">
+                                                            <a href="#">
+                                                                <img src="{{asset($subcategory->photo)}}"
+                                                                     alt="product image 01" class="img-fluid">
+                                                            </a>
+                                                            <a href="">{{$subcategory->name??""}}</a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
                                             </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/11.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Bougies</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/12.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Fers a reasser</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/13.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Poubelles</a>
-                                                </div>
-                                            </div>
+                                            <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
+                                               href="">Voir Plus</a>
                                         </div>
-                                        <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
-                                           href="">Voir Plus</a>
                                     </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card my-2 my-lg-0">
-                                        <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">Papeterie</h3>
-                                        <div class="row">
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#">
-                                                        <img src="{{asset('frontend/assets/images/14.png')}}"
-                                                             alt="product image 01" class="img-fluid">
-                                                    </a>
-                                                    <a href="">Organiseurs</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/15.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Peintures</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/16.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Agrafes</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/17.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Crayons</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
-                                           href="">Voir Plus</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card my-2 my-lg-0">
-                                        <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">Livres et
-                                            manuels</h3>
-                                        <div class="row">
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#">
-                                                        <img src="{{asset('frontend/assets/images/18.png')}}"
-                                                             alt="product image 01" class="img-fluid">
-                                                    </a>
-                                                    <a href="">Jeunesse</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/19.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Scolaires</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/20.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Best-Sellers</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/21.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Livres Audio</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
-                                           href="">Voir Plus</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card my-2 my-lg-0">
-                                        <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">Jeux Video</h3>
-                                        <div class="row">
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#">
-                                                        <img src="{{asset('frontend/assets/images/22.png')}}"
-                                                             alt="product image 01" class="img-fluid">
-                                                    </a>
-                                                    <a href="">Meilleures Ventes</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/23.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Consoles de Jeux</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/24.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Precommandes</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-6" style="padding: 0px">
-                                                <div class="card-body">
-                                                    <a href="#"><img src="{{asset('frontend/assets/images/25.png')}}"
-                                                                     alt="product image 01" class="img-fluid"></a>
-                                                    <a href="">Abonnements et cartes prepayees</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
-                                           href="">Voir Plus</a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <h1>Les bonnes affaires sur la mode homme</h1>
                         <div class="row">
-                            <div class="col-sm-2">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/07.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Vetements
-                                        </h3>
-                                    </div>
+                            @foreach($categories->whereIn('id', [10,11,12,13,14,15]) as $category)
+                                <div class="col-sm-2 col-6">
+                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">
+                                        <div class="team-member">
+                                            <img src="{{asset($category->photo)}}" alt="">
+                                            <div class="profile">
+                                                <h3>{{$category->name}}</h3>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/08.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Chaussures
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/09.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Montres
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/10.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Sacs
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/11.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Accessoires
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="team-member">
-                                    <img src="{{asset('category-images/12.png')}}" alt="">
-                                    <div class="profile">
-                                        <h3>Bagages
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
 
                     </main>

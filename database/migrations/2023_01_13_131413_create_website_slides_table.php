@@ -31,6 +31,14 @@ class CreateWebsiteSlidesTable extends Migration
             $table->string('image6');
             $table->string('image7');
             $table->string('image8');
+            $table->string('heading_1');
+            $table->string('heading_2');
+            $table->string('heading_3');
+            $table->string('heading_4');
+            $table->string('link_1');
+            $table->string('link_2');
+            $table->string('link_3');
+            $table->string('link_4');
             $table->timestamps();
         });
     }

@@ -53,7 +53,7 @@
                                                         <input required type="text" class="form-control" value="{{$category->name}}" name="name" id="exampleInputName1" placeholder="Name">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Image de catégorie (220*197)</label>
+                                                        <label>Image de catégorie (468*382)</label>
                                                         <input class="form-control" required type="file" accept="image/*" name="photo" >
                                                     </div>
                                                     <br>
@@ -92,7 +92,7 @@
                             <input type="text" required class="form-control" name="name" id="exampleInputName1" placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <label>Image de catégorie (220*197)</label>
+                            <label>Image de catégorie (468*382)</label>
                             <input class="form-control" required type="file" accept="image/*" name="photo" >
                         </div>
                         <br>

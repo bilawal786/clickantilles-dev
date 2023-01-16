@@ -29,6 +29,14 @@ class SlidesSeeder extends Seeder
             'image6' => 'frontend/assets/images/07.png',
             'image7' => 'frontend/assets/images/08.png',
             'image8' => 'frontend/assets/images/09.png',
+            'heading_1' => 'Ventes Flash d\'hiver',
+            'heading_2' => 'Blink Outdoor, seulement 64,99',
+            'heading_3' => 'Offres Star',
+            'heading_4' => 'Preservation de la biodiversity',
+            'link_1' => '#',
+            'link_2' => '#',
+            'link_3' => '#',
+            'link_4' => '#',
         ]);
     }
 }

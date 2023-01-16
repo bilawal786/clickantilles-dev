@@ -14,6 +14,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nom</th>
+                                <th>Photo</th>
                                 <th>Catégorie principale</th>
                                 <th>Action</th>
                             </tr>
@@ -23,6 +24,9 @@
                                 <tr>
                                     <td>{{$category->id}}</td>
                                     <td>{{$category->name??""}}</td>
+                                    <td>
+                                        <img src="{{$category->photo}}" alt="">
+                                    </td>
                                     <td>
                                         {{$category->category->name??""}}
                                     </td>
@@ -59,6 +63,10 @@
                                                                     <option {{$catego->id ==  $category->category_id ? "selected" : ""}} value="{{$catego->id}}">{{$catego->name}}</option>
                                                                 @endforeach
                                                             </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Image de catégorie (578 * 450)</label>
+                                                            <input class="form-control" required type="file" accept="image/*" name="photo" >
                                                         </div>
                                                         <br>
                                                         <button type="submit" class="btn btn-success mr-2">Sauver</button>
@@ -102,6 +110,10 @@
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Image de catégorie (578 * 450)</label>
+                            <input class="form-control" required type="file" accept="image/*" name="photo" >
                         </div>
                         <br>
                         <button type="submit" class="btn btn-success mr-2">Sauver</button>

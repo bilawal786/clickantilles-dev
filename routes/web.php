@@ -38,7 +38,6 @@ Route::get('/track-order', 'Front\WebsiteController@trackOrder')->name('front.tr
 Route::get('/aboutus', 'Front\WebsiteController@aboutus')->name('front.aboutus');
 Route::get('/returnpolicy', 'Front\WebsiteController@returnpolicy')->name('return.policy');
 Route::get('/cart', 'Front\WebsiteController@cart')->name('front.cart');
-Route::get('/wishlist', 'Front\WebsiteController@wishlist')->name('front.wishlist');
 Route::get('/removewish/{id}', 'Front\WebsiteController@removewish')->name('front.removewish');
 
 
@@ -61,6 +60,7 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
     Route::get('generalsettings','Admin\SettingsController@index')->name('general.settings');
     Route::get('generalsettings/pages','Admin\SettingsController@pages')->name('settings.pages');
     Route::post('updatesettings','Admin\SettingsController@update')->name('update.settings');
+    Route::post('update/slides','Admin\SettingsController@slidesUpdate')->name('update.slides');
     Route::post('updatepages','Admin\SettingsController@updatepages')->name('page.update');
     Route::get('generalsettings/slides','Admin\SettingsController@slides')->name('settings.slides');
 
@@ -90,6 +90,7 @@ Route::group(['middleware' => ['auth', 'web']], function() {
     Route::get('/payment/success/{id}', 'Front\WebsiteController@paymentSuccess')->name('payment.success');
     Route::get('/checkout', 'Front\WebsiteController@checkout')->name('front.checkout');
     Route::post('/checkout', 'Front\WebsiteController@checkoutSubmit')->name('checkout.submit');
+    Route::get('/wishlist', 'Front\WebsiteController@wishlist')->name('front.wishlist');
 
 
 });

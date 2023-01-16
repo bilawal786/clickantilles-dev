@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\SubCategory;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -68,40 +69,144 @@ class GeneralSeeder extends Seeder
         ]);
 
         Category::create([
-            'name' => 'Plage',
-            'photo' => 'frontend/assets/images/category/16.png'
+            'name' => 'Goodies',
+            'photo' => 'category-images/01.png'
         ]);
         Category::create([
-            'name' => 'Promotion',
-            'photo' => 'frontend/assets/images/category/16.png'
+            'name' => 'Sports & Exterieur',
+            'photo' => 'category-images/06.png'
         ]);
         Category::create([
-            'name' => 'Maisons',
-            'photo' => 'frontend/assets/images/category/16.png'
+            'name' => 'High Tech',
+            'photo' => 'category-images/02.png'
         ]);
         Category::create([
-            'name' => 'Evenements',
-            'photo' => 'frontend/assets/images/category/16.png'
+            'name' => 'Maison',
+            'photo' => 'category-images/03.png'
+        ]);
+        Category::create([
+            'name' => 'Cusisine',
+            'photo' => 'category-images/04.png'
+        ]);
+        Category::create([
+            'name' => 'Mode & Accessories',
+            'photo' => 'category-images/05.png'
+        ]);
+        Category::create([
+            'name' => 'Papeterie',
+            'photo' => 'category-images/04.png'
+        ]);
+        Category::create([
+            'name' => 'Livres et manuels',
+            'photo' => 'category-images/04.png'
+        ]);
+        Category::create([
+            'name' => 'Jeux Video',
+            'photo' => 'category-images/04.png'
+        ]);
+        Category::create([
+            'name' => 'Vetements',
+            'photo' => 'category-images/07.png'
+        ]);
+        Category::create([
+            'name' => 'Chaussures',
+            'photo' => 'category-images/08.png'
+        ]);
+        Category::create([
+            'name' => 'Montres',
+            'photo' => 'category-images/09.png'
+        ]);
+        Category::create([
+            'name' => 'Sacs',
+            'photo' => 'category-images/10.png'
         ]);
         Category::create([
             'name' => 'Accessoires',
-            'photo' => 'frontend/assets/images/category/16.png'
+            'photo' => 'category-images/11.png'
         ]);
         Category::create([
-            'name' => 'Scooter',
-            'photo' => 'frontend/assets/images/category/16.png'
+            'name' => 'Bagages',
+            'photo' => 'category-images/12.png'
         ]);
-        Category::create([
-            'name' => 'Meubles',
-            'photo' => 'frontend/assets/images/category/16.png'
+        SubCategory::create([
+            'name' => 'Couettes',
+            'category_id' => 4,
+            'photo' => 'frontend/assets/images/10.png'
         ]);
-        Category::create([
-            'name' => 'Luminaires',
-            'photo' => 'frontend/assets/images/category/16.png'
+        SubCategory::create([
+            'name' => 'Bougies',
+            'category_id' => 4,
+            'photo' => 'frontend/assets/images/11.png'
         ]);
-        Category::create([
-            'name' => 'Bebe',
-            'photo' => 'frontend/assets/images/category/16.png'
+        SubCategory::create([
+            'name' => 'Fers a reasser',
+            'category_id' => 4,
+            'photo' => 'frontend/assets/images/12.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Poubelles',
+            'category_id' => 4,
+            'photo' => 'frontend/assets/images/13.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Organiseurs',
+            'category_id' => 7,
+            'photo' => 'frontend/assets/images/14.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Peintures',
+            'category_id' => 7,
+            'photo' => 'frontend/assets/images/15.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Agrafes',
+            'category_id' => 7,
+            'photo' => 'frontend/assets/images/16.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Crayons',
+            'category_id' => 7,
+            'photo' => 'frontend/assets/images/17.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Jeunesse',
+            'category_id' => 8,
+            'photo' => 'frontend/assets/images/18.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Scolaires',
+            'category_id' => 8,
+            'photo' => 'frontend/assets/images/19.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Best-Sellers',
+            'category_id' => 8,
+            'photo' => 'frontend/assets/images/20.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Livres Audio',
+            'category_id' => 8,
+            'photo' => 'frontend/assets/images/21.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Meilleures Ventes',
+            'category_id' => 9,
+            'photo' => 'frontend/assets/images/22.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Consoles de Jeux',
+            'category_id' => 9,
+            'photo' => 'frontend/assets/images/23.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Precommandes',
+            'category_id' => 9,
+            'photo' => 'frontend/assets/images/24.png'
+        ]);
+        SubCategory::create([
+            'name' => 'Abonnements et cartes prepayees',
+            'category_id' => 9,
+            'photo' => 'frontend/assets/images/25.png'
         ]);
     }
 }

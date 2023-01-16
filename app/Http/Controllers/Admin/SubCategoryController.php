@@ -6,7 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\SubCategory;
 use Illuminate\Http\Request;
-
+use Image;
 class SubCategoryController extends Controller
 {
     /**
@@ -42,6 +42,15 @@ class SubCategoryController extends Controller
         $category = new SubCategory();
         $category->name = $request->name;
         $category->category_id = $request->category_id;
+        if($request->hasfile('photo') ){
+            $image6 = $request->file('photo');
+            $name6 = time() . 'img' . '.' . $image6->getClientOriginalExtension();
+            $destinationPath = 'category-images/';
+            $image6->move($destinationPath, $name6);
+            $category->photo = 'category-images/' . $name6;
+            $path6 = public_path('category-images/'.$name6);
+            Image::make($path6)->resize(578, 450)->save($path6);
+        }
         $category->save();
         $notification = array(
             'messege' => 'Sauvegarde réussie!',
@@ -84,6 +93,15 @@ class SubCategoryController extends Controller
         $category = SubCategory::find($id);
         $category->name = $request->name;
         $category->category_id = $request->category_id;
+        if($request->hasfile('photo') ){
+            $image6 = $request->file('photo');
+            $name6 = time() . 'img' . '.' . $image6->getClientOriginalExtension();
+            $destinationPath = 'category-images/';
+            $image6->move($destinationPath, $name6);
+            $category->photo = 'category-images/' . $name6;
+            $path6 = public_path('category-images/'.$name6);
+            Image::make($path6)->resize(578, 450)->save($path6);
+        }
         $category->update();
         $notification = array(
             'messege' => 'Sauvegarde réussie!',

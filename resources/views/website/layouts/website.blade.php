@@ -119,6 +119,12 @@
         .amaz-sec{
             background-color: #e3e2e2; padding: 20px;
         }
+        .card-h{
+            padding: 20px; margin: 0px; padding-bottom: 0px
+        }
+        .card-link{
+            padding: 20px; margin: 0px; padding-top: 0px; color: blue
+        }
         @media only screen and (max-width: 600px) {
             .overlay-div{
                 margin-bottom: 0px; margin-top: 0px
@@ -151,7 +157,7 @@ $settings = App\Settings::first();
                 <ul id="menu-top-bar-left" class="nav menu-top-bar-left">
                     <li class="hidden-sm-down menu-item animate-dropdown">
                         <a title="Track Your Order" >
-                            VOTREA DRESSSE DE LIVRAISON :GUADELOUPE</a>
+                            VOTRE ADRESSSE DE LIVRAISON :GUADELOUPE</a>
                     </li>
                 </ul>
                 <!-- .nav -->
@@ -191,37 +197,37 @@ $settings = App\Settings::first();
                     $categories = \App\Category::all();
                     ?>
                         <!-- ============================================================= End Header Logo ============================================================= -->
-                    <div id="departments-menu" class="dropdown departments-menu">
-                        <button class="btn dropdown-toggle btn-block" type="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                            <i class="tm tm-departments-thin"></i>
-                            <span>All Departments</span>
-                        </button>
-                        <ul id="menu-departments-menu" class="dropdown-menu yamm departments-menu-dropdown">
-                            @foreach($categories as $category)
-                                <li class="menu-item animate-dropdown">
-                                    <a title="Value of the Day"
-                                       href="{{route('products.filter', ['category_id' => $category->id])}}">{{$category->name??""}}</a>
-                                </li>
-                            @endforeach
-                            <li class="highlight menu-item animate-dropdown">
-                                <a title="Value of the Day" href="{{route('front.goodies.products')}}">Goodies</a>
-                            </li>
-                            <li class="highlight menu-item animate-dropdown">
-                                <a title="Value of the Day" href="{{route('front.emballeges.products')}}">Emballages</a>
-                            </li>
-                            <li class="highlight menu-item animate-dropdown">
-                                <a title="Value of the Day" href="{{route('front.concept.products')}}">Concept</a>
-                            </li>
-                        </ul>
-                    </div>
+{{--                    <div id="departments-menu" class="dropdown departments-menu">--}}
+{{--                        <button class="btn dropdown-toggle btn-block" type="button" data-toggle="dropdown"--}}
+{{--                                aria-haspopup="true" aria-expanded="false">--}}
+{{--                            <i class="tm tm-departments-thin"></i>--}}
+{{--                            <span>All Departments</span>--}}
+{{--                        </button>--}}
+{{--                        <ul id="menu-departments-menu" class="dropdown-menu yamm departments-menu-dropdown">--}}
+{{--                            @foreach($categories as $category)--}}
+{{--                                <li class="menu-item animate-dropdown">--}}
+{{--                                    <a title="Value of the Day"--}}
+{{--                                       href="{{route('products.filter', ['category_id' => $category->id])}}">{{$category->name??""}}</a>--}}
+{{--                                </li>--}}
+{{--                            @endforeach--}}
+{{--                            <li class="highlight menu-item animate-dropdown">--}}
+{{--                                <a title="Value of the Day" href="{{route('front.goodies.products')}}">Goodies</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="highlight menu-item animate-dropdown">--}}
+{{--                                <a title="Value of the Day" href="{{route('front.emballeges.products')}}">Emballages</a>--}}
+{{--                            </li>--}}
+{{--                            <li class="highlight menu-item animate-dropdown">--}}
+{{--                                <a title="Value of the Day" href="{{route('front.concept.products')}}">Concept</a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
                     <!-- .departments-menu -->
                     <form class="navbar-search" method="get" action="{{route('product.search')}}">
                         <label class="sr-only screen-reader-text" for="search">Search for:</label>
                         <div class="input-group">
                             <div class="input-group-addon search-categories popover-header">
                                 <select name='product_category' id='product_cat' class='postform resizeselect'>
-                                    <option value='0' selected='selected'>Aoutes catégories</option>
+                                    <option value='0' selected='selected'>Toutes catégories</option>
                                     @foreach($categories as $category)
                                         <option class="level-0"
                                                 value="{{$category->id}}">{{$category->name??""}}</option>
@@ -249,6 +255,7 @@ $settings = App\Settings::first();
                         <li class="nav-item">
                             <a href="{{route('front.wishlist')}}" class="nav-link">
                                 <i class="tm tm-favorites"></i>
+                                @auth
                                 <?php $wishlist =App\Wishlist::where('user_id', Auth::user()->id)->get();
                                 $wishlistIds = [];
                                 foreach ($wishlist as $item){
@@ -257,6 +264,7 @@ $settings = App\Settings::first();
                                 $wishlistcount = count($wishlist);
                                 ?>
                                 <span id="top-cart-wishlist-count" class="value">{{$wishlistcount}}</span>
+                                @endauth
                             </a>
                         </li>
                     </ul>
