@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\ShippingSource;
 use Illuminate\Http\Request;
 
 class ShippingSourceController extends Controller
@@ -14,7 +15,8 @@ class ShippingSourceController extends Controller
      */
     public function index()
     {
-        return view('admin.shipping_source.index');
+        $sources = ShippingSource::all();
+        return view('admin.shipping_source.index',compact('sources'));
     }
 
     /**
@@ -35,7 +37,19 @@ class ShippingSourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $source = new ShippingSource();
+        $source->name = $request->name;
+        $source->deliver_from = $request->deliver_from;
+        $source->deliver_to = $request->deliver_to;
+        $source->source = $request->source;
+        $source->volume = $request->volume;
+        $source->time_required = $request->time_required;
+        $source->save();
+        $notification = array(
+            'messege' => 'Sauvegarde réussie!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -69,7 +83,19 @@ class ShippingSourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $source = ShippingSource::find($id);
+        $source->name = $request->name;
+        $source->deliver_from = $request->deliver_from;
+        $source->deliver_to = $request->deliver_to;
+        $source->source = $request->source;
+        $source->volume = $request->volume;
+        $source->time_required = $request->time_required;
+        $source->save();
+        $notification = array(
+            'messege' => 'Sauvegarde réussie!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -80,6 +106,12 @@ class ShippingSourceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $source = ShippingSource::find($id);
+        $source->delete();
+        $notification = array(
+            'messege' => 'Supprimé avec succès!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }
