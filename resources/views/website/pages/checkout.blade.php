@@ -195,7 +195,7 @@
                                                                         Volume total de {{$shipping->source}}
                                                                         : {{$shipping->volume}} m³
                                                                         <br>
-                                                                        {{$shipping->time_required}}
+                                                                        Heure de livraison: {{$shipping->time_required}}
                                                                     </p>
                                                                 </li>
                                                             @endif
