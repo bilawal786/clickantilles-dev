@@ -219,6 +219,8 @@
                                     <!-- .product-actions -->
                                 </div>
                             </div>
+                            <?php  $reviews = App\ProductReview::where('product_id', $product->id)->get();  ?>
+
                             <div class="woocommerce-tabs wc-tabs-wrapper">
                                 <ul role="tablist" class="nav tabs wc-tabs">
                                     <li class="nav-item description_tab">
@@ -227,7 +229,7 @@
                                     </li>
                                     <li class="nav-item reviews_tab">
                                         <a class="nav-link" data-toggle="tab" role="tab" aria-controls="tab-reviews"
-                                           href="#tab-reviews">Commentaires (1)</a>
+                                           href="#tab-reviews">Commentaires ({{$reviews->count()}})</a>
                                     </li>
                                 </ul>
                                 <!-- /.ec-tabs -->
@@ -247,16 +249,15 @@
                                             </div>
                                         @endif
                                     </div>
+                              <?php      $avgrating = App\ProductReview::avg('rating')   ?>
                                     <div class="tab-pane" id="tab-reviews" role="tabpanel">
                                         <div class="techmarket-advanced-reviews" id="reviews">
                                             <div class="advanced-review row">
                                                 <div class="advanced-review-rating">
-                                                    <h2 class="based-title">Commentaires (1)</h2>
+                                                    <h2 class="based-title">Commentaires ({{$reviews->count()}})</h2>
                                                     <div class="avg-rating">
-                                                        <span class="avg-rating-number">5.0</span>
-                                                        <div title="Rated 5.0 out of 5" class="star-rating">
-                                                            <span style="width:100%"></span>
-                                                        </div>
+                                                        <span class="avg-rating-number">{{$avgrating}}</span>
+                                                        <div data-score="{{$avgrating}}" class="raty" data-read-only="true" style="width:100%"></div>
                                                     </div>
                                                     <!-- /.avg-rating -->
                                                     <div class="rating-histogram">
@@ -264,7 +265,7 @@
                                                             <div title="Rated 5 out of 5" class="star-rating">
                                                                 <span style="width:100%"></span>
                                                             </div>
-                                                            <div class="rating-count">1</div>
+                                                            <div class="rating-count">{{App\ProductReview::where('rating', 5)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage"
                                                                       style="width:100%"></span>
@@ -274,7 +275,7 @@
                                                             <div title="Rated 4 out of 5" class="star-rating">
                                                                 <span style="width:80%"></span>
                                                             </div>
-                                                            <div class="rating-count zero">0</div>
+                                                            <div class="rating-count zero">{{App\ProductReview::where('rating', 4)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage" style="width:0%"></span>
                                                             </div>
@@ -283,7 +284,7 @@
                                                             <div title="Rated 3 out of 5" class="star-rating">
                                                                 <span style="width:60%"></span>
                                                             </div>
-                                                            <div class="rating-count zero">0</div>
+                                                            <div class="rating-count zero">{{App\ProductReview::where('rating', 3)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage" style="width:0%"></span>
                                                             </div>
@@ -292,7 +293,7 @@
                                                             <div title="Rated 2 out of 5" class="star-rating">
                                                                 <span style="width:40%"></span>
                                                             </div>
-                                                            <div class="rating-count zero">0</div>
+                                                            <div class="rating-count zero">{{App\ProductReview::where('rating', 2)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage" style="width:0%"></span>
                                                             </div>
@@ -301,7 +302,7 @@
                                                             <div title="Rated 1 out of 5" class="star-rating">
                                                                 <span style="width:20%"></span>
                                                             </div>
-                                                            <div class="rating-count zero">0</div>
+                                                            <div class="rating-count zero">{{App\ProductReview::where('rating', 1)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage" style="width:0%"></span>
                                                             </div>
@@ -316,42 +317,24 @@
                                                             <div class="comment-respond" id="respond">
                                                                 <h3 class="comment-reply-title" id="reply-title">Ajouter
                                                                     un commentaire</h3>
+                                                                @auth
                                                                 <form novalidate="" class="comment-form"
-                                                                      id="commentform" method="post" action="#">
-                                                                    <div class="comment-form-rating">
-                                                                        <label>Votre note</label>
-                                                                        <p class="stars">
-                                                                            <span><a href="#" class="star-1">1</a><a
-                                                                                    href="#" class="star-2">2</a><a
-                                                                                    href="#" class="star-3">3</a><a
-                                                                                    href="#" class="star-4">4</a><a
-                                                                                    href="#" class="star-5">5</a></span>
-                                                                        </p>
-                                                                    </div>
+                                                                      id="commentform" method="post" action="{{route('front.product.review')}}">
+                                                                    @csrf
+                                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+{{--                                                                    <div class="comment-form-rating">--}}
+                                                                        <label>Votre Note</label>
+                                                                        <div class="raty" style="width:100%"></div>
+
                                                                     <p class="comment-form-comment">
                                                                         <label for="comment">Votre avis</label>
                                                                         <textarea aria-required="true" rows="8"
-                                                                                  cols="45" name="comment"
-                                                                                  id="comment"></textarea>
-                                                                    </p>
-                                                                    <p class="comment-form-author">
-                                                                        <label for="author">Nom
-                                                                            <span class="required">*</span>
-                                                                        </label>
-                                                                        <input type="text" aria-required="true"
-                                                                               size="30" value="" name="author"
-                                                                               id="author">
-                                                                    </p>
-                                                                    <p class="comment-form-email">
-                                                                        <label for="email">Email
-                                                                            <span class="required">*</span>
-                                                                        </label>
-                                                                        <input type="text" aria-required="true"
-                                                                               size="30" value="" name="email"
-                                                                               id="email">
+                                                                                  cols="45" name="review"
+                                                                                  id="review"></textarea>
                                                                     </p>
                                                                     <p class="form-submit">
-                                                                        <input type="submit" value="Add Review"
+                                                                        <input type="submit" value="Ajouter un commentaire"
                                                                                class="submit" id="submit" name="submit">
                                                                         <input type="hidden" id="comment_post_ID"
                                                                                value="185" name="comment_post_ID">
@@ -360,6 +343,9 @@
                                                                                name="comment_parent">
                                                                     </p>
                                                                 </form>
+                                                                @else
+                                                                    <h2>Connectez-vous pour poster un commentaire</h2>
+                                                                @endauth
                                                                 <!-- /.comment-form -->
                                                             </div>
                                                             <!-- /.comment-respond -->
@@ -376,28 +362,28 @@
                                                     <li id="li-comment-83"
                                                         class="comment byuser comment-author-admin bypostauthor even thread-even depth-1">
                                                         <div class="comment_container" id="comment-83">
+
+
+                                                            @foreach($reviews as $review)
                                                             <div class="comment-text">
-                                                                <div class="star-rating">
-                                                                            <span style="width:100%">Rated
-                                                                                <strong class="rating">5</strong> out of 5</span>
-                                                                </div>
+                                                                <div data-score="{{$review->rating}}"  class="raty" data-read-only="true" style="width:100%"></div>
                                                                 <p class="meta">
                                                                     <strong itemprop="author"
-                                                                            class="woocommerce-review__author">first
-                                                                        last</strong>
+                                                                            class="woocommerce-review__author">{{$review->user->fname}}</strong>
                                                                     <span
                                                                         class="woocommerce-review__dash">&ndash;</span>
                                                                     <time datetime="2017-06-21T08:05:40+00:00"
                                                                           itemprop="datePublished"
                                                                           class="woocommerce-review__published-date">
-                                                                        June 21, 2017
+                                                                        {{$review->created_at}}
                                                                     </time>
                                                                 </p>
                                                                 <div class="description">
-                                                                    <p>Wow great product</p>
+                                                                    <p>{{$review->review}}</p>
                                                                 </div>
                                                                 <!-- /.description -->
                                                             </div>
+                                                            @endforeach
                                                             <!-- /.comment-text -->
                                                         </div>
                                                         <!-- /.comment_container -->
@@ -527,5 +513,12 @@
             });
         }
 
+        $('.raty').raty({
+            starOff: '{{asset('frontend/assets/raty/lib/images/star-off.png')}}',
+            starOn: '{{asset('frontend/assets/raty/lib/images/star-on.png')}}'
+        });
+
+
     </script>
+
 @endsection

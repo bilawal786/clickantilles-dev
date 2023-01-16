@@ -27,6 +27,12 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+
+{{--    !-- jQuery Version Rating(V3) -->--}}
+    <link rel="stylesheet" href="{{asset('frontend/assets/raty/lib/jquery.raty.css')}}">
+    <script src="{{asset('frontend/assets/raty/lib/jquery.raty.js')}}"></script>
+
+
     <style>
         .myul {
             width: 100%;
@@ -130,6 +136,9 @@
         }
         .color-white{
             color: white !important;
+        }
+        .raty img{
+            display: inline-block !important;
         }
         @media only screen and (max-width: 600px) {
             .overlay-div{
@@ -640,6 +649,7 @@ $settings = App\Settings::first();
         <!-- .site-footer -->
     </div>
 </div>
+
 
 {{--<script type="text/javascript" src="{{asset('frontend/assets/js/jquery.min.js')}}"></script>--}}
 <script type="text/javascript" src="{{asset('frontend/assets/js/tether.min.js')}}"></script>

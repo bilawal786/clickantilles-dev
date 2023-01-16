@@ -51,7 +51,7 @@
                                                             </div>
                                                         </td>
                                                         <td>{{$product->title}}</td>
-                                                        <td> € {{$product->price}} </td>
+                                                        <td> {{$product->price}} € </td>
                                                         <td>
                                                             <a title="Remove this item" class="remove" href="{{route('front.removewish', ['id' => $product->id])}}">×</a>
                                                         </td>
