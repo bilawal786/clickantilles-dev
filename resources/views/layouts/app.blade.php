@@ -302,6 +302,12 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('click_concept.index')}}" class="nav-link" aria-controls="ui-basic">
+                        <i class="menu-icon typcn typcn-coffee"></i>
+                        <span class="menu-title">Click Concept</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- partial -->

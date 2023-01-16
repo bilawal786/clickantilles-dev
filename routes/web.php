@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
     Route::get('/orders/status/{id}', 'Admin\OrdersController@orderStatus')->name('order.status');
 
     Route::resource('category', 'Admin\CategoryController');
+    Route::resource('click_concept', 'Admin\ClickConceptController');
     Route::resource('subcategory', 'Admin\SubCategoryController');
     Route::resource('product', 'Admin\ProductController');
     Route::post('/fetchsubcategory', 'Admin\ProductController@fetchsubcategory')->name('fetchsubcategory');
