@@ -73,6 +73,17 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-6 click_concept" style="display: none">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Sélectionnez le magasin</label>
+                                        <select  class="form-control click_concept" name="click_concept" id="">
+                                            <option value="">Sélectionnez Click Concept</option>
+                                            @foreach($stores as $store)
+                                                <option value="{{$store->id}}">{{$store->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Prix</label>
@@ -99,6 +110,13 @@
                                         <label for="exampleInputEmail3">Produit Unité</label>
                                         <input required type="text" class="form-control" name="unit"
                                                placeholder="Produit Unité">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Produit Volume</label>
+                                        <input required type="number" class="form-control" name="volume"
+                                               placeholder="Produit Volume">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -190,9 +208,18 @@
             if(type == "Click Pro"){
                 $(".pro_category").show()
                 $(".pro-attr").prop('required',true);
+                $(".click_concept").hide()
+                $(".click_concept").prop('required',false);
+            }else if(type == "Click Concept"){
+                $(".click_concept").show()
+                $(".click_concept").prop('required',true);
+                $(".pro_category").hide()
+                $(".pro-attr").prop('required',false);
             }else {
                 $(".pro_category").hide()
                 $(".pro-attr").prop('required',false);
+                $(".click_concept").hide()
+                $(".click_concept").prop('required',false);
             }
         }
     </script>

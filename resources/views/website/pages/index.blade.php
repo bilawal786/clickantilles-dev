@@ -7,10 +7,12 @@
     <div id="content" class="site-content">
         <div class="row">
             <div class="col-md-2">
-                <div class="overlay-div"
-                     style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
-                    CONCEPT STORE
-                </div>
+                <a href="{{route('front.stores')}}">
+                    <div class="overlay-div"
+                         style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
+                        CONCEPT STORE
+                    </div>
+                </a>
             </div>
             <div class="col-md-4">
 
@@ -18,12 +20,15 @@
             <div class="col-md-4">
 
             </div>
+
             <div class="col-md-2">
-                <div class="overlay-div"
-                     style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
-                    CLICK
-                    PRO
-                </div>
+                <a href="{{route('front.pro.products')}}">
+                    <div class="overlay-div"
+                         style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
+                        CLICK
+                        PRO
+                    </div>
+                </a>
             </div>
         </div>
         <div class="row" style="background-color: #5f195f; padding: 40px">

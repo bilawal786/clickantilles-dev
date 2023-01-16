@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\ClickConcept;
 use App\Http\Controllers\Controller;
 use App\Products;
 use App\SubCategory;
@@ -31,7 +32,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        $stores = ClickConcept::latest()->get();
+        return view('admin.products.create', compact('categories', 'stores'));
     }
 
     /**
@@ -57,10 +59,14 @@ class ProductController extends Controller
         $product->color = $request->color;
         $product->stock = $request->stock;
         $product->unit = $request->unit;
+        $product->volume = $request->volume;
         $product->video = $request->video;
         $product->product_section = $request->product_section;
         if ($request->product_section == "Click Pro"){
             $product->pro_category = $request->pro_category??"Click Selection";
+        }
+        if ($request->product_section == "Click Concept"){
+            $product->click_concept = $request->click_concept;
         }
         if ($request->hasfile('photo1')) {
             $image1 = $request->file('photo1');
@@ -113,9 +119,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $stores = ClickConcept::latest()->get();
         $categories = Category::all();
         $product = Products::find($id);
-        return  view('admin.products.edit', compact('product', 'categories'));
+        return  view('admin.products.edit', compact('product', 'categories', 'stores'));
     }
 
     /**
@@ -140,10 +147,18 @@ class ProductController extends Controller
         $product->color = $request->color;
         $product->stock = $request->stock;
         $product->unit = $request->unit;
+        $product->volume = $request->volume;
         $product->video = $request->video;
         $product->product_section = $request->product_section;
         if ($request->product_section == "Click Pro"){
-            $product->pro_category = $request->pro_category??"Click Selection";
+            $product->pro_category = $request->pro_category;
+        }else{
+            $product->pro_category = "";
+        }
+        if ($request->product_section == "Click Concept"){
+            $product->click_concept = $request->click_concept;
+        }else{
+            $product->click_concept = null;
         }
         if ($request->hasfile('photo1')) {
             $image1 = $request->file('photo1');

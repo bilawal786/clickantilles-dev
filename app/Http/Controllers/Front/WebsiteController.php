@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Front;
 
 use App\Category;
+use App\ClickConcept;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Products;
 use App\Settings;
+use App\ShippingSource;
 use App\Slides;
 use App\Wishlist;
 use Illuminate\Http\Request;
@@ -21,6 +23,19 @@ class WebsiteController extends Controller
         $products = Products::latest()->where('product_section', 'Discounted Product')->take(10)->get();
         $categories = Category::latest()->get();
         return view('website.pages.index', compact('categories', 'products', 'slides'));
+    }
+
+    public function stores(){
+        $stores = ClickConcept::latest()->paginate(10);
+        return view('website.pages.stores', compact('stores'));
+    }
+
+    public function singleStore($id){
+        $store = ClickConcept::find($id);
+        if (!$store){
+            return back();
+        }
+        return view('website.pages.single_store', compact('store'));
     }
 
     public function discountedProducts()
@@ -151,7 +166,12 @@ class WebsiteController extends Controller
             $signature_img = $destinationPath.$signatures;
         }
         $product = Products::where('id', $request->product_id)->first();
-        \Cart::add($product->id, $product->title, $product->price, $request->quantity, array('type' => $product->product_section, 'image' => $product->photo1, 'optimize_image' => $signature_img??""));
+        \Cart::add($product->id, $product->title, $product->price, $request->quantity, array(
+            'type' => $product->product_section,
+            'image' => $product->photo1,
+            'optimize_image' => $signature_img??""
+            )
+        );
         return response()->json($product);
     }
 
@@ -190,9 +210,16 @@ class WebsiteController extends Controller
     public function checkout()
     {
         $cartitems = \Cart::getContent();
+        $totalVolume = 0;
+        foreach ($cartitems as $item){
+            $product = Products::find($item->id);
+            $totalVolume += $product->volume*$item->quantity;
+        }
         $cartTotalQuantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();
-        return view('website.pages.checkout', compact('cartitems', 'cartTotalQuantity', 'total'));
+        $shipping_source = ShippingSource::where('deliver_to', Auth::user()->country)->get();
+//        dd($totalVolume);
+        return view('website.pages.checkout', compact('cartitems', 'cartTotalQuantity', 'total', 'totalVolume', 'shipping_source'));
     }
 
     public function checkoutSubmit(Request $request)

@@ -14,8 +14,9 @@
                                 <th>Nom</th>
                                 <th>Livraison à partir de</th>
                                 <th>Livraison à</th>
-                                <th>Source</th>
+                                <th>Source d'expédition</th>
                                 <th>Volume (m³)</th>
+                                <th>Prix</th>
                                 <th>Temps requis</th>
                                 <th>Action</th>
                             </tr>
@@ -28,6 +29,7 @@
                                     <td>{{$source->deliver_to}}</td>
                                     <td>{{$source->source}}</td>
                                     <td>{{$source->volume}} m³</td>
+                                    <td>{{$source->price}} €</td>
                                     <td>{{$source->time_required}}</td>
                                     <td>
                                         <button data-toggle="modal" data-target="#editModal{{$source->id}}" id="edit" class="btn btn-sm btn-primary"  title="edit">
@@ -81,6 +83,10 @@
                                                         <div class="form-group">
                                                             <label for="exampleInputName1">Volume (m³)</label>
                                                             <input required type="number" class="form-control" value="{{$source->volume}}" name="volume" id="volume" placeholder="Volume">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputName1">Prix</label>
+                                                            <input required type="number" class="form-control" value="{{$source->price}}" name="price" id="volume" placeholder="Prix">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="exampleInputName1">Temps requis</label>
@@ -145,6 +151,10 @@
                         <div class="form-group">
                             <label for="exampleInputName1">Volume (m³)</label>
                             <input required type="number" class="form-control" name="volume" id="volume" placeholder="Volume">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Prix</label>
+                            <input required type="number" class="form-control" name="price" id="price" placeholder="Prix">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputName1">Temps requis</label>

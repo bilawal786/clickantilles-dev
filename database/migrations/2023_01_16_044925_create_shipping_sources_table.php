@@ -19,6 +19,7 @@ class CreateShippingSourcesTable extends Migration
             $table->string('deliver_from');
             $table->string('deliver_to');
             $table->string('source');
+            $table->string('price');
             $table->string('volume');
             $table->string('time_required');
             $table->integer('status')->default(1);

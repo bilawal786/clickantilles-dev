@@ -24,6 +24,8 @@ Route::get('/cartitems', 'Front\WebsiteController@cartitems')->name('cartitems')
 Route::post('/removecart', 'Front\WebsiteController@removecart')->name('removecart');
 Route::get('/removecart/{id}', 'Front\WebsiteController@removecartweb')->name('removecartweb');
 
+Route::get('/stores', 'Front\WebsiteController@stores')->name('front.stores');
+Route::get('/store/single/{id}', 'Front\WebsiteController@singleStore')->name('store.single');
 Route::get('/discounted/products', 'Front\WebsiteController@discountedProducts')->name('front.dicounted.products');
 Route::get('/sourcing/products', 'Front\WebsiteController@sourcingProducts')->name('front.sourcing.products');
 Route::get('/goodies/products', 'Front\WebsiteController@goodiesProducts')->name('front.goodies.products');

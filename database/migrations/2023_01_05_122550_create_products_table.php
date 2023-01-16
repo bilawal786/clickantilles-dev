@@ -35,6 +35,7 @@ class CreateProductsTable extends Migration
             $table->string('discount')->nullable();
             $table->string('video')->nullable();
             $table->string('unit')->nullable();
+            $table->string('volume')->nullable();
             $table->string('material')->nullable();
             $table->longText('gallery')->nullable();
             $table->longText('colorimages')->nullable();
@@ -48,6 +49,7 @@ class CreateProductsTable extends Migration
 
             $table->string('product_section')->nullable();
             $table->string('pro_category')->nullable();
+            $table->bigInteger('click_concept')->nullable();
             $table->timestamps();
         });
     }

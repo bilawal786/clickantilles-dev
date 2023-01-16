@@ -54,18 +54,18 @@
                                                         </div>
                                                     </td>
                                                     <td data-title="Price" class="product-price">
-                                                                    <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol"></span>{{$cartitem->quantity}}
+                                                                    <span class="color-black woocommerce-Price-amount amount">
+                                                                        <span class="color-black woocommerce-Price-currencySymbol"></span>{{$cartitem->quantity}}
                                                                     </span>
                                                     </td>
                                                     <td data-title="Price" class="product-price">
-                                                                    <span class="woocommerce-Price-amount amount">
+                                                                    <span class="color-black woocommerce-Price-amount amount">
                                                                         <span class="woocommerce-Price-currencySymbol"></span>{{$cartitem->price}} €
                                                                     </span>
                                                     </td>
                                                     <td data-title="Total" class="product-subtotal">
-                                                                    <span class="woocommerce-Price-amount amount">
-                                                                        <span class="woocommerce-Price-currencySymbol"></span>{{$cartitem->price * $cartitem->quantity}} €
+                                                                    <span class="color-black woocommerce-Price-amount amount">
+                                                                        <span class="color-black woocommerce-Price-currencySymbol"></span>{{$cartitem->price * $cartitem->quantity}} €
                                                                     </span>
                                                         <a title="Remove this item" class="remove" href="{{route('removecartweb', ['id' => $cartitem->id])}}">×</a>
                                                     </td>
@@ -84,8 +84,8 @@
                                                     <tr class="cart-subtotal">
                                                         <th>Total</th>
                                                         <td data-title="Subtotal">
-                                                                        <span class="woocommerce-Price-amount amount">
-                                                                            <span class="woocommerce-Price-currencySymbol"></span>{{$total}} €</span>
+                                                                        <span class="color-black woocommerce-Price-amount amount">
+                                                                            <span class="color-black woocommerce-Price-currencySymbol"></span>{{$total}} €</span>
                                                         </td>
                                                     </tr>
                                                     <tr class="shipping">
@@ -96,8 +96,8 @@
                                                         <th>Total</th>
                                                         <td data-title="Total">
                                                             <strong>
-                                                                            <span class="woocommerce-Price-amount amount">
-                                                                                <span class="woocommerce-Price-currencySymbol"></span>{{$total}} €</span>
+                                                                            <span class="color-black woocommerce-Price-amount amount">
+                                                                                <span class="color-black woocommerce-Price-currencySymbol"></span>{{$total}} €</span>
                                                             </strong>
                                                         </td>
                                                     </tr>

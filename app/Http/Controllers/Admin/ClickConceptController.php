@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\ClickConcept;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Image;
 class ClickConceptController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class ClickConceptController extends Controller
      */
     public function index()
     {
-        return view('admin.click_concept.index');
+        $stores = ClickConcept::latest()->paginate(10);
+        return view('admin.click_concept.index', compact('stores'));
     }
 
     /**
@@ -35,7 +37,24 @@ class ClickConceptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new ClickConcept();
+        $store->name = $request->name;
+        $store->description = $request->description;
+        if($request->hasfile('photo') ){
+            $image6 = $request->file('photo');
+            $name6 = time() . 'img' . '.' . $image6->getClientOriginalExtension();
+            $destinationPath = 'category-images/';
+            $image6->move($destinationPath, $name6);
+            $store->photo = 'category-images/' . $name6;
+            $path6 = public_path('category-images/'.$name6);
+            Image::make($path6)->resize(1000, 450)->save($path6);
+        }
+        $store->save();
+        $notification = array(
+            'messege' => 'Sauvegarde réussie!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -69,7 +88,24 @@ class ClickConceptController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $store = ClickConcept::find($id);
+        $store->name = $request->name;
+        $store->description = $request->description;
+        if($request->hasfile('photo') ){
+            $image6 = $request->file('photo');
+            $name6 = time() . 'img' . '.' . $image6->getClientOriginalExtension();
+            $destinationPath = 'category-images/';
+            $image6->move($destinationPath, $name6);
+            $store->photo = 'category-images/' . $name6;
+            $path6 = public_path('category-images/'.$name6);
+            Image::make($path6)->resize(1000, 450)->save($path6);
+        }
+        $store->save();
+        $notification = array(
+            'messege' => 'Sauvegarde réussie!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -80,6 +116,12 @@ class ClickConceptController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $store = ClickConcept::find($id);
+        $store->delete();
+        $notification = array(
+            'messege' => 'Sauvegarde terminate!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }

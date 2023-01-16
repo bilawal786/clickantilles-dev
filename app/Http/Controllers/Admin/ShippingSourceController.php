@@ -43,6 +43,7 @@ class ShippingSourceController extends Controller
         $source->deliver_to = $request->deliver_to;
         $source->source = $request->source;
         $source->volume = $request->volume;
+        $source->price = $request->price;
         $source->time_required = $request->time_required;
         $source->save();
         $notification = array(
@@ -89,6 +90,7 @@ class ShippingSourceController extends Controller
         $source->deliver_to = $request->deliver_to;
         $source->source = $request->source;
         $source->volume = $request->volume;
+        $source->price = $request->price;
         $source->time_required = $request->time_required;
         $source->save();
         $notification = array(

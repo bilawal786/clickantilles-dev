@@ -181,6 +181,17 @@
                                                         <input type="email" value="" id="reg_email" name="email"
                                                                class="woocommerce-Input woocommerce-Input--text input-text">
                                                     </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Pays
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <select class="form-control" name="country" id="deliver_to">
+                                                            <option value="Guadeloupe">Guadeloupe</option>
+                                                            <option value="Martinique">Martinique</option>
+                                                            <option value="France">France</option>
+                                                            <option value="French Guiana">French Guiana</option>
+                                                        </select>
+                                                    </p>
                                                     @error('password')
                                                     <p style="color: red">
                                                         <strong>{{ $message }}</strong>
@@ -233,13 +244,6 @@
                                                             <span class="required">*</span>
                                                         </label>
                                                         <input type="text" name="city"
-                                                               class="woocommerce-Input woocommerce-Input--text input-text">
-                                                    </p>
-                                                    <p class="form-row form-row-wide prodiv">
-                                                        <label for="reg_email">Pays
-                                                            <span class="required">*</span>
-                                                        </label>
-                                                        <input type="text" name="country"
                                                                class="woocommerce-Input woocommerce-Input--text input-text">
                                                     </p>
                                                     <p class="form-row">

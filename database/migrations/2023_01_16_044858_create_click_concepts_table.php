@@ -15,8 +15,8 @@ class CreateClickConceptsTable extends Migration
     {
         Schema::create('click_concepts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('image');
+            $table->string('name');
+            $table->string('photo');
             $table->longText('description')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();

@@ -77,9 +77,9 @@
             padding-right: 0.8em;
             text-shadow: #ffffff 0px 1px 0px;
         }
-        .tm-favorites, #top-cart-wishlist-count, .tm-shopping-bag, .amount, .tm-departments-thin, .tm-login-register{
-            color: white;
-        }
+        /*.tm-favorites, #top-cart-wishlist-count, .tm-shopping-bag, .amount, .tm-departments-thin, .tm-login-register{*/
+        /*    color: white;*/
+        /*}*/
         .navbar-search .search-categories {
             padding-right: 0em;
         }
@@ -125,6 +125,12 @@
         .card-link{
             padding: 20px; margin: 0px; padding-top: 0px; color: blue
         }
+        .color-black{
+            color: black !important;
+        }
+        .color-white{
+            color: white !important;
+        }
         @media only screen and (max-width: 600px) {
             .overlay-div{
                 margin-bottom: 0px; margin-top: 0px
@@ -138,6 +144,9 @@
             }
             .amaz-sec{
                padding: 0px;
+            }
+            .tm-login-register{
+                color: white;
             }
         }
 
@@ -157,7 +166,7 @@ $settings = App\Settings::first();
                 <ul id="menu-top-bar-left" class="nav menu-top-bar-left">
                     <li class="hidden-sm-down menu-item animate-dropdown">
                         <a title="Track Your Order" >
-                            VOTRE ADRESSSE DE LIVRAISON :GUADELOUPE</a>
+                            VOTRE ADRESSSE DE LIVRAISON : {{Auth::user()->country??"Pas disponible"}}</a>
                     </li>
                 </ul>
                 <!-- .nav -->
@@ -254,16 +263,11 @@ $settings = App\Settings::first();
                     <ul class="header-wishlist nav navbar-nav">
                         <li class="nav-item">
                             <a href="{{route('front.wishlist')}}" class="nav-link">
-                                <i class="tm tm-favorites"></i>
+                                <i class="tm tm-favorites color-white"></i>
                                 @auth
                                 <?php $wishlist =App\Wishlist::where('user_id', Auth::user()->id)->get();
-                                $wishlistIds = [];
-                                foreach ($wishlist as $item){
-                                    $wishlistIds[] = $item->product_id;
-                                }
-                                $wishlistcount = count($wishlist);
                                 ?>
-                                <span id="top-cart-wishlist-count" class="value">{{$wishlistcount}}</span>
+                                <span id="top-cart-wishlist-count" class="value color-white">{{$wishlist->count()}}</span>
                                 @endauth
                             </a>
                         </li>
@@ -272,10 +276,10 @@ $settings = App\Settings::first();
                     <ul id="site-header-cart" class="site-header-cart menu">
                         <li class="animate-dropdown dropdown ">
                             <a class="cart-contents" href="#" data-toggle="dropdown" title="View your shopping cart">
-                                <i class="tm tm-shopping-bag"></i>
+                                <i class="tm tm-shopping-bag color-white"></i>
                                 <span id="totalcartitems" class="count"></span>
-                                <span class="amount">
-                                        <span  style="color: white" class="price-label">Votre panier</span><div class="totalcartamount"></div>€</span>
+                                <span class="amount color-white">
+                                        <span  style="color: white" class="price-label">Votre panier</span><div class="totalcartamount"></div></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-mini-cart">
                                 <li>
@@ -287,9 +291,9 @@ $settings = App\Settings::first();
                                             <!-- .cart_list -->
                                             <p class="woocommerce-mini-cart__total total">
                                                 <strong>Total:</strong>
-                                                <span class="woocommerce-Price-amount amount">
+                                                <span class="color-black woocommerce-Price-amount amount">
                                                         <span
-                                                            class="woocommerce-Price-currencySymbol totalcartamount"></span>€</span>
+                                                            class="color-black woocommerce-Price-currencySymbol totalcartamount"></span></span>
                                             </p>
                                             <p class="woocommerce-mini-cart__buttons buttons">
                                                 <a href="{{route('front.cart')}}" class="button wc-forward">Votre
@@ -368,7 +372,7 @@ $settings = App\Settings::first();
                                 </li>
                                 <li class="wishlist">
                                     <a href="#" class="has-icon">
-                                        <i class="tm tm-favorites"></i>
+                                        <i class="tm tm-favorites color-white"></i>
                                         <span class="count">3</span>
                                     </a>
                                 </li>
@@ -382,7 +386,7 @@ $settings = App\Settings::first();
                         <div class="row">
                             <nav id="handheld-navigation" class="handheld-navigation" aria-label="Handheld Navigation">
                                 <button class="btn navbar-toggler" type="button">
-                                    <i class="tm tm-departments-thin"></i>
+                                    <i class="tm tm-departments-thin color-white"></i>
                                     <span>Menu</span>
                                 </button>
                                 <div class="handheld-navigation-menu">
@@ -665,7 +669,7 @@ $settings = App\Settings::first();
             type:"GET",
             success:function(response){
                 $("#totalcartitems").html(response.quantity);
-                $(".totalcartamount").html(response.total);
+                $(".totalcartamount").html(response.total+"€");
                 $.each(response.data, function(i, item) {
                     $('.items').append(`<li class="woocommerce-mini-cart-item mini_cart_item">
                                                     <a onclick="removecart(`+item.id+`)" class="remove" aria-label="Remove this item"
@@ -676,7 +680,7 @@ $settings = App\Settings::first();
                                                              alt="">`+item.name+`
                                                     </a>
                                                     <span class="quantity">`+item.quantity+` ×
-                                                            <span class="woocommerce-Price-amount amount">
+                                                            <span class="color-black woocommerce-Price-amount amount">
                                                                 <span class="woocommerce-Price-currencySymbol"></span>`+item.price+` €</span>
                                                         </span>
                                                 </li>`);
