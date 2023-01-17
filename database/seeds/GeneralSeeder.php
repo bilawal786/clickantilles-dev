@@ -70,35 +70,35 @@ class GeneralSeeder extends Seeder
 
         Category::create([
             'name' => 'Goodies',
-            'photo' => 'category-images/01.png'
+            'photo' => 'category-images/1673927897img.jpg'
         ]);
         Category::create([
             'name' => 'Sports & Exterieur',
-            'photo' => 'category-images/06.png'
+            'photo' => 'category-images/1673927942img.jpg'
         ]);
         Category::create([
             'name' => 'High Tech',
-            'photo' => 'category-images/02.png'
+            'photo' => 'category-images/1673927965img.jpg'
         ]);
         Category::create([
             'name' => 'Maison',
-            'photo' => 'category-images/03.png'
+            'photo' => 'category-images/1673929271img.jpg'
         ]);
         Category::create([
             'name' => 'Cusisine',
-            'photo' => 'category-images/04.png'
+            'photo' => 'category-images/1673927988img.jpg'
         ]);
         Category::create([
             'name' => 'Mode & Accessories',
-            'photo' => 'category-images/05.png'
+            'photo' => 'category-images/1673928006img.jpg'
         ]);
         Category::create([
-            'name' => 'Papeterie',
-            'photo' => 'category-images/04.png'
+            'name' => 'Chambre Bébé',
+            'photo' => 'category-images/1673929918img.jpg'
         ]);
         Category::create([
-            'name' => 'Livres et manuels',
-            'photo' => 'category-images/04.png'
+            'name' => 'Évènementiel',
+            'photo' => 'category-images/1673929950img.jpg'
         ]);
         Category::create([
             'name' => 'Jeux Video',

@@ -10,7 +10,7 @@
                 <a href="{{route('front.stores')}}">
                     <div class="overlay-div"
                          style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
-                       <div class="blink">CONCEPT STORE</div>
+                        <div class="blink">CONCEPT STORE</div>
                     </div>
                 </a>
             </div>
@@ -25,8 +25,7 @@
                 <a href="{{route('front.pro.products')}}">
                     <div class="overlay-div"
                          style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
-                        CLICK
-                        PRO
+                        <div class="blink"> CLICK PRO</div>
                     </div>
                 </a>
             </div>
@@ -77,7 +76,7 @@
                                 <div class="col-sm-2 col-6">
                                     <a href="{{route('products.filter', ['category_id' => $category->id])}}">
                                         <div class="team-member">
-                                            <img src="{{asset($category->photo)}}" alt="">
+                                            <img src="{{asset($category->photo??"category-images/06.png")}}" alt="">
                                             <div class="profile">
                                                 <h3>{{$category->name}}</h3>
                                             </div>
@@ -136,6 +135,7 @@
                                     <div class="col-lg-3">
                                         <div class="card my-2 my-lg-0">
                                             <h3 class="card-h">{{$slides->heading_1}}</h3>
+                                           <div style="padding: 10px 20px; font-size: 20px; font-weight: bold" id="custom-timer"></div>
                                             <div class="card-body d-flex justify-content-center">
                                                 <a href="{{$slides->link_1}}"><img src="{{asset($slides->image1)}}"
                                                                                    alt="product image 01"

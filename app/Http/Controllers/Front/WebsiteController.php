@@ -243,7 +243,7 @@ class WebsiteController extends Controller
         $totalVolume = 0;
         foreach ($cartitems as $item) {
             $product = Products::find($item->id);
-            $totalVolume += $product->volume * $item->quantity;
+            $totalVolume += $product->volume*$item->quantity;
         }
         $cartTotalQuantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();

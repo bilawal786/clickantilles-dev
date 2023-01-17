@@ -13,9 +13,9 @@ class SlidesSeeder extends Seeder
     public function run()
     {
         DB::table('website_slides')->insert([
-            'mainbg' => 'frontend/assets/images/01.png',
-            'mainbgheading' => 'Le cadeau qu ils sont souhaiter est ici',
-            'mainbgdescription' => 'L écran incurvé a un niveau de courbure équivalent à celui d un cercle, suit mieux la forme arrondie des yeux',
+            'mainbg' => 'slides/1673931385img.jpg',
+            'mainbgheading' => 'Ne rater pas les soldes!',
+            'mainbgdescription' => 'Vivez la différence avec Click Antilles',
             'slide1' => 'frontend/assets/slides/1.jpg',
             'slide2' => 'frontend/assets/slides/2.jpg',
             'slide3' => 'frontend/assets/slides/3.jpg',

@@ -100,7 +100,8 @@
                                 <div class="summary entry-summary">
                                     <div class="single-product-header">
                                         <h1 class="product_title entry-title">{{$product->title??""}}</h1>
-                                        <a class="add-to-wishlist" onclick="addtowishlist(this, {{$product->id}})"> Ajouter à la liste de souhaits</a>
+                                        <a class="add-to-wishlist" onclick="addtowishlist(this, {{$product->id}})">
+                                            Ajouter à la liste de souhaits</a>
                                     </div>
                                     <!-- .single-product-header -->
                                     <div class="single-product-meta">
@@ -141,7 +142,9 @@
                                         <div>
                                             <br>
                                             <hr>
-                                            <button type="button" class="single_add_to_cart_button button alt wc-variation-selection-needed" data-toggle="modal"
+                                            <button type="button"
+                                                    class="single_add_to_cart_button button alt wc-variation-selection-needed"
+                                                    data-toggle="modal"
                                                     data-target="#myModal">Personnalisation de produit
                                             </button>
                                         </div>
@@ -201,7 +204,8 @@
                                                                class="input-text qty text"
                                                                size="4">
                                                     </div>
-                                                    <input type="hidden" value="" id="customize-image" name="customize_image">
+                                                    <input type="hidden" value="" id="customize-image"
+                                                           name="customize_image">
                                                     <button type="button" onclick="addtocart(this, {{$product->id}})"
                                                             class="single_add_to_cart_button button alt wc-variation-selection-needed"
                                                     >Ajouter au panier
@@ -219,8 +223,6 @@
                                     <!-- .product-actions -->
                                 </div>
                             </div>
-                            <?php  $reviews = App\ProductReview::where('product_id', $product->id)->get();  ?>
-
                             <div class="woocommerce-tabs wc-tabs-wrapper">
                                 <ul role="tablist" class="nav tabs wc-tabs">
                                     <li class="nav-item description_tab">
@@ -229,7 +231,7 @@
                                     </li>
                                     <li class="nav-item reviews_tab">
                                         <a class="nav-link" data-toggle="tab" role="tab" aria-controls="tab-reviews"
-                                           href="#tab-reviews">Commentaires ({{$reviews->count()}})</a>
+                                           href="#tab-reviews">Commentaires ({{$product->reviews->count()}})</a>
                                     </li>
                                 </ul>
                                 <!-- /.ec-tabs -->
@@ -249,15 +251,16 @@
                                             </div>
                                         @endif
                                     </div>
-                              <?php      $avgrating = App\ProductReview::avg('rating')   ?>
                                     <div class="tab-pane" id="tab-reviews" role="tabpanel">
                                         <div class="techmarket-advanced-reviews" id="reviews">
                                             <div class="advanced-review row">
                                                 <div class="advanced-review-rating">
-                                                    <h2 class="based-title">Commentaires ({{$reviews->count()}})</h2>
+                                                    <h2 class="based-title">Commentaires ({{$product->reviews->count()}}
+                                                        )</h2>
                                                     <div class="avg-rating">
-                                                        <span class="avg-rating-number">{{$avgrating}}</span>
-                                                        <div data-score="{{$avgrating}}" class="raty" data-read-only="true" style="width:100%"></div>
+                                                        <span class="avg-rating-number">{{$product->reviews->avg('rating')}}</span>
+                                                        <div data-score="{{$product->reviews->avg('rating')}}" class="raty"
+                                                             data-read-only="true" style="width:100%"></div>
                                                     </div>
                                                     <!-- /.avg-rating -->
                                                     <div class="rating-histogram">
@@ -265,7 +268,8 @@
                                                             <div title="Rated 5 out of 5" class="star-rating">
                                                                 <span style="width:100%"></span>
                                                             </div>
-                                                            <div class="rating-count">{{App\ProductReview::where('rating', 5)->count()}}</div>
+                                                            <div
+                                                                class="rating-count">{{$product->reviews->where('rating', 5)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage"
                                                                       style="width:100%"></span>
@@ -275,7 +279,8 @@
                                                             <div title="Rated 4 out of 5" class="star-rating">
                                                                 <span style="width:80%"></span>
                                                             </div>
-                                                            <div class="rating-count zero">{{App\ProductReview::where('rating', 4)->count()}}</div>
+                                                            <div
+                                                                class="rating-count zero">{{$product->reviews->where('rating', 4)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage" style="width:0%"></span>
                                                             </div>
@@ -284,7 +289,8 @@
                                                             <div title="Rated 3 out of 5" class="star-rating">
                                                                 <span style="width:60%"></span>
                                                             </div>
-                                                            <div class="rating-count zero">{{App\ProductReview::where('rating', 3)->count()}}</div>
+                                                            <div
+                                                                class="rating-count zero">{{$product->reviews->where('rating', 3)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage" style="width:0%"></span>
                                                             </div>
@@ -293,7 +299,8 @@
                                                             <div title="Rated 2 out of 5" class="star-rating">
                                                                 <span style="width:40%"></span>
                                                             </div>
-                                                            <div class="rating-count zero">{{App\ProductReview::where('rating', 2)->count()}}</div>
+                                                            <div
+                                                                class="rating-count zero">{{$product->reviews->where('rating', 2)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage" style="width:0%"></span>
                                                             </div>
@@ -302,7 +309,8 @@
                                                             <div title="Rated 1 out of 5" class="star-rating">
                                                                 <span style="width:20%"></span>
                                                             </div>
-                                                            <div class="rating-count zero">{{App\ProductReview::where('rating', 1)->count()}}</div>
+                                                            <div
+                                                                class="rating-count zero">{{$product->reviews->where('rating', 1)->count()}}</div>
                                                             <div class="rating-percentage-bar">
                                                                 <span class="rating-percentage" style="width:0%"></span>
                                                             </div>
@@ -318,31 +326,36 @@
                                                                 <h3 class="comment-reply-title" id="reply-title">Ajouter
                                                                     un commentaire</h3>
                                                                 @auth
-                                                                <form novalidate="" class="comment-form"
-                                                                      id="commentform" method="post" action="{{route('front.product.review')}}">
-                                                                    @csrf
-                                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-{{--                                                                    <div class="comment-form-rating">--}}
+                                                                    <form novalidate="" class="comment-form"
+                                                                          id="commentform" method="post"
+                                                                          action="{{route('front.product.review')}}">
+                                                                        @csrf
+                                                                        <input type="hidden" name="product_id"
+                                                                               value="{{$product->id}}">
+                                                                        <input type="hidden" name="user_id"
+                                                                               value="{{Auth::user()->id}}">
+                                                                        {{--                                                                    <div class="comment-form-rating">--}}
                                                                         <label>Votre Note</label>
                                                                         <div class="raty" style="width:100%"></div>
 
-                                                                    <p class="comment-form-comment">
-                                                                        <label for="comment">Votre avis</label>
-                                                                        <textarea aria-required="true" rows="8"
-                                                                                  cols="45" name="review"
-                                                                                  id="review"></textarea>
-                                                                    </p>
-                                                                    <p class="form-submit">
-                                                                        <input type="submit" value="Ajouter un commentaire"
-                                                                               class="submit" id="submit" name="submit">
-                                                                        <input type="hidden" id="comment_post_ID"
-                                                                               value="185" name="comment_post_ID">
-                                                                        <input type="hidden" value="0"
-                                                                               id="comment_parent"
-                                                                               name="comment_parent">
-                                                                    </p>
-                                                                </form>
+                                                                        <p class="comment-form-comment">
+                                                                            <label for="comment">Votre avis</label>
+                                                                            <textarea aria-required="true" rows="8"
+                                                                                      cols="45" name="review"
+                                                                                      id="review"></textarea>
+                                                                        </p>
+                                                                        <p class="form-submit">
+                                                                            <input type="submit"
+                                                                                   value="Ajouter un commentaire"
+                                                                                   class="submit" id="submit"
+                                                                                   name="submit">
+                                                                            <input type="hidden" id="comment_post_ID"
+                                                                                   value="185" name="comment_post_ID">
+                                                                            <input type="hidden" value="0"
+                                                                                   id="comment_parent"
+                                                                                   name="comment_parent">
+                                                                        </p>
+                                                                    </form>
                                                                 @else
                                                                     <h2>Connectez-vous pour poster un commentaire</h2>
                                                                 @endauth
@@ -364,25 +377,26 @@
                                                         <div class="comment_container" id="comment-83">
 
 
-                                                            @foreach($reviews as $review)
-                                                            <div class="comment-text">
-                                                                <div data-score="{{$review->rating}}"  class="raty" data-read-only="true" style="width:100%"></div>
-                                                                <p class="meta">
-                                                                    <strong itemprop="author"
-                                                                            class="woocommerce-review__author">{{$review->user->fname}} {{$review->user->lname}}</strong>
-                                                                    <span
-                                                                        class="woocommerce-review__dash">&ndash;</span>
-                                                                    <time datetime="2017-06-21T08:05:40+00:00"
-                                                                          itemprop="datePublished"
-                                                                          class="woocommerce-review__published-date">
-                                                                        {{$review->created_at->format('d-m-Y')}}
-                                                                    </time>
-                                                                </p>
-                                                                <div class="description">
-                                                                    <p>{{$review->review}}</p>
+                                                            @foreach($product->reviews as $review)
+                                                                <div class="comment-text">
+                                                                    <div data-score="{{$review->rating}}" class="raty"
+                                                                         data-read-only="true" style="width:100%"></div>
+                                                                    <p class="meta">
+                                                                        <strong itemprop="author"
+                                                                                class="woocommerce-review__author">{{$review->user->fname}} {{$review->user->lname}}</strong>
+                                                                        <span
+                                                                            class="woocommerce-review__dash">&ndash;</span>
+                                                                        <time datetime="2017-06-21T08:05:40+00:00"
+                                                                              itemprop="datePublished"
+                                                                              class="woocommerce-review__published-date">
+                                                                            {{$review->created_at->format('d-m-Y')}}
+                                                                        </time>
+                                                                    </p>
+                                                                    <div class="description">
+                                                                        <p>{{$review->review}}</p>
+                                                                    </div>
+                                                                    <!-- /.description -->
                                                                 </div>
-                                                                <!-- /.description -->
-                                                            </div>
                                                             @endforeach
                                                             <!-- /.comment-text -->
                                                         </div>
@@ -464,7 +478,7 @@
 @endsection
 @section('script')
     <script>
-        function addtowishlist(elem, id){
+        function addtowishlist(elem, id) {
             let _token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
@@ -475,7 +489,7 @@
                     _token: _token
                 },
                 success: function (response) {
-                    let count = parseInt($('#top-cart-wishlist-count').html())+1 ;
+                    let count = parseInt($('#top-cart-wishlist-count').html()) + 1;
                     $('#top-cart-wishlist-count').html(count);
                     toastr.info("Ajouté à la liste de souhaits avec succès");
                 },
