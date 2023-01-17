@@ -369,13 +369,13 @@
                                                                 <div data-score="{{$review->rating}}"  class="raty" data-read-only="true" style="width:100%"></div>
                                                                 <p class="meta">
                                                                     <strong itemprop="author"
-                                                                            class="woocommerce-review__author">{{$review->user->fname}}</strong>
+                                                                            class="woocommerce-review__author">{{$review->user->fname}} {{$review->user->lname}}</strong>
                                                                     <span
                                                                         class="woocommerce-review__dash">&ndash;</span>
                                                                     <time datetime="2017-06-21T08:05:40+00:00"
                                                                           itemprop="datePublished"
                                                                           class="woocommerce-review__published-date">
-                                                                        {{$review->created_at}}
+                                                                        {{$review->created_at->format('d-m-Y')}}
                                                                     </time>
                                                                 </p>
                                                                 <div class="description">

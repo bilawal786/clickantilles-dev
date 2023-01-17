@@ -26,14 +26,16 @@ class WebsiteController extends Controller
         return view('website.pages.index', compact('categories', 'products', 'slides'));
     }
 
-    public function stores(){
+    public function stores()
+    {
         $stores = ClickConcept::latest()->paginate(10);
         return view('website.pages.stores', compact('stores'));
     }
 
-    public function singleStore($id){
+    public function singleStore($id)
+    {
         $store = ClickConcept::find($id);
-        if (!$store){
+        if (!$store) {
             return back();
         }
         return view('website.pages.single_store', compact('store'));
@@ -104,13 +106,26 @@ class WebsiteController extends Controller
 
     public function addReview(Request $request)
     {
-        $review = new ProductReview();
-        $review->product_id = $request->product_id;
-        $review->user_id = $request->user_id;
-        $review->rating = $request->score;
-        $review->review = $request->review;
-        $review->save();
-        return redirect()->back();
+        $product = ProductReview::where('product_id', $request->product_id)->where('user_id', $request->user_id)->first();
+        if ($product) {
+            $notification = array(
+                'messege' => 'You are already added a review',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }else{
+            $review = new ProductReview();
+            $review->product_id = $request->product_id;
+            $review->user_id = $request->user_id;
+            $review->rating = $request->score;
+            $review->review = $request->review;
+            $review->save();
+            $notification = array(
+                'messege' => 'Review Added !',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        }
     }
 
     public function trackOrder()
@@ -130,17 +145,18 @@ class WebsiteController extends Controller
     {
         $wishlist = Wishlist::where('user_id', Auth::user()->id)->get();
         $wishlistIds = [];
-        foreach ($wishlist as $item){
+        foreach ($wishlist as $item) {
             $wishlistIds[] = $item->product_id;
         }
         $products = Products::whereIn('id', $wishlistIds)->get();
         return view('website.pages.wishlist', compact('products'));
     }
 
-    public function addtowishlist(Request $request){
+    public function addtowishlist(Request $request)
+    {
         $items = Wishlist::all();
-        foreach($items as $item) {
-            if($item->product_id == $request->id && $item->user_id == Auth::user()->id){
+        foreach ($items as $item) {
+            if ($item->product_id == $request->id && $item->user_id == Auth::user()->id) {
                 return response()->json(['error' => 'Already added'], 400);
             }
         }
@@ -171,17 +187,17 @@ class WebsiteController extends Controller
             $image_type_aux = explode("image/", $image_parts[0]);
             $image_type = $image_type_aux[1];
             $image_base64 = base64_decode($image_parts[1]);
-            $signatures = strtotime("now") . '-signature.'.$image_type;
+            $signatures = strtotime("now") . '-signature.' . $image_type;
             $signature_localpath = $folderPath . $signatures;
             file_put_contents($signature_localpath, $image_base64);
             $destinationPath = 'optimize-images/';
-            $signature_img = $destinationPath.$signatures;
+            $signature_img = $destinationPath . $signatures;
         }
         $product = Products::where('id', $request->product_id)->first();
         \Cart::add($product->id, $product->title, $product->price, $request->quantity, array(
-            'type' => $product->product_section,
-            'image' => $product->photo1,
-            'optimize_image' => $signature_img??""
+                'type' => $product->product_section,
+                'image' => $product->photo1,
+                'optimize_image' => $signature_img ?? ""
             )
         );
         return response()->json($product);
@@ -198,7 +214,9 @@ class WebsiteController extends Controller
             'total' => $total
         ]);
     }
-    public function getCustomizeImage(Request $request){
+
+    public function getCustomizeImage(Request $request)
+    {
 //        dd("abc");
         dd($request->all());
     }
@@ -223,9 +241,9 @@ class WebsiteController extends Controller
     {
         $cartitems = \Cart::getContent();
         $totalVolume = 0;
-        foreach ($cartitems as $item){
+        foreach ($cartitems as $item) {
             $product = Products::find($item->id);
-            $totalVolume += $product->volume*$item->quantity;
+            $totalVolume += $product->volume * $item->quantity;
         }
         $cartTotalQuantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();
@@ -240,7 +258,7 @@ class WebsiteController extends Controller
         $order = new Order();
         $order->ip = request()->ip();
         $order->user_id = Auth::user()->id;
-        $order->name = $request->fname .' '.$request->lname;
+        $order->name = $request->fname . ' ' . $request->lname;
         $order->email = $request->email;
         $order->phone = $request->phone;
         $order->address = $request->address;
@@ -271,13 +289,15 @@ class WebsiteController extends Controller
             'success_url' => route('payment.success', ['id' => $order->id]),
             'cancel_url' => url()->previous(),
         ]);
-       return redirect($checkout_session->url);
+        return redirect($checkout_session->url);
 
     }
-    public function paymentSuccess($id){
+
+    public function paymentSuccess($id)
+    {
         $order = Order::find($id);
-        if (!$order){
-            return  redirect()->back();
+        if (!$order) {
+            return redirect()->back();
         }
         $order->status = 1;
         $order->update();
@@ -285,14 +305,16 @@ class WebsiteController extends Controller
         return view('website.pages.payment_success', compact('order'));
     }
 
-    public function aboutus(){
+    public function aboutus()
+    {
         $settings = Settings::first();
-        return view('website.pages.aboutus',compact('settings'));
+        return view('website.pages.aboutus', compact('settings'));
     }
 
-    public function returnpolicy(){
+    public function returnpolicy()
+    {
         $settings = Settings::first();
-        return view('website.pages.returnpolicy',compact('settings'));
+        return view('website.pages.returnpolicy', compact('settings'));
     }
 
 }
