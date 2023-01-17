@@ -131,6 +131,15 @@
         .color-white{
             color: white !important;
         }
+        .blink {
+            animation: blinker 1s step-start infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
         @media only screen and (max-width: 600px) {
             .overlay-div{
                 margin-bottom: 0px; margin-top: 0px
