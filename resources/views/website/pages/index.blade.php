@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach($categories->whereIn('id', [7,8,9,10,11,12]) as $category)
+                            @foreach($categories->whereIn('id', [7,8,9]) as $category)
                                 <div class="col-sm-2 col-6">
                                     <a href="{{route('products.filter', ['category_id' => $category->id])}}">
                                         <div class="team-member">
