@@ -28,6 +28,11 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    {{--chosen select plugin--}}
+    <link rel="stylesheet" href="{{asset('chosen/docsupport/style.css')}}">
+    <link rel="stylesheet" href="{{asset('chosen/docsupport/prism.css')}}">
+    <link rel="stylesheet" href="{{asset('chosen/chosen.css')}}">
+
     <style>
         .navbar {
             position: relative;
@@ -47,6 +52,12 @@
         .nav > li > a:focus, .nav > li > a:hover {
             text-decoration: none;
             background-color: transparent;
+        }
+        .box{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid black;
         }
     </style>
 </head>
@@ -279,7 +290,10 @@
                                 <a class="nav-link" href="{{route('settings.pages')}}">Pages</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('settings.slides')}}">Slides</a>
+                                <a class="nav-link" href="{{route('settings.slides')}}">Diapositives</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('settings.colors')}}">Couleurs</a>
                             </li>
                         </ul>
                     </div>
@@ -334,6 +348,11 @@
     <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
+{{--chosen select plugin--}}
+<script src="{{asset('chosen/docsupport/jquery-3.2.1.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('chosen/chosen.jquery.js')}}" type="text/javascript"></script>
+<script src="{{asset('chosen/docsupport/prism.js')}}" type="text/javascript" charset="utf-8"></script>
+<script src="{{asset('chosen/docsupport/init.js')}}" type="text/javascript" charset="utf-8"></script>
 <!-- plugins:js -->
 <script src="{{asset('backend/assets/vendors/js/vendor.bundle.base.js')}}"></script>
 <script src="{{asset('backend/assets/vendors/js/vendor.bundle.addons.js')}}"></script>
@@ -350,8 +369,9 @@
 <script src="{{asset('backend/assets/js/shared/jquery.cookie.js')}}" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
 <script>
     @if(Session::has('messege'))
     var type="{{Session::get('alert-type','info')}}"
@@ -374,6 +394,9 @@
     $(document).ready(function() {
         $('.summernote').summernote();
     });
+
+    $(".chosen-select").chosen()
+
 </script>
 
 @yield('script')

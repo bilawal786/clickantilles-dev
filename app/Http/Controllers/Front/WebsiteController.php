@@ -110,7 +110,7 @@ class WebsiteController extends Controller
         $product = ProductReview::where('product_id', $request->product_id)->where('user_id', $request->user_id)->first();
         if ($product) {
             $notification = array(
-                'messege' => 'You are already added a review',
+                'messege' => 'Vous avez déjà ajouté un avis',
                 'alert-type' => 'error'
             );
             return redirect()->back()->with($notification);
@@ -122,7 +122,7 @@ class WebsiteController extends Controller
             $review->review = $request->review;
             $review->save();
             $notification = array(
-                'messege' => 'Review Added !',
+                'messege' => 'Examen ajouté !',
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
@@ -145,33 +145,31 @@ class WebsiteController extends Controller
     public function wishlist()
     {
         $wishlist = Wishlist::where('user_id', Auth::user()->id)->get();
-        $wishlistIds = [];
-        foreach ($wishlist as $item) {
-            $wishlistIds[] = $item->product_id;
-        }
-        $products = Products::whereIn('id', $wishlistIds)->get();
-        return view('website.pages.wishlist', compact('products'));
+        return view('website.pages.wishlist', compact('wishlist'));
     }
 
     public function addtowishlist(Request $request)
     {
-        $items = Wishlist::all();
-        foreach ($items as $item) {
-            if ($item->product_id == $request->id && $item->user_id == Auth::user()->id) {
-                return response()->json(['error' => 'Already added'], 400);
-            }
-        }
+        $item = Wishlist::where('product_id', $request->id)->where('user_id', Auth::user()->id)->first();
+        if ($item) {
+            return response()->json(['error' => 'Already added'], 400);
+        }else{
         $item = new Wishlist();
         $item->product_id = $request->id;
         $item->user_id = Auth::user()->id;
         $item->save();
+            }
     }
 
     public function removewish($id)
     {
         $wish = Wishlist::where('user_id', Auth::user()->id && 'product_id', $id)->first();
         $wish->delete();
-        return redirect()->back();
+        $notification = array(
+            'messege' => 'Produit supprimé avec succès !',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function addtocart(Request $request)

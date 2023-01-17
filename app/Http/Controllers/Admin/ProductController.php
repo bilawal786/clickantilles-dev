@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\ClickConcept;
+use App\Color;
 use App\Http\Controllers\Controller;
 use App\Products;
 use App\SubCategory;
@@ -33,7 +34,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $stores = ClickConcept::latest()->get();
-        return view('admin.products.create', compact('categories', 'stores'));
+        $colors = Color::all();
+        return view('admin.products.create', compact('categories', 'stores','colors'));
     }
 
     /**
@@ -56,7 +58,12 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->short_description = $request->short_description;
         $product->material = $request->material;
-        $product->color = $request->color;
+        if($request->color) {
+            $color = implode(',', $request->color);
+            $product->color = $color;
+        }else{
+            $product->color = $request->color;
+        }
         $product->stock = $request->stock;
         $product->unit = $request->unit;
         $product->volume = $request->volume;
@@ -122,7 +129,8 @@ class ProductController extends Controller
         $stores = ClickConcept::latest()->get();
         $categories = Category::all();
         $product = Products::find($id);
-        return  view('admin.products.edit', compact('product', 'categories', 'stores'));
+        $colors = Color::all();
+        return  view('admin.products.edit', compact('product', 'categories', 'stores','colors'));
     }
 
     /**
@@ -144,7 +152,12 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->short_description = $request->short_description;
         $product->material = $request->material;
-        $product->color = $request->color;
+        if($request->color) {
+            $color = implode(',', $request->color);
+            $product->color = $color;
+        }else{
+            $product->color = $request->color;
+        }
         $product->stock = $request->stock;
         $product->unit = $request->unit;
         $product->volume = $request->volume;

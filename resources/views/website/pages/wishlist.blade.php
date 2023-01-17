@@ -33,27 +33,27 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($products as $product)
+                                                @foreach($wishlist as $item)
                                                     <tr>
                                                         <td class="product-remove">
-                                                            <a class="remove" href="{{route('front.removewish', ['id' => $product->id])}}">×</a>
+                                                            <a class="remove" href="{{route('front.removewish', ['id' => $item->product->id])}}">×</a>
                                                         </td>
                                                         <td class="product-thumbnail">
-                                                            <a href="{{asset($product->photo1)}}">
-                                                                <img width="180" height="180" alt="" class="wp-post-image" src="{{asset($product->photo1)}}">
+                                                            <a href="{{asset($item->product->photo1)}}">
+                                                                <img width="180" height="180" alt="" class="wp-post-image" src="{{asset($item->product->photo1)}}">
                                                             </a>
                                                         </td>
                                                         <td data-title="Product" class="product-name">
                                                             <div class="media cart-item-product-detail">
-                                                                <a href="{{asset($product->photo1)}}">
-                                                                    <img width="180" height="180" alt="" class="wp-post-image" src="{{asset($product->photo1)}}">
+                                                                <a href="{{asset($item->product->photo1)}}">
+                                                                    <img width="180" height="180" alt="" class="wp-post-image" src="{{asset($item->product->photo1)}}">
                                                                 </a>
                                                             </div>
                                                         </td>
-                                                        <td>{{$product->title}}</td>
-                                                        <td> {{$product->price}} € </td>
+                                                        <td>{{$item->product->title}}</td>
+                                                        <td> {{$item->product->price}} € </td>
                                                         <td>
-                                                            <a title="Remove this item" class="remove" href="{{route('front.removewish', ['id' => $product->id])}}">×</a>
+                                                            <a title="Remove this item" class="remove" href="{{route('front.removewish', ['id' => $item->product->id])}}">×</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

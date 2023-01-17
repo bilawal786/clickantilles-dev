@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Color;
 use App\Http\Controllers\Controller;
 use App\Settings;
 use App\Slides;
@@ -219,6 +220,42 @@ class SettingsController extends Controller
         $notification = array(
             'messege' => 'Sauvegarde réussie!',
             'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function colors(){
+        $colors = Color::all();
+        return view('admin.settings.colors', compact('colors'));
+    }
+    public function addcolor(Request $request){
+        $color = new Color();
+        $color->name = $request->name;
+        $color->color = $request->color;
+        $color->save();
+        $notification = array(
+            'messege' => 'Sauvegarde réussie!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+    public function editcolor(Request $request, $id){
+        $color = Color::find($id);
+        $color->name = $request->name;
+        $color->color = $request->color;
+        $color->save();
+        $notification = array(
+            'messege' => 'Sauvegarde réussie!',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+    public function removecolor($id){
+        $color = Color::find($id);
+        $color->delete();
+        $notification = array(
+            'messege' => 'Supprimé avec succès!',
+            'alert-type' => 'warning'
         );
         return redirect()->back()->with($notification);
     }

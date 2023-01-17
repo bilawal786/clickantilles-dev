@@ -67,6 +67,11 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
     Route::post('update/slides','Admin\SettingsController@slidesUpdate')->name('update.slides');
     Route::post('updatepages','Admin\SettingsController@updatepages')->name('page.update');
     Route::get('generalsettings/slides','Admin\SettingsController@slides')->name('settings.slides');
+    Route::get('generalsettings/colors','Admin\SettingsController@colors')->name('settings.colors');
+    Route::post('generalsettings/addcolor','Admin\SettingsController@addcolor')->name('settings.addcolor');
+    Route::post('generalsettings/editcolor/{id}','Admin\SettingsController@editcolor')->name('settings.editcolor');
+    Route::post('generalsettings/editcolor/{id}','Admin\SettingsController@editcolor')->name('settings.editcolor');
+    Route::post('generalsettings/removecolor/{id}','Admin\SettingsController@removecolor')->name('settings.removecolor');
 
 
     Route::get('simpleusers','Admin\UsersController@simpleusers')->name('simple.users');

@@ -123,13 +123,9 @@
                                     <!-- .single-product-meta -->
                                     <div class="rating-and-sharing-wrapper">
                                         <div class="woocommerce-product-rating">
-                                            <div class="star-rating">
-                                                        <span style="width:100%">Noté
-                                                            <strong class="rating">5.00</strong> sur 5 basé sur
-                                                            <span class="rating">1</span> Évaluation du client</span>
-                                            </div>
+                                            <div class="raty" data-score={{$product->reviews->avg('rating')}} data-read-only="true"></div>
                                             <a rel="nofollow" class="woocommerce-review-link" href="#reviews">(<span
-                                                    class="count">1</span> Avis client)</a>
+                                                    class="count">{{$product->reviews->count()}}</span> Avis client)</a>
                                         </div>
                                     </div>
                                     <!-- .rating-and-sharing-wrapper -->
@@ -255,8 +251,7 @@
                                         <div class="techmarket-advanced-reviews" id="reviews">
                                             <div class="advanced-review row">
                                                 <div class="advanced-review-rating">
-                                                    <h2 class="based-title">Commentaires ({{$product->reviews->count()}}
-                                                        )</h2>
+                                                    <h2 class="based-title">Commentaires ({{$product->reviews->count()}})</h2>
                                                     <div class="avg-rating">
                                                         <span class="avg-rating-number">{{$product->reviews->avg('rating')}}</span>
                                                         <div data-score="{{$product->reviews->avg('rating')}}" class="raty"

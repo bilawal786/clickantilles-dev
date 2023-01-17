@@ -135,11 +135,17 @@
                                                value="{{$product->material}}">
                                     </div>
                                 </div>
+                                <?php $implodedclr = $product->color;
+                                      $selectedclr = explode(',', $implodedclr);
+                                ?>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Couleur du produit</label>
-                                        <input required type="color" class="form-control" name="color"
-                                               >
+                                        <select class="form-control chosen-select" multiple name="color[]" style="width: 100%" id="color[]" data-placeholder="Sélectionnez les couleurs disponibles">
+                                            @foreach($colors as $color)
+                                                <option value="{{$color->color}}" {{ in_array($color->color, $selectedclr) ? 'selected' : ''}}>{{$color->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

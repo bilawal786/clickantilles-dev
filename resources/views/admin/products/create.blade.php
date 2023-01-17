@@ -126,11 +126,15 @@
                                                placeholder="Matériau du produit">
                                     </div>
                                 </div>
+{{--                                <span class="box" style='background-color:red;'></span>--}}
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail3">Couleur du produit</label>
-                                        <input required type="color" class="form-control" name="color"
-                                               placeholder="Couleur du produit">
+                                        <label for="exampleInputEmail3">Couleur du produit</label> <br>
+                                        <select class="form-control chosen-select" multiple name="color[]" style="width: 100%" id="color[]" data-placeholder="Sélectionnez les couleurs disponibles">
+                                            @foreach($colors as $color)
+                                            <option value="{{$color->color}}"> <span class="box" style='background-color:red;'></span> {{$color->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
