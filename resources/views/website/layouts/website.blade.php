@@ -137,6 +137,15 @@
         .color-white{
             color: white !important;
         }
+        .blink {
+            animation: blinker 1s step-start infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
         .raty img{
             display: inline-block !important;
         }
@@ -649,7 +658,6 @@ $settings = App\Settings::first();
         <!-- .site-footer -->
     </div>
 </div>
-
 
 {{--<script type="text/javascript" src="{{asset('frontend/assets/js/jquery.min.js')}}"></script>--}}
 <script type="text/javascript" src="{{asset('frontend/assets/js/tether.min.js')}}"></script>
