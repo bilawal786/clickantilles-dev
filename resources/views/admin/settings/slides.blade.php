@@ -20,6 +20,10 @@
                                         <label for="">Slide Heading 2</label>
                                         <input type="text" class="form-control" required name="mainbgdescription" id="sitename" value="{{$slides->mainbgdescription}}">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="">Link</label>
+                                        <input type="text" class="form-control" required name="link_8" id="link_8" value="{{$slides->link_8}}">
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -31,6 +35,10 @@
                                             </div>
                                         </div>
                                         <img style="height:60px;width:157px" class="mt-1" alt="logo" src="{{asset($slides->mainbg)}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Button Text</label>
+                                        <input type="text" class="form-control" required name="button_text" id="button_text" value="{{$slides->button_text}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -100,6 +108,10 @@
                                     <div class="form-group">
                                         <label for="">Heading 1</label>
                                         <input type="text" class="form-control" required name="heading_1" value="{{$slides->heading_1}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Minuteur</label>
+                                        <input type="date" class="form-control" name="timer" >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -201,6 +213,12 @@
                             </div>
                             <hr>
                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Titre</label>
+                                        <input type="text" class="form-control" required name="h1" value="{{$slides->h1}}">
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleInputFile">Image [834*690]</label>
@@ -211,6 +229,10 @@
                                             </div>
                                         </div>
                                         <img style="height:60px;width:60px" class="mt-1" alt="logo" src="{{asset($slides->image6)}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Link</label>
+                                        <input type="text" class="form-control" required name="link_5" value="{{$slides->link_5}}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -224,6 +246,10 @@
                                         </div>
                                         <img style="height:60px;width:60px" class="mt-1" alt="logo" src="{{asset($slides->image7)}}">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="">Link</label>
+                                        <input type="text" class="form-control" required name="link_6" value="{{$slides->link_6}}">
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -235,6 +261,10 @@
                                             </div>
                                         </div>
                                         <img style="height:60px;width:60px" class="mt-1" alt="logo" src="{{asset($slides->image8)}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Link</label>
+                                        <input type="text" class="form-control" required name="link_7" value="{{$slides->link_7}}">
                                     </div>
                                 </div>
                             </div>

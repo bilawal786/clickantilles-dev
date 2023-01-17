@@ -24,6 +24,7 @@ class CreateSettingsTable extends Migration
             $table->longText('footer');
             $table->string('facebook');
             $table->string('instagram');
+            $table->longText('home_text');
             $table->string('twitter')->nullable();
             $table->string('utube')->nullable();
             $table->longText('about')->nullable();

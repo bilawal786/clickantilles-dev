@@ -27,7 +27,6 @@ Route::get('/removecart/{id}', 'Front\WebsiteController@removecartweb')->name('r
 Route::get('/stores', 'Front\WebsiteController@stores')->name('front.stores');
 Route::get('/store/single/{id}', 'Front\WebsiteController@singleStore')->name('store.single');
 Route::get('/discounted/products', 'Front\WebsiteController@discountedProducts')->name('front.dicounted.products');
-Route::get('/sourcing/products', 'Front\WebsiteController@sourcingProducts')->name('front.sourcing.products');
 Route::get('/goodies/products', 'Front\WebsiteController@goodiesProducts')->name('front.goodies.products');
 Route::get('/emballeges/products', 'Front\WebsiteController@emballagesProducts')->name('front.emballeges.products');
 Route::get('/concept/products', 'Front\WebsiteController@conceptProducts')->name('front.concept.products');
@@ -77,14 +76,17 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
 
 Route::group(['middleware' => ['auth', 'web', 'pro']], function() {
 
-    Route::get('/pro/products', 'Front\WebsiteController@proProducts')->name('front.pro.products');
-    Route::get('/pro/filter/products/{section}', 'Front\ProUserController@filterProPrducts')->name('pro.filter.products');
+
     Route::get('/pro/subscription', 'Front\ProUserController@proSubscription')->name('pro.subscribed');
     Route::get('/subscription/payment/success', 'Front\ProUserController@paymentSuccess')->name('subscription.payment.success');
 
 });
 
 Route::group(['middleware' => ['auth', 'web']], function() {
+
+    Route::get('/pro/products', 'Front\WebsiteController@proProducts')->name('front.pro.products');
+    Route::get('/pro/filter/products/{section}', 'Front\ProUserController@filterProPrducts')->name('pro.filter.products');
+    Route::get('/sourcing/products', 'Front\WebsiteController@sourcingProducts')->name('front.sourcing.products');
 
     Route::get('/user/profile', 'Front\UserController@profile')->name('user.profile');
     Route::post('/user/profile/update', 'Front\UserController@profileUpdate')->name('profile.update');

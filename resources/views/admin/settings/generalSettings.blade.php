@@ -15,6 +15,10 @@
                                 <input type="text" class="form-control" name="sitename" id="sitename" value="{{$settings->sitename}}">
                             </div>
                             <div class="form-group">
+                                <label for="">Texte de la page d'accueil</label>
+                                <input type="text" class="form-control" name="home_text" value="{{$settings->home_text}}">
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputFile">Logo [1108X342]</label>
                                 <div class="">
                                     <div class="custom-file">

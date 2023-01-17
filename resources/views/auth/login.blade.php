@@ -192,6 +192,28 @@
                                                             <option value="French Guiana">French Guiana</option>
                                                         </select>
                                                     </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Telephone
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input required type="text" name="phone"
+                                                               class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Adresse
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input type="text" name="address"
+                                                               class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
+
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Ville
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input type="text" name="city"
+                                                               class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
                                                     @error('password')
                                                     <p style="color: red">
                                                         <strong>{{ $message }}</strong>
@@ -210,40 +232,6 @@
                                                         </label>
                                                         <input type="password" id="reg_password"
                                                                name="password_confirmation"
-                                                               class="woocommerce-Input woocommerce-Input--text input-text">
-                                                    </p>
-                                                    <p class="form-row form-row-wide">
-                                                        <label for="reg_email">Utilisateur professionnel
-                                                            <span class="required">*</span>
-                                                        </label>
-                                                    </p>
-                                                    <p class="form-row form-row-wide">
-                                                        <label class="switch">
-                                                            <input id="checkp" type="checkbox" value="2" name="role">
-                                                            <span class="slider round"></span>
-                                                        </label>
-                                                    </p>
-                                                    <p class="form-row form-row-wide prodiv">
-                                                        <label for="reg_email">Telephone
-                                                            <span class="required">*</span>
-                                                        </label>
-                                                        <input type="text" name="phone"
-                                                               class="woocommerce-Input woocommerce-Input--text input-text">
-                                                    </p>
-
-                                                    <p class="form-row form-row-wide prodiv">
-                                                        <label for="reg_email">Adresse
-                                                            <span class="required">*</span>
-                                                        </label>
-                                                        <input type="text" name="address"
-                                                               class="woocommerce-Input woocommerce-Input--text input-text">
-                                                    </p>
-
-                                                    <p class="form-row form-row-wide prodiv">
-                                                        <label for="reg_email">Ville
-                                                            <span class="required">*</span>
-                                                        </label>
-                                                        <input type="text" name="city"
                                                                class="woocommerce-Input woocommerce-Input--text input-text">
                                                     </p>
                                                     <p class="form-row">

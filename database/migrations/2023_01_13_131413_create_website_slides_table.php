@@ -18,6 +18,9 @@ class CreateWebsiteSlidesTable extends Migration
             $table->string('mainbg');
             $table->string('mainbgheading');
             $table->longText('mainbgdescription');
+            $table->string('h1');
+            $table->string('timer');
+            $table->string('button_text');
             $table->string('slide1');
             $table->string('slide2');
             $table->string('slide3');
@@ -39,6 +42,10 @@ class CreateWebsiteSlidesTable extends Migration
             $table->string('link_2');
             $table->string('link_3');
             $table->string('link_4');
+            $table->string('link_5');
+            $table->string('link_6');
+            $table->string('link_7');
+            $table->string('link_8');
             $table->timestamps();
         });
     }

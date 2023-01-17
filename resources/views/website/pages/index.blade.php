@@ -33,9 +33,7 @@
         <div class="row" style="background-color: #5f195f; padding: 40px">
 
             <marquee behavior="scroll" scrollamount="12" width="100%" direction="left"><p
-                    style="color: white; font-size: 25px; font-weight: bold; text-align: center !important; padding: 0px; margin: 0px">
-                    BIENVENUE SUR CLICK ANTILLES POURL’OUVERTURE DU SITE NOUS T’OFFRONS -20% SUR TOUT LE
-                    CATALOGUE!</p>
+                    style="color: white; font-size: 25px; font-weight: bold; text-align: center !important; padding: 0px; margin: 0px">{{$settings->home_text}}</p>
             </marquee>
         </div>
 
@@ -65,14 +63,14 @@
                                     </div>
                                     <div class="sub-title">{{$slides->mainbgdescription}}
                                     </div>
-                                    <div class="button">Obtenez le vôtre maintenant
+                                    <a href="{{$slides->link_8}}"> <div class="button">{{$slides->button_text}}
                                         <i class="tm tm-long-arrow-right"></i>
-                                    </div>
+                                    </div></a>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            @foreach($categories->whereIn('id', [7,8,9]) as $category)
+                            @foreach($categories->whereIn('id', [7,8,9,16,17,18]) as $category)
                                 <div class="col-sm-2 col-6">
                                     <a href="{{route('products.filter', ['category_id' => $category->id])}}">
                                         <div class="team-member">
@@ -197,16 +195,16 @@
                                 </div> <!-- Prouct Row Ends -->
                             </div>
                         </div>
-                        <h1 style="font-weight: bold; letter-spacing: 1px">CLICK LOCAL</h1>
+                        <h1 style="font-weight: bold; letter-spacing: 1px">{{$slides->h1}}</h1>
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{asset($slides->image6)}}" alt="">
+                                <a href="{{$slides->link_5}}"><img src="{{asset($slides->image6)}}" alt=""></a>
                             </div>
                             <div class="col-md-4">
-                                <img src="{{asset($slides->image7)}}" alt="">
+                                <a href="{{$slides->link_6}}"><img src="{{asset($slides->image7)}}" alt=""></a>
                             </div>
                             <div class="col-md-4">
-                                <img src="{{asset($slides->image8)}}" alt="">
+                                <a href="{{$slides->link_7}}"> <img src="{{asset($slides->image8)}}" alt=""></a>
                             </div>
                         </div>
                         <div
@@ -264,4 +262,36 @@
         <!-- .col-full -->
     </div>
 
+@endsection
+@section('script')
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("{{$slides->timer->format('M d, Y H:m')}}").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("custom-timer").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("custom-timer").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 @endsection

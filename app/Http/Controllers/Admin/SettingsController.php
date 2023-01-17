@@ -32,6 +32,7 @@ class SettingsController extends Controller
         $settings->twitter = $request->twitter;
         $settings->utube = $request->utube;
         $settings->footer = $request->footer;
+        $settings->home_text = $request->home_text;
         if($request->hasfile('logo') ){
             //code to remove old file
 //            if($settings->logo){
@@ -88,6 +89,15 @@ class SettingsController extends Controller
         $slides->link_2 = $request->link_2;
         $slides->link_3 = $request->link_3;
         $slides->link_4 = $request->link_4;
+        $slides->link_5 = $request->link_5;
+        $slides->link_6 = $request->link_6;
+        $slides->link_7 = $request->link_7;
+        $slides->link_8 = $request->link_8;
+        $slides->h1 = $request->h1;
+        if ($request->timer){
+            $slides->timer = $request->timer;
+        }
+        $slides->button_text = $request->button_text;
         if($request->hasfile('mainbg') ){
             $image1 = $request->file('mainbg');
             $name1 = time() . 'img' . '.' . $image1->getClientOriginalExtension();

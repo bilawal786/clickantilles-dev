@@ -21,9 +21,10 @@ class WebsiteController extends Controller
     public function index()
     {
         $slides = Slides::first();
+        $settings = Settings::first();
         $products = Products::latest()->where('product_section', 'Discounted Product')->take(10)->get();
         $categories = Category::latest()->get();
-        return view('website.pages.index', compact('categories', 'products', 'slides'));
+        return view('website.pages.index', compact('categories', 'products', 'slides', 'settings'));
     }
 
     public function stores()

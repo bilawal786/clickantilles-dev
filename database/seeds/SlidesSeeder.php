@@ -16,6 +16,9 @@ class SlidesSeeder extends Seeder
             'mainbg' => 'slides/1673931385img.jpg',
             'mainbgheading' => 'Ne rater pas les soldes!',
             'mainbgdescription' => 'Vivez la différence avec Click Antilles',
+            'h1' => 'Click Local',
+            'button_text' => 'Obtenez le vôtre maintenant',
+            'timer' => 'Jan 5, 2024 15:37:25',
             'slide1' => 'frontend/assets/slides/1.jpg',
             'slide2' => 'frontend/assets/slides/2.jpg',
             'slide3' => 'frontend/assets/slides/3.jpg',
@@ -37,6 +40,10 @@ class SlidesSeeder extends Seeder
             'link_2' => '#',
             'link_3' => '#',
             'link_4' => '#',
+            'link_5' => '#',
+            'link_6' => '#',
+            'link_7' => '#',
+            'link_8' => '#',
         ]);
     }
 }

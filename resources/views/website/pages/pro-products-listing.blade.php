@@ -15,7 +15,7 @@
                 <!-- .woocommerce-breadcrumb -->
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main">
-                        @if(Auth::user()->pro_subscribed == 0)
+                        @if(Auth::user()->pro_subscribed == 1)
                             <div class="shop-archive-header">
                                 <div class="jumbotron">
                                     <div class="jumbotron-caption">
