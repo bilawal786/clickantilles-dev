@@ -6,6 +6,7 @@ use App\Category;
 use App\ClickConcept;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\ProductReview;
 use App\Products;
 use App\Settings;
 use App\ShippingSource;
@@ -99,6 +100,17 @@ class WebsiteController extends Controller
     {
         $product = Products::find($id);
         return view('website.pages.single-product', compact('product'));
+    }
+
+    public function addReview(Request $request)
+    {
+        $review = new ProductReview();
+        $review->product_id = $request->product_id;
+        $review->user_id = $request->user_id;
+        $review->rating = $request->score;
+        $review->review = $request->review;
+        $review->save();
+        return redirect()->back();
     }
 
     public function trackOrder()

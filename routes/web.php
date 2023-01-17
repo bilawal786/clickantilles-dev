@@ -36,6 +36,7 @@ Route::get('/products/filter/{category_id}', 'Front\WebsiteController@filterProd
 Route::get('/product/search', 'Front\WebsiteController@productSearch')->name('product.search');
 
 Route::get('/0/product/{slug}/{id}', 'Front\WebsiteController@singleProduct')->name('front.single.product');
+Route::post('/addreview', 'Front\WebsiteController@addReview')->name('front.product.review');
 Route::get('/track-order', 'Front\WebsiteController@trackOrder')->name('front.track.order');
 Route::get('/aboutus', 'Front\WebsiteController@aboutus')->name('front.aboutus');
 Route::get('/returnpolicy', 'Front\WebsiteController@returnpolicy')->name('return.policy');
