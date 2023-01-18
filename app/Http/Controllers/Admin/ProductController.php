@@ -64,6 +64,12 @@ class ProductController extends Controller
         }else{
             $product->color = $request->color;
         }
+        if($request->size){
+           $size = implode(',', $request->size);
+           $product->size = $size;
+        }else{
+            $product->size = $request->size;
+        }
         $product->stock = $request->stock;
         $product->unit = $request->unit;
         $product->volume = $request->volume;
@@ -157,6 +163,12 @@ class ProductController extends Controller
             $product->color = $color;
         }else{
             $product->color = $request->color;
+        }
+        if($request->size){
+            $size = implode(',', $request->size);
+            $product->size = $size;
+        }else{
+            $product->size = $request->size;
         }
         $product->stock = $request->stock;
         $product->unit = $request->unit;

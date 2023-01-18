@@ -137,6 +137,17 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="row col-md-12 field_wrapper">
+                                    <div class="row col-md-8">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Taille du produit</label>
+                                        <input type="text" class="form-control" name="size[]" placeholder="Taille du produit">
+                                    </div>
+                                </div>
+                                    <a href="javascript:void(0);" class=" mt-4 add_button"><i class="fa fa-plus" style="color:dodgerblue;font-size:27px;" aria-hidden="true"></i></a>
+                                </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">L'image sélectionnée (1000 * 1000)</label>
@@ -226,5 +237,25 @@
                 $(".click_concept").prop('required',false);
             }
         }
+
+
+        $(document).ready(function () {
+            var maxField = 10;
+            var addButton = $('.add_button');
+            var wrapper = $('.field_wrapper');
+            var fieldHTML = '<div class="row col-md-8"><div class="col-md-8"><div class="form-group"><label for="exampleInputName1">Taille du produit</label><input type="text" class="form-control" name="size[]" placeholder="Taille du produit"></div></div><a href="javascript:void(0);" class="mt-4 remove_button"><i class="fa fa-minus" style="color:red;font-size:27px;"></i></a> </div>';
+            var x = 1;
+            $(addButton).click(function () {
+                if (x < maxField) {
+                    x++;
+                    $(wrapper).append(fieldHTML);
+                }
+            });
+            $(wrapper).on('click', '.remove_button', function (e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+                x--;
+            });
+        });
     </script>
 @endsection

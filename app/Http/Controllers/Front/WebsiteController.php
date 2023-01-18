@@ -196,7 +196,8 @@ class WebsiteController extends Controller
         \Cart::add($product->id, $product->title, $product->price, $request->quantity, array(
                 'type' => $product->product_section,
                 'image' => $product->photo1,
-                'optimize_image' => $signature_img ?? ""
+                'optimize_image' => $signature_img ?? "",
+                'color' => $request->color
             )
         );
         return response()->json($product);

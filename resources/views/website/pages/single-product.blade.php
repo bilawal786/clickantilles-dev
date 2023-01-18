@@ -171,25 +171,44 @@
                                             <span class="woocommerce-Price-amount amount">
                                                         {{$product->price}} €</span>
                                         </p>
+                                        <?php
+                                        $availableclr = explode(',', $product->color);
+                                        $availableSize = explode(',', $product->size);
+                                        ?>
+
+
                                         <!-- .price -->
                                         <form class="variations_form cart">
-                                            <table class="variations">
-                                                <tbody>
-                                                {{--                                                <tr>--}}
-                                                {{--                                                    <td class="label">--}}
-                                                {{--                                                        <label for="pa_screen-size">Screen Size</label>--}}
-                                                {{--                                                    </td>--}}
-                                                {{--                                                    <td class="value">--}}
-                                                {{--                                                        <select data-show_option_none="yes" data-attribute_name="attribute_pa_screen-size" name="attribute_pa_screen-size" class="" id="pa_screen-size">--}}
-                                                {{--                                                            <option value="">Choose an option</option>--}}
-                                                {{--                                                            <option value="45-inch" class="attached enabled">45 Inch</option>--}}
-                                                {{--                                                            <option value="60-inch" class="attached enabled">60 Inch</option>--}}
-                                                {{--                                                        </select>--}}
-                                                {{--                                                        <a href="#" class="reset_variations" style="visibility: hidden;">Clear</a>--}}
-                                                {{--                                                    </td>--}}
-                                                {{--                                                </tr>--}}
-                                                </tbody>
-                                            </table>
+{{--                                            <table class="variations">--}}
+{{--                                                <tbody>--}}
+{{--                                                                                                <tr>--}}
+{{--                                                                                                    <td class="label">--}}
+{{--                                                                                                        <label for="pa_screen-size">Screen Size</label>--}}
+{{--                                                                                                    </td>--}}
+{{--                                                                                                    <td class="value">--}}
+{{--                                                                                                        <select data-show_option_none="yes" data-attribute_name="attribute_pa_screen-size" name="attribute_pa_screen-size" class="" id="pa_screen-size">--}}
+{{--                                                                                                            <option value="">Choose an option</option>--}}
+{{--                                                                                                            <option value="45-inch" class="attached enabled">45 Inch</option>--}}
+{{--                                                                                                            <option value="60-inch" class="attached enabled">60 Inch</option>--}}
+{{--                                                                                                        </select>--}}
+{{--                                                                                                        <a href="#" class="reset_variations" style="visibility: hidden;">Clear</a>--}}
+{{--                                                                                                    </td>--}}
+{{--                                                                                                </tr>--}}
+{{--                                                </tbody>--}}
+{{--                                            </table>--}}
+                                            <label for=""><strong> Sélectionnez la Couleur </strong></label>
+                                            <div style="display: flex;">
+                                                @foreach($availableclr as $color)
+                                                    <div class="circle mr-3" data-color="{{$color}}" style="background-color: {{$color}}"></div>
+                                                @endforeach
+                                            </div>
+                                            <label for="" class="mt-3"><strong>Sélectionnez la Taille</strong></label>
+                                            <select name="size" id="size">
+                                                @foreach($availableSize as $size)
+                                                    <option value="{{$size}}">{{$size}}</option>
+                                                @endforeach
+                                            </select>
+
                                             <div class="single_variation_wrap">
                                                 <div
                                                     class="woocommerce-variation-add-to-cart variations_button woocommerce-variation-add-to-cart-disabled">
@@ -484,7 +503,7 @@
                     _token: _token
                 },
                 success: function (response) {
-                    let count = parseInt($('#top-cart-wishlist-count').html()) + 1;
+                    let count = parseInt($('#top-cart-wishlist-count').text()) + 1 ;
                     $('#top-cart-wishlist-count').html(count);
                     toastr.info("Ajouté à la liste de souhaits avec succès");
                 },
@@ -498,6 +517,9 @@
             $(elem).html("Chargement..");
 
             let quantity = $("#quantity").val();
+            let size = $("#size").val();
+            let color = this.getAttribute('data-color');
+
             let image = $("#customize-image").val();
             let _token = $('meta[name="csrf-token"]').attr('content');
 
@@ -508,6 +530,8 @@
                     product_id: product_id,
                     image: image,
                     quantity: quantity,
+                    color: quantity,
+                    size: quantity,
                     _token: _token
                 },
                 success: function (response) {

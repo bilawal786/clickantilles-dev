@@ -167,6 +167,17 @@
                 color: white;
             }
         }
+        .circle {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            border-radius: 25px;
+            display: block;
+            cursor: pointer;
+        }
+        .selectedColor {
+            outline: 3px solid black;
+        }
 
     </style>
 </head>
@@ -743,7 +754,21 @@ $settings = App\Settings::first();
             break;
     }
     @endif
+</script>
 
+<script>
+    const circles = document.querySelectorAll('.circle');
+
+    circles.forEach(function(circle) {
+        circle.addEventListener('click', function() {
+            circles.forEach(function(circle) {
+                circle.classList.remove('selectedColor');
+            });
+            this.classList.add('selectedColor');
+            const color = this.getAttribute('data-color');
+            console.log(color);
+        });
+    });
 </script>
 </body>
 </html>
