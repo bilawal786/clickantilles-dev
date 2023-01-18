@@ -29,9 +29,7 @@
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     {{--chosen select plugin--}}
-    <link rel="stylesheet" href="{{asset('chosen/docsupport/style.css')}}">
-    <link rel="stylesheet" href="{{asset('chosen/docsupport/prism.css')}}">
-    <link rel="stylesheet" href="{{asset('chosen/chosen.css')}}">
+
 
     <style>
         .navbar {
