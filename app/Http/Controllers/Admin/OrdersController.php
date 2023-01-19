@@ -22,14 +22,11 @@ class OrdersController extends Controller
        $order = Order::find($id);
        return view('admin.orders.view', compact('order'));
    }
-   public function orderStatus($id){
-       $order = Order::find($id);
-       $order->admin_status = 1;
+   public function orderStatus(Request $request){
+       $order = Order::find($request->id);
+       $order->admin_status = $request->status;
        $order->update();
-       $notification = array(
-           'messege' => 'Ajouté avec succès!',
-           'alert-type' => 'success'
-       );
-       return redirect()->back()->with($notification);
+       return response()->json(['success' => 'success']);
+
    }
 }

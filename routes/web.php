@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
     Route::get('/orders/view/{id}', 'Admin\OrdersController@orderView')->name('order.view');
     Route::get('/orders/new', 'Admin\OrdersController@newOrders')->name('orders.new');
     Route::get('/orders/complete', 'Admin\OrdersController@completeOrders')->name('orders.complete');
-    Route::get('/orders/status/{id}', 'Admin\OrdersController@orderStatus')->name('order.status');
+    Route::post('/orders/status', 'Admin\OrdersController@orderStatus')->name('order.status');
 
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('click_concept', 'Admin\ClickConceptController');

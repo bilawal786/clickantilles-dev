@@ -198,8 +198,8 @@
 {{--                                            </table>--}}
                                             <label for=""><strong> Sélectionnez la Couleur </strong></label>
                                             <div style="display: flex;">
-                                                @foreach($availableclr as $color)
-                                                    <div class="circle mr-3" data-color="{{$color}}" style="background-color: {{$color}}"></div>
+                                                @foreach($availableclr as $key=> $color)
+                                                    <div id="color-select{{$key}}" class="circle mr-3" data-color="{{$color}}" style="background-color: {{$color}}"></div>
                                                 @endforeach
                                             </div>
                                             <label for="" class="mt-3"><strong>Sélectionnez la Taille</strong></label>
@@ -515,11 +515,10 @@
 
         function addtocart(elem, product_id) {
             $(elem).html("Chargement..");
-
+console.log(color);
             let quantity = $("#quantity").val();
             let size = $("#size").val();
-            let color = this.getAttribute('data-color');
-
+            console.log(size);
             let image = $("#customize-image").val();
             let _token = $('meta[name="csrf-token"]').attr('content');
 
@@ -530,8 +529,8 @@
                     product_id: product_id,
                     image: image,
                     quantity: quantity,
-                    color: quantity,
-                    size: quantity,
+                    color: color,
+                    size: size,
                     _token: _token
                 },
                 success: function (response) {

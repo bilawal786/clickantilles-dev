@@ -73,6 +73,10 @@
                                                             <a>{{$item->name}}</a>
                                                             <strong
                                                                 class="product-quantity">× {{$item->quantity}}</strong>
+                                                            @if($item->attributes->color) <br>
+                                                            Selected color &nbsp &nbsp <span class="circle selectedColor" style="display: inline-block;background-color: {{$item->attributes->color}}"></span>@endif
+                                                            @if($item->attributes->size) <br>
+                                                            Size &nbsp &nbsp <strong>{{$item->attributes->size}}</strong>@endif
                                                         </td>
                                                         <td class="woocommerce-table__product-total product-total">
                                                             <span class="woocommerce-Price-amount amount"><span

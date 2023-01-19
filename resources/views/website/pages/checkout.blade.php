@@ -34,7 +34,7 @@
                                                                 <label class="" for="billing_first_name">Prénom
                                                                     <abbr title="required" class="required">*</abbr>
                                                                 </label>
-                                                                <input type="text" value="" placeholder=""
+                                                                <input type="text" value="{{$user->fname}}" placeholder=""
                                                                        id="billing_first_name" name="fname" required
                                                                        class="input-text ">
                                                             </p>
@@ -43,7 +43,7 @@
                                                                 <label class="" for="billing_last_name">Nom de famille
                                                                     <abbr title="required" class="required">*</abbr>
                                                                 </label>
-                                                                <input type="text" value="" placeholder=""
+                                                                <input type="text" value="{{$user->lname}}" placeholder=""
                                                                        id="billing_last_name" name="lname" required
                                                                        class="input-text ">
                                                             </p>
@@ -52,7 +52,7 @@
                                                                 <label class="" for="billing_phone">Téléphone
                                                                     <abbr title="required" class="required">*</abbr>
                                                                 </label>
-                                                                <input type="tel" value="" placeholder=""
+                                                                <input type="tel" value="{{$user->phone}}" placeholder=""
                                                                        id="billing_phone" name="phone" required
                                                                        class="input-text ">
                                                             </p>
@@ -61,7 +61,7 @@
                                                                 <label class="" for="billing_email">Email
                                                                     <abbr title="required" class="required">*</abbr>
                                                                 </label>
-                                                                <input type="email" value="" placeholder=""
+                                                                <input type="email" value="{{$user->email}}" placeholder=""
                                                                        id="billing_email" name="email" required
                                                                        class="input-text ">
                                                             </p>
@@ -73,10 +73,10 @@
                                                                 </label>
                                                                 <select class="form-control" name="country"
                                                                         id="deliver_to">
-                                                                    <option value="Guadeloupe">Guadeloupe</option>
-                                                                    <option value="Martinique">Martinique</option>
-                                                                    <option value="France">France</option>
-                                                                    <option value="French Guiana">French Guiana</option>
+                                                                    <option {{$user->country == 'Guadeloupe' ? "selected" : ""}} value="Guadeloupe">Guadeloupe</option>
+                                                                    <option {{$user->country == 'Martinique' ? "selected" : ""}} value="Martinique">Martinique</option>
+                                                                    <option {{$user->country == 'France' ? "selected" : ""}} value="France">France</option>
+                                                                    <option {{$user->country == 'French Guiana' ? "selected" : ""}} value="French Guiana">French Guiana</option>
                                                                 </select>
                                                             </p>
                                                             <p id="billing_address_1_field"
@@ -84,7 +84,7 @@
                                                                 <label class="" for="billing_address_1">Adresse de rue
                                                                     <abbr title="required" class="required">*</abbr>
                                                                 </label>
-                                                                <input type="text" value="" placeholder="Street address"
+                                                                <input type="text" value="{{$user->address}}" placeholder="Street address"
                                                                        id="billing_address_1" required name="address"
                                                                        class="input-text ">
                                                             </p>
@@ -94,7 +94,7 @@
                                                                 <label class="" for="billing_city">Ville
                                                                     <abbr title="required" class="required">*</abbr>
                                                                 </label>
-                                                                <input type="text" value="" placeholder=""
+                                                                <input type="text" value="{{$user->city}}" placeholder=""
                                                                        id="billing_city" name="city" required
                                                                        class="input-text ">
                                                             </p>

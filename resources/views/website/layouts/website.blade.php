@@ -758,17 +758,19 @@ $settings = App\Settings::first();
 
 <script>
     const circles = document.querySelectorAll('.circle');
-
+    let color;
     circles.forEach(function(circle) {
         circle.addEventListener('click', function() {
             circles.forEach(function(circle) {
                 circle.classList.remove('selectedColor');
             });
             this.classList.add('selectedColor');
-            const color = this.getAttribute('data-color');
+             color = this.getAttribute('data-color');
             console.log(color);
         });
     });
+
+    $("#color-select0").click();
 </script>
 </body>
 </html>

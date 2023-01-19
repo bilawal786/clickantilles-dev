@@ -28,6 +28,8 @@
                                                     <th class="product-thumbnail">&nbsp;</th>
                                                     <th class="product-name">Produit</th>
                                                     <th class="product-price">Quantité</th>
+                                                    <th>Couleur</th>
+                                                    <th>Taille</th>
                                                     <th class="product-price">Prix</th>
                                                     <th class="product-subtotal">Total</th>
                                                 </tr>
@@ -58,6 +60,10 @@
                                                                         <span class="color-black woocommerce-Price-currencySymbol"></span>{{$cartitem->quantity}}
                                                                     </span>
                                                     </td>
+                                                    <td>
+                                                        <div class="circle selectedColor" style="background-color: {{$cartitem->attributes->color}}"></div>
+                                                    </td>
+                                                    <td>{{$cartitem->attributes->size}}</td>
                                                     <td data-title="Price" class="product-price">
                                                                     <span class="color-black woocommerce-Price-amount amount">
                                                                         <span class="woocommerce-Price-currencySymbol"></span>{{$cartitem->price}} €

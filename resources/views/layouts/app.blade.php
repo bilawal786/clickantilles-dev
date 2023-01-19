@@ -59,6 +59,17 @@
             height: 10px;
             border: 1px solid black;
         }
+        .circle {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            border-radius: 25px;
+            display: block;
+            cursor: pointer;
+        }
+        .selectedColor {
+            outline: 3px solid black;
+        }
 
     </style>
 </head>
@@ -396,6 +407,26 @@
         $('.summernote').summernote();
     });
 
+    function orderStatus(userid){
+        let _token = $('meta[name="csrf-token"]').attr('content');
+        var select = document.getElementById("admin_status");
+        var statusValue = select.options[select.selectedIndex].value;
+
+        $.ajax({
+            url: "{{route('order.status')}}",
+            type: "POST",
+            data: {
+                id: userid,
+                status: statusValue,
+                _token: _token,
+            },
+            success: function (response){
+                toastr.info("Statut modifié avec succès");
+            }
+
+        });
+
+    }
 
 
 

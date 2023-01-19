@@ -183,7 +183,7 @@ class WebsiteController extends Controller
         if ($request->image) {
             $folderPath = public_path('optimize-images/');
             $image_parts = explode(";base64,", $request->image);
-            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type_aux = explode(" image/", $image_parts[0]);
             $image_type = $image_type_aux[1];
             $image_base64 = base64_decode($image_parts[1]);
             $signatures = strtotime("now") . '-signature.' . $image_type;
@@ -197,7 +197,8 @@ class WebsiteController extends Controller
                 'type' => $product->product_section,
                 'image' => $product->photo1,
                 'optimize_image' => $signature_img ?? "",
-                'color' => $request->color
+                'color' => $request->color,
+                'size' => $request->size,
             )
         );
         return response()->json($product);
@@ -248,8 +249,9 @@ class WebsiteController extends Controller
         $cartTotalQuantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();
         $shipping_source = ShippingSource::where('deliver_to', Auth::user()->country)->get();
+        $user = Auth::user();
 //        dd($totalVolume);
-        return view('website.pages.checkout', compact('cartitems', 'cartTotalQuantity', 'total', 'totalVolume', 'shipping_source'));
+        return view('website.pages.checkout', compact('cartitems', 'cartTotalQuantity', 'total', 'totalVolume', 'shipping_source','user'));
     }
 
     public function checkoutSubmit(Request $request)
@@ -263,7 +265,7 @@ class WebsiteController extends Controller
         $order->phone = $request->phone;
         $order->address = $request->address;
         $order->notes = $request->notes;
-        $order->country = $request->billing_country;
+        $order->country = $request->country;
         $order->total = $request->total;
         $order->postal_code = $request->postal_code;
         $order->payment_method = "Stripe";
