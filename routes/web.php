@@ -1,5 +1,6 @@
 <?php
 
+use App\Order;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Front\WebsiteController@index')->name('front.index');
 Route::get('/image-maker/0', function (){
     return view('website.pages.image-maker');
+});
+Route::get('/email', function (){
+    $order = Order::find(3);
+
+    $data['order'] = $order;
+    return view('emails.orderConfirmationAttachment', compact('order'));
 });
 Route::post('/addtocart', 'Front\WebsiteController@addtocart')->name('addtocart');
 Route::post('/addtowishlist', 'Front\WebsiteController@addtowishlist')->name('addtowishlist');
@@ -50,9 +57,8 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/orders/view/{id}', 'Admin\OrdersController@orderView')->name('order.view');
-    Route::get('/orders/new', 'Admin\OrdersController@newOrders')->name('orders.new');
-    Route::get('/orders/complete', 'Admin\OrdersController@completeOrders')->name('orders.complete');
     Route::post('/orders/status', 'Admin\OrdersController@orderStatus')->name('order.status');
+    Route::get('/orders/type', 'Admin\OrdersController@orderType')->name('order.type');
 
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('click_concept', 'Admin\ClickConceptController');
@@ -105,4 +111,16 @@ Route::group(['middleware' => ['auth', 'web']], function() {
     Route::get('/wishlist', 'Front\WebsiteController@wishlist')->name('front.wishlist');
 
 
+});
+
+Route::get('send-mail', function () {
+
+    $details = [
+        'title' => 'Mail from ItSolutionStuff.com',
+        'body' => 'This is for testing email using smtp'
+    ];
+
+    \Mail::to('asadilyas404@gmail.com')->send(new \App\Mail\OrderConfirmationMail($details));
+
+    dd("Email is Sent.");
 });

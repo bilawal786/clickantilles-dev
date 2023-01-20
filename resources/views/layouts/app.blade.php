@@ -269,22 +269,10 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#orders" aria-expanded="false"
-                       aria-controls="ui-basic">
+                    <a href="{{route('order.type')}}" class="nav-link" aria-controls="ui-basic">
                         <i class="menu-icon typcn typcn-coffee"></i>
                         <span class="menu-title">Commandes</span>
-                        <i class="menu-arrow"></i>
                     </a>
-                    <div class="collapse" id="orders">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('orders.new')}}">Nouvelles commandes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('orders.complete')}}">Commandes complètes</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false"
@@ -423,9 +411,15 @@
             success: function (response){
                 toastr.info("Statut modifié avec succès");
             }
-
         });
+    }
 
+    function ordersType(){
+        // let _token = $('meta[name="csrf-token"]').attr('content');
+        var select = document.getElementById("order_type");
+        var order_type = select.options[select.selectedIndex].value;
+        console.log('order_type');
+        window.location="{{route('order.type')}}/?order_type="+order_type;
     }
 
 

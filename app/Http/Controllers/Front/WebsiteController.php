@@ -12,8 +12,11 @@ use App\Settings;
 use App\ShippingSource;
 use App\Slides;
 use App\Wishlist;
+//use Barryvdh\DomPDF\PDF;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Stripe\Stripe;
 
 class WebsiteController extends Controller
@@ -304,6 +307,9 @@ class WebsiteController extends Controller
         $order->status = 1;
         $order->update();
         \Cart::clear();
+        $data['order'] = $order;
+        $pdf = PDF::loadView('emails.orderConfirmationAttachment', $data);
+        Mail::to($order->email)->send(new \App\Mail\OrderConfirmationMail($order, $pdf));
         return view('website.pages.payment_success', compact('order'));
     }
 

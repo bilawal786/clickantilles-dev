@@ -8,15 +8,14 @@ use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
-   public function newOrders(){
-       $title = "Nouvelles commandes";
-       $orders = Order::latest()->where('admin_status', 0)->where('status', 1)->paginate(15);
-       return view('admin.orders.index', compact('orders', 'title'));
-   }
-   public function completeOrders(){
-       $title = "Commandes complètes";
-       $orders = Order::latest()->where('admin_status', 1)->where('status', 1)->paginate(15);
-       return view('admin.orders.index', compact('orders', 'title'));
+   public function orderType(Request $request){
+       if($request->order_type){
+       $orderType = $request->order_type;
+       }else{
+           $orderType = 0;
+       }
+       $orders = Order::latest()->where('admin_status', $orderType)->where('status', 1)->paginate(15);
+       return view('admin.orders.index', compact('orders','orderType'));
    }
    public function orderView($id){
        $order = Order::find($id);

@@ -55,7 +55,7 @@ class GeneralSeeder extends Seeder
             'phone1'     => '0590 310 035',
             'phone2'     => '(0590) 690 874 548',
             'email'     => 'info@clickantilles.com',
-            'logo'     => 'frontend/assets/images/logo.png',
+            'logo'     => 'frontend/assets/images/logo1.png',
             'footer'    => 'Vos rêves en un Click !!!. Tous les droits sont réservés.',
             'facebook'    => 'https://facebook.com/',
             'instagram'    => 'https://www.instagram.com/',

@@ -5,7 +5,27 @@
             <div class="col-md-12 grid-margin">
                 <div class="card">
                     <div class="card-header">
-                        <h5>{{$title}}</h5>
+{{--                        <h5>{{$title}}</h5>--}}
+                        <div class="form-control">
+                            <label for="" class="mr-4">Type de commande</label>
+                            <select class="chosen-select col-md-3" onchange="ordersType()" name="order_type" id="order_type">
+                                <option {{$orderType == 0 ? 'selected' : ''}} value="0">New</option>
+                                <option {{$orderType == 1 ? 'selected' : ''}} value="1">Complété</option>
+                                <option {{$orderType == 2 ? 'selected' : ''}} value="2">Annulé</option>
+                                <option {{$orderType == 3 ? 'selected' : ''}} value="3">En Attente</option>
+                                <option {{$orderType == 4 ? 'selected' : ''}} value="4">En Attente de Paiement</option>
+                                <option {{$orderType == 5 ? 'selected' : ''}} value="5">Traitement</option>
+                                <option {{$orderType == 6 ? 'selected' : ''}} value="6">Remboursé</option>
+
+{{--                                {{$orders->admin_status == 0 ? 'selected' : ''}} value="0">New</option>--}}
+{{--                                <option {{$orders->admin_status == 1 ? 'selected' : ''}} value="1">Complété</option>--}}
+{{--                                <option {{$orders->admin_status == 2 ? 'selected' : ''}} value="2">Annulé</option>--}}
+{{--                                <option {{$orders->admin_status == 3 ? 'selected' : ''}} value="3">En Attente</option>--}}
+{{--                                <option {{$orders->admin_status == 4 ? 'selected' : ''}} value="4">En Attente de Paiement</option>--}}
+{{--                                <option {{$orders->admin_status == 5 ? 'selected' : ''}} value="5">Traitement</option>--}}
+{{--                                <option {{$orders->admin_status == 6 ? 'selected' : ''}}--}}
+                            </select>
+                        </div>
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">

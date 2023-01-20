@@ -10,23 +10,20 @@
                                 <h5 class="mb-1">{{$order->updated_at}}</h5>
                                 <p class="mb-0">Commande {{$order->order_number}}</p>
                             </div>
+                            <div class="form-control">
+                                <label for="" class="mr-4">Statut de la commande</label>
 {{--                            @if($order->admin_status == 0)--}}
                                 <select class="chosen-select col-md-3" onchange="orderStatus({{$order->id}})" name="admin_status" id="admin_status">
                                     <option {{$order->admin_status == 0 ? 'selected' : ''}} value="0">New</option>
-                                    <option {{$order->admin_status == 2 ? 'selected' : ''}} value="2">Annulé</option>
                                     <option {{$order->admin_status == 1 ? 'selected' : ''}} value="1">Complété</option>
+                                    <option {{$order->admin_status == 2 ? 'selected' : ''}} value="2">Annulé</option>
                                     <option {{$order->admin_status == 3 ? 'selected' : ''}} value="3">En Attente</option>
-                                    <option {{$order->admin_status == 4 ? 'selected' : ''}} value="4">En attente</option>
-                                    <option {{$order->admin_status == 5 ? 'selected' : ''}} value="5">En Attente de Paiement</option>
-                                    <option {{$order->admin_status == 6 ? 'selected' : ''}} value="6">Traitement</option>
-                                    <option {{$order->admin_status == 7 ? 'selected' : ''}} value="7">Remboursé</option>
+                                    <option {{$order->admin_status == 4 ? 'selected' : ''}} value="4">En Attente de Paiement</option>
+                                    <option {{$order->admin_status == 5 ? 'selected' : ''}} value="5">Traitement</option>
+                                    <option {{$order->admin_status == 6 ? 'selected' : ''}} value="6">Remboursé</option>
                                 </select>
-
-{{--                            <a href="{{route('order.status', ['id' => $order->id])}}">--}}
-{{--                                <button class="btn alert-success radius-30 px-4">Marquer la commande comme terminée--}}
-{{--                                </button>--}}
-{{--                            </a>--}}
 {{--                            @endif--}}
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
