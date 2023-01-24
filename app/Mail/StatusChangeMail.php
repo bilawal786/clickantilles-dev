@@ -6,14 +6,12 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Barryvdh\DomPDF\Facade\Pdf;
 
-class OrderConfirmationMail extends Mailable
+class StatusChangeMail extends Mailable
 {
     use Queueable, SerializesModels;
-
     public $order;
-    public $pdf;
+
     /**
      * Create a new message instance.
      *
@@ -22,9 +20,6 @@ class OrderConfirmationMail extends Mailable
     public function __construct($order)
     {
         $this->order = $order;
-        $data['order'] = $order;
-        $pdf = PDF::loadView('emails.invoiceAttachment', $data);
-        $this->pdf = $pdf;
     }
 
     /**
@@ -35,7 +30,6 @@ class OrderConfirmationMail extends Mailable
     public function build()
     {
         return $this->subject('Mail from Click Antilles')
-        ->view('emails.orderConfirmation')
-            ->attachData($this->pdf->output() , 'invoice.pdf');
+        ->view('emails.statusChange');
     }
 }

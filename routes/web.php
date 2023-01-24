@@ -1,7 +1,9 @@
 <?php
 
+use App\Mail\StatusChangeMail;
 use App\Order;
 use Illuminate\Support\Facades\Route;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +21,20 @@ Route::get('/image-maker/0', function (){
     return view('website.pages.image-maker');
 });
 Route::get('/email', function (){
-    $order = Order::find(3);
+    $order = Order::find(25);
 
     $data['order'] = $order;
-    return view('emails.orderConfirmationAttachment', compact('order'));
+    return view('emails.invoiceAttachment', compact('order'));
+});
+Route::get('email-test', function(){
+    $order = Order::find(25);
+
+//    $data['order'] = $order;
+//    $pdf = PDF::loadView('emails.invoiceAttachment', $data);
+//        Mail::to($order['email'])->send(new \App\Mail\OrderConfirmationMail($order));
+    dispatch(new App\Jobs\SendInvoice($order));
+
+    dd('done');
 });
 Route::post('/addtocart', 'Front\WebsiteController@addtocart')->name('addtocart');
 Route::post('/addtowishlist', 'Front\WebsiteController@addtowishlist')->name('addtowishlist');

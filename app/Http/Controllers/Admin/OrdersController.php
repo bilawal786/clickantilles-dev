@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendOrderStatus;
+use App\Mail\StatusChangeMail;
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
@@ -25,7 +28,9 @@ class OrdersController extends Controller
        $order = Order::find($request->id);
        $order->admin_status = $request->status;
        $order->update();
+       dispatch(new SendOrderStatus($order));
        return response()->json(['success' => 'success']);
+//       Mail::to('asad@codingcrust.com')->send(new \App\Mail\StatusChangeMail($order));
 
    }
 }

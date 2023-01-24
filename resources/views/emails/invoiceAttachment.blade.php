@@ -140,7 +140,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <tr>
                     <td  bgcolor="#ffffff" valign="top" style="padding-top: 30px;  color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; ">
-                        <img src="{{asset('frontend/assets/images/logo1.png')}}" style="height: 100px; display: block;  "  alt="logo">
+{{--                        <img src="{{asset('frontend/assets/images/logo1.png')}}" style="height: 100px; display: block;  "  alt="logo">--}}
 
                         <div>
                             <h1 style="font-size: 28px;  padding: 20px 0px 0px 20px;">Click Antilles</h1>
@@ -155,7 +155,7 @@
                         </div>
                     </td>
                     <td bgcolor="#ffffff" align="center" valign="top" style="border-radius: 4px 4px 0px 0px; color: #FFFFFF; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                        <h1 style="font-size: 40px; padding: 20px; font-weight: 400; background-color: #5F195F">Facture: {{$order->order_number}}</h1>
+                        <h1 style="font-size: 20px; padding: 20px; font-weight: 400; background-color: #5F195F">Facture: {{$order->invoice_number}}</h1>
                     </td>
                 </tr>
             </table>
@@ -165,7 +165,7 @@
         <td align="center" style="padding: 0px 10px 0px 10px;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <tr>
-                    <td bgcolor="#ffffff" align="center" valign="top" style="padding-left: 10px; text-align: left; padding-top: 40px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 2px;">
+                    <td bgcolor="#ffffff" align="center" valign="top" style="padding-left: 10px; text-align: left; padding-top: 40px; border-radius: 4px 4px 0px 0px; color: #FFFFFF; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 2px;">
                         <div style="background-color: #5F195F; padding: 10px">
                             <h1 style="font-size: 16px; ">Numéro de commande : #{{$order->order_number}}</h1>
                             <h1 style="font-size: 16px; ">Date : {{$order->created_at->format('d/m/y')}}</h1>

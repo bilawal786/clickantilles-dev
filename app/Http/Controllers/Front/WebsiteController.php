@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Category;
 use App\ClickConcept;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendOrderStatus;
+use App\Jobs\SendInvoice;
 use App\Order;
 use App\ProductReview;
 use App\Products;
@@ -305,11 +307,11 @@ class WebsiteController extends Controller
             return redirect()->back();
         }
         $order->status = 1;
+        $order->invoice_number = rand(100000000, 900000000);
         $order->update();
         \Cart::clear();
-        $data['order'] = $order;
-        $pdf = PDF::loadView('emails.orderConfirmationAttachment', $data);
-        Mail::to($order->email)->send(new \App\Mail\OrderConfirmationMail($order, $pdf));
+        dispatch(new SendInvoice($order));
+//        Mail::to($order->email)->send(new \App\Mail\OrderConfirmationMail($order, $pdf));
         return view('website.pages.payment_success', compact('order'));
     }
 
