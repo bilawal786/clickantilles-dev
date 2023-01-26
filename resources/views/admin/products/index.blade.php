@@ -45,7 +45,36 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
+                                        <button data-toggle="modal" data-target="#dealModal{{$product->id}}" id="deal" class="btn btn-sm btn-info"  title="deal">
+                                            <i class="fa fa-gift"></i>
+                                        </button>
                                     </td>
+                                    <div class="modal fade" id="dealModal{{$product->id}}" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Deal</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="forms-sample" method="post" action="{{route('product.deal', $product->id)}}">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <label for="exampleInputName1">Deal Price</label>
+                                                            <input required type="text" class="form-control" value="{{$product->deal_price}}" name="deal_price" id="deal_price" placeholder="Deal Price">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Deal Upto</label>
+                                                            <input type="date" class="form-control" value="{{$product->deal_upto}}" name="deal_upto" id="deal_upto">
+                                                        </div>
+                                                        <br>
+                                                        <button type="submit" class="btn btn-success mr-2">Sauver</button>
+                                                        <button class="btn btn-light" data-dismiss="modal">Annuler</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </tr>
                             @endforeach
                             </tbody>

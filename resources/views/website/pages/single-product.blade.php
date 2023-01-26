@@ -50,12 +50,12 @@
                                                     </div>
                                                     @if(!empty ( $product->gallery ))
                                                         @foreach(json_decode($product->gallery, true) as $images)
-                                                            <div data-thumb="{{'product-images/'.$images}}"
+                                                            <div data-thumb="{{asset($images)}}"
                                                                  class="woocommerce-product-gallery__image">
-                                                                <a href="{{asset('product-images/'.$images)}}"
+                                                                <a href="{{asset($images)}}"
                                                                    tabindex="0">
                                                                     <img width="600" height="600"
-                                                                         src="{{asset('product-images/'.$images)}}"
+                                                                         src="{{asset($images)}}"
                                                                          class="attachment-shop_single size-shop_single wp-post-image"
                                                                          alt="">
                                                                 </a>

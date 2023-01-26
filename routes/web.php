@@ -77,6 +77,7 @@ Route::group(['middleware' => ['auth', 'web', 'role']], function() {
     Route::resource('shipping_source', 'Admin\ShippingSourceController');
     Route::resource('subcategory', 'Admin\SubCategoryController');
     Route::resource('product', 'Admin\ProductController');
+    Route::post('product/deal/{id}', 'Admin\ProductController@productDeal')->name('product.deal');
     Route::post('/fetchsubcategory', 'Admin\ProductController@fetchsubcategory')->name('fetchsubcategory');
 
     Route::get('generalsettings','Admin\SettingsController@index')->name('general.settings');

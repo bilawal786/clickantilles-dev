@@ -81,29 +81,25 @@ class ProductController extends Controller
         if ($request->product_section == "Click Concept"){
             $product->click_concept = $request->click_concept;
         }
-        if ($request->hasfile('photo1')) {
-            $image1 = $request->file('photo1');
-            $name1 = time() . 'photo1' . '.' . $image1->getClientOriginalExtension();
-            $destinationPath = 'product-images';
-            ini_set('memory_limit', '256M');
-            $img = Image::make($image1);
-            $img->resize(1000, 1000, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($destinationPath . '/' . $name1);
-            $product->photo1 = $destinationPath . '/' . $name1;
+        if($request->hasfile('photo1') ){
+            $image6 = $request->file('photo1');
+            $name6 = time() . 'img' . '.' . $image6->getClientOriginalExtension();
+            $destinationPath = 'product-images/';
+            $image6->move($destinationPath, $name6);
+            $product->photo1 = 'product-images/' . $name6;
+            $path6 = public_path('product-images/'.$name6);
+            Image::make($path6)->resize(1000, 1000)->save($path6);
         }
         if ($request->hasfile('gallery')) {
-            foreach ($request->file('gallery') as $image) {
-                $name = time() . 'gallery' . '.' . $image->getClientOriginalName();
-                $destinationPath = 'product-images';
-                ini_set('memory_limit', '256M');
-                $imgg = Image::make($image);
-                $imgg->resize(1000, 1000, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($destinationPath . '/' . $name);
-                $data9[] = $name;
-                $product->gallery = json_encode($data9);
+            foreach ($request->file('gallery') as $image6) {
+                $name6 = time() . 'img' . '.' . $image6->getClientOriginalExtension();
+                $destinationPath = 'product-images/';
+                $image6->move($destinationPath, $name6);
+                $data9[] = 'product-images/' . $name6;
+                $path6 = public_path('product-images/'.$name6);
+                Image::make($path6)->resize(1000, 1000)->save($path6);
             }
+            $product->gallery = json_encode($data9);
         }
         $product->save();
         $notification = array(
@@ -195,15 +191,15 @@ class ProductController extends Controller
             Image::make($path6)->resize(1000, 1000)->save($path6);
         }
         if ($request->hasfile('gallery')) {
-            foreach ($request->file('gallery') as $image) {
-                $image6 = $request->file('gallery');
+            foreach ($request->file('gallery') as $image6) {
                 $name6 = time() . 'img' . '.' . $image6->getClientOriginalExtension();
                 $destinationPath = 'product-images/';
                 $image6->move($destinationPath, $name6);
-                $product->gallery = 'product-images/' . $name6;
+                $data9[] = 'product-images/' . $name6;
                 $path6 = public_path('product-images/'.$name6);
                 Image::make($path6)->resize(1000, 1000)->save($path6);
             }
+            $product->gallery = json_encode($data9);
         }
         $product->save();
         $notification = array(
@@ -233,5 +229,18 @@ class ProductController extends Controller
     public function fetchsubcategory(Request $request){
         $subcategories = SubCategory::where('category_id', '=', $request->id)->get();
         return response()->json($subcategories);
+    }
+
+    public function productDeal(Request $request,$id)
+    {
+        $product = Products::find($id);
+        $product->deal_price = $request->deal_price;
+        $product->deal_upto = $request->deal_upto;
+        $product->save();
+        $notification = array(
+            'messege' => 'Deal Added Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }
