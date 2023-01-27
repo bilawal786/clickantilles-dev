@@ -46,7 +46,8 @@ class CreateProductsTable extends Migration
             $table->longText('color')->nullable();
             $table->longText('quantity')->nullable();
             $table->longText('state')->nullable();
-
+            $table->string('deal_price')->nullable();
+            $table->string('deal_upto')->nullable();
             $table->string('product_section')->nullable();
             $table->string('pro_category')->nullable();
             $table->bigInteger('click_concept')->nullable();

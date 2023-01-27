@@ -33,7 +33,7 @@ class ProductResource extends JsonResource
             'unit'=>$this->unit??'',
             'volume'=>$this->volume??'',
             'material'=>$this->material??'',
-            'gallery'=>explode(',', $this->gallery),
+            'gallery'=>json_decode($this->gallery)??[],
             'status'=>$this->status??'',
             'short_description'=>$this->short_description??'',
             'description'=>$this->description??'',
