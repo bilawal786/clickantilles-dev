@@ -37,10 +37,14 @@ class ProductResource extends JsonResource
             'status'=>$this->status??'',
             'short_description'=>$this->short_description??'',
             'description'=>$this->description??'',
+            'size'=>explode(',', $this->size)??'',
             'colors'=>explode(',', $this->color)??'',
             'quantity'=>$this->quantity??'',
             'review_count'=>$this->reviews->count()??'',
             'avg_rating'=>$this->reviews->avg('rating')??'',
+            'deal'=>$this->deal_upto->isPast() ? false : true,
+            'deal_price'=>$this->deal_price??'',
+            'deal_upto'=>$this->deal_upto??'',
         ];
     }
 }
