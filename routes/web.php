@@ -49,6 +49,7 @@ Route::get('/discounted/products', 'Front\WebsiteController@discountedProducts')
 Route::get('/goodies/products', 'Front\WebsiteController@goodiesProducts')->name('front.goodies.products');
 Route::get('/emballeges/products', 'Front\WebsiteController@emballagesProducts')->name('front.emballeges.products');
 Route::get('/concept/products', 'Front\WebsiteController@conceptProducts')->name('front.concept.products');
+Route::get('/flash/sale', 'Front\WebsiteController@flashSale')->name('flash.sale');
 
 Route::get('/products/filter/{category_id}', 'Front\WebsiteController@filterProducts')->name('products.filter');
 Route::get('/product/search', 'Front\WebsiteController@productSearch')->name('product.search');

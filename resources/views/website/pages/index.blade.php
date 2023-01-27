@@ -63,9 +63,11 @@
                                     </div>
                                     <div class="sub-title">{{$slides->mainbgdescription}}
                                     </div>
-                                    <a href="{{$slides->link_8}}"> <div class="button">{{$slides->button_text}}
-                                        <i class="tm tm-long-arrow-right"></i>
-                                    </div></a>
+                                    <a href="{{$slides->link_8}}">
+                                        <div class="button">{{$slides->button_text}}
+                                            <i class="tm tm-long-arrow-right"></i>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -133,14 +135,15 @@
                                     <div class="col-lg-3">
                                         <div class="card my-2 my-lg-0">
                                             <h3 class="card-h">{{$slides->heading_1}}</h3>
-                                           <div style="padding: 10px 20px; font-size: 20px; font-weight: bold" id="custom-timer"></div>
+                                            <div style="padding: 10px 20px; font-size: 20px; font-weight: bold"
+                                                 id="custom-timer"></div>
                                             <div class="card-body d-flex justify-content-center">
                                                 <a href="{{$slides->link_1}}"><img src="{{asset($slides->image1)}}"
-                                                                                   alt="product image 01"
-                                                                                   class="img-fluid"></a>
+                                                                                       alt="product image 01"
+                                                                                       class="img-fluid"></a>
                                             </div>
                                             <a class="card-link"
-                                               href="{{$slides->link_1}}">En Savoir plus</a>
+                                               href="{{$slides->link_1}}">Voir tout</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">

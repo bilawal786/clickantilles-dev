@@ -14,7 +14,7 @@ use App\Settings;
 use App\ShippingSource;
 use App\Slides;
 use App\Wishlist;
-//use Barryvdh\DomPDF\PDF;
+use Carbon\Carbon;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,6 +89,14 @@ class WebsiteController extends Controller
         return view('website.pages.product-listing', compact('title', 'products'));
     }
 
+    public function flashSale()
+    {
+        $title = "Deal Products";
+        $timeNow = Carbon::now();
+        $products = Products::where('deal_upto', '>', $timeNow)->paginate(15);
+        return view('website.pages.product-listing', compact('title', 'products'));
+    }
+
 
     public function filterProducts($id)
     {
@@ -119,7 +127,7 @@ class WebsiteController extends Controller
                 'alert-type' => 'error'
             );
             return redirect()->back()->with($notification);
-        }else{
+        } else {
             $review = new ProductReview();
             $review->product_id = $request->product_id;
             $review->user_id = $request->user_id;
@@ -158,12 +166,12 @@ class WebsiteController extends Controller
         $item = Wishlist::where('product_id', $request->id)->where('user_id', Auth::user()->id)->first();
         if ($item) {
             return response()->json(['error' => 'Already added'], 400);
-        }else{
-        $item = new Wishlist();
-        $item->product_id = $request->id;
-        $item->user_id = Auth::user()->id;
-        $item->save();
-            }
+        } else {
+            $item = new Wishlist();
+            $item->product_id = $request->id;
+            $item->user_id = Auth::user()->id;
+            $item->save();
+        }
     }
 
     public function removewish($id)
@@ -198,7 +206,7 @@ class WebsiteController extends Controller
             $signature_img = $destinationPath . $signatures;
         }
         $product = Products::where('id', $request->product_id)->first();
-        \Cart::add($product->id, $product->title, $product->price, $request->quantity, array(
+        \Cart::add($product->id, $product->title, $request->price, $request->quantity, array(
                 'type' => $product->product_section,
                 'image' => $product->photo1,
                 'optimize_image' => $signature_img ?? "",
@@ -249,14 +257,14 @@ class WebsiteController extends Controller
         $totalVolume = 0;
         foreach ($cartitems as $item) {
             $product = Products::find($item->id);
-            $totalVolume += $product->volume*$item->quantity;
+            $totalVolume += $product->volume * $item->quantity;
         }
         $cartTotalQuantity = \Cart::getTotalQuantity();
         $total = \Cart::getTotal();
         $shipping_source = ShippingSource::where('deliver_to', Auth::user()->country)->get();
         $user = Auth::user();
 //        dd($totalVolume);
-        return view('website.pages.checkout', compact('cartitems', 'cartTotalQuantity', 'total', 'totalVolume', 'shipping_source','user'));
+        return view('website.pages.checkout', compact('cartitems', 'cartTotalQuantity', 'total', 'totalVolume', 'shipping_source', 'user'));
     }
 
     public function checkoutSubmit(Request $request)

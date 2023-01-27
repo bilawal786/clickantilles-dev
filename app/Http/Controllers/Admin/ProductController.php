@@ -234,7 +234,7 @@ class ProductController extends Controller
     public function productDeal(Request $request,$id)
     {
         $product = Products::find($id);
-        $product->deal_price = $request->deal_price;
+        $product->deal_percentage = $request->deal_percentage;
         $product->deal_upto = $request->deal_upto;
         $product->save();
         $notification = array(

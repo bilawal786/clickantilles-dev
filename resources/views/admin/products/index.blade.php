@@ -21,10 +21,14 @@
                                 <th>Catégorie</th>
                                 <th>Prix</th>
                                 <th>Rubrique produit</th>
+                                <th>Statut de l'offre</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
+                            <?php
+                            use Carbon\Carbon;
+                            ?>
                             @foreach($products as $product)
                                 <tr>
                                     <td>{{$product->id}}</td>
@@ -34,6 +38,8 @@
                                     <td>{{$product->category->name??"Deleted"}}</td>
                                     <td>{{$product->price}} €</td>
                                     <td>{{$product->product_section}}</td>
+                                    <?php $dealExpiry = Carbon::parse($product->deal_upto) ?>
+                                    <td>{{Carbon::now()->lessThan($dealExpiry) ? 'Active' : 'nulle'}}</td>
                                     <td>
                                         <a href="{{route('product.edit', $product->id)}}"><button class="btn btn-sm btn-primary"  title="edit">
                                             <i class="fa fa-pencil"></i>
@@ -45,7 +51,7 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
-                                        <button data-toggle="modal" data-target="#dealModal{{$product->id}}" id="deal" class="btn btn-sm btn-info"  title="deal">
+                                        <button data-toggle="modal" data-target="#dealModal{{$product->id}}" id="deal" class="btn btn-sm btn-info"  title="Set Deal">
                                             <i class="fa fa-gift"></i>
                                         </button>
                                     </td>
@@ -59,12 +65,12 @@
                                                     <form class="forms-sample" method="post" action="{{route('product.deal', $product->id)}}">
                                                         @csrf
                                                         <div class="form-group">
-                                                            <label for="exampleInputName1">Deal Price</label>
-                                                            <input required type="text" class="form-control" value="{{$product->deal_price}}" name="deal_price" id="deal_price" placeholder="Deal Price">
+                                                            <label for="exampleInputName1">Discount Percentage (%)</label>
+                                                            <input required type="text" class="form-control" value="{{$product->deal_percentage}}" name="deal_percentage" id="deal_percentage" placeholder="Deal Percentage">
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Deal Upto</label>
-                                                            <input type="date" class="form-control" value="{{$product->deal_upto}}" name="deal_upto" id="deal_upto">
+                                                            <input type="date" class="form-control" value="{{optional($product->deal_upto)->format('Y-m-d')}}" name="deal_upto" id="deal_upto">
                                                         </div>
                                                         <br>
                                                         <button type="submit" class="btn btn-success mr-2">Sauver</button>

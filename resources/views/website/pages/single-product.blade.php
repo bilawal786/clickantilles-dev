@@ -80,10 +80,10 @@
                                                 </figure>
                                                 @if(!empty ( $product->gallery ))
                                                     @foreach(json_decode($product->gallery, true) as $images)
-                                                        <figure data-thumb="{{'product-images/'.$images}}"
+                                                        <figure data-thumb="{{asset($images)}}"
                                                                 class="techmarket-wc-product-gallery__image">
-                                                            <img width="180" height="180"
-                                                                 src="{{asset('product-images/'.$images)}}"
+                                                            <img
+                                                                 src="{{asset($images)}}"
                                                                  class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
                                                                  alt="">
                                                         </figure>
@@ -162,14 +162,28 @@
                                         </div>
                                         <!-- .additional-info -->
                                         <p class="price">
-                                            @if($product->oldprice)
+                                            <?php
+                                            use Carbon\Carbon;
+                                            $dealExpiry = Carbon::parse($product->deal_upto)
+                                            ?>
+                                            @if(Carbon::now()->lessThan($dealExpiry))
+                                                <del>
+                                                            <span class="woocommerce-Price-amount amount">
+                                                               {{$product->price}} €</span>
+                                                </del>
+                                            @elseif($product->oldprice)
                                                 <del>
                                                             <span class="woocommerce-Price-amount amount">
                                                                {{$product->oldprice}} €</span>
                                                 </del>
                                             @endif
-                                            <span class="woocommerce-Price-amount amount">
-                                                        {{$product->price}} €</span>
+                                            <span id="Price-amount" class="woocommerce-Price-amount amount">
+                                            @if($product->deal_percentage && Carbon::now()->lessThan($dealExpiry))
+                                                        {{$product->price - ($product->price* $product->deal_percentage/100)}}
+                                            @else
+                                                        {{$product->price}}
+                                            @endif
+                                            </span> €
                                         </p>
                                         <?php
                                         $availableclr = explode(',', $product->color);
@@ -515,10 +529,9 @@
 
         function addtocart(elem, product_id) {
             $(elem).html("Chargement..");
-console.log(color);
             let quantity = $("#quantity").val();
+            let price = $("#Price-amount").text();
             let size = $("#size").val();
-            console.log(size);
             let image = $("#customize-image").val();
             let _token = $('meta[name="csrf-token"]').attr('content');
 
@@ -529,6 +542,7 @@ console.log(color);
                     product_id: product_id,
                     image: image,
                     quantity: quantity,
+                    price: price,
                     color: color,
                     size: size,
                     _token: _token

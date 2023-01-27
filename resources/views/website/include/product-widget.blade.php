@@ -2,25 +2,37 @@
     <!-- .yith-wcwl-add-to-wishlist -->
     <a class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
        href="{{route('front.single.product', ['slug' => $product->slug, 'id' => $product->id])}}">
+        <?php
+        use Carbon\Carbon;
+        $dealExpiry = Carbon::parse($product->deal_upto)
+        ?>
+        @if(Carbon::now()->lessThan($dealExpiry))
+        <span class="onsale">
+            <span class="woocommerce-Price-amount amount">
+                <span
+                    class="woocommerce-Price-currencySymbol"></span>{{$product->deal_percentage}}</span>% off
+{{--            ceil((($product->price - $product->deal_price) / $product->price)*100)--}}
+        </span>
+        @endif
         <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image"
              src="{{asset($product->photo1)}}">
         <span class="price">
             <span class="woocommerce-Price-amount amount">
-
-                <?php
-                use Carbon\Carbon;
-                $dealExpiry = Carbon::parse($product->deal_upto)
-                ?>
                 @if(Carbon::now()->lessThan($dealExpiry))
-                    <span id="" class="woocommerce-Price-currencySymbol"></span>{{$product->deal_price}}
-                    €</span>
+            <ins>
+                <span class="amount"> {{$product->price - ($product->price* $product->deal_percentage/100)}} €</span>
+            </ins>
+            <del>
+                <span class="amount">{{$product->price}} €</span>
+            </del>
+            <span class="amount"> </span>
             @else
                 <span class="woocommerce-Price-currencySymbol"></span>{{$product->price}} €</span>
         @endif
 
         </span>
         <h2 class="woocommerce-loop-product__title">{{$product->title??""}}
-            <p id="custom-timer{{$product->id}}"></p>
+            <p style="color: #18bef1" id="custom-timer{{$product->id}}"></p>
         </h2>
     </a>
     <!-- .woocommerce-LoopProduct-link -->
@@ -56,8 +68,8 @@
 
             // If the countdown is finished, write some text
             if (distance{{$product->id}} < 0) {
-                clearInterval(x);
-                document.getElementById("custom-timer{{$product->id}}").innerHTML = "EXPIRED";
+                clearInterval(x{{$product->id}});
+                document.getElementById("custom-timer{{$product->id}}").innerHTML = "";
             }
         }, 1000);
     </script>
