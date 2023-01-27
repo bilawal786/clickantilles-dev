@@ -42,7 +42,7 @@ class ProductResource extends JsonResource
             'quantity'=>$this->quantity??'',
             'review_count'=>$this->reviews->count()??'',
             'avg_rating'=>$this->reviews->avg('rating')??'',
-            'deal'=>$this->deal_upto->isPast() ? false : true,
+            'deal'=>$this->deal_upto ? $this->deal_upto->isPast() ? false : true : false,
             'deal_price'=>$this->deal_price??'',
             'deal_upto'=>$this->deal_upto??'',
         ];
