@@ -48,9 +48,9 @@ class ProductController extends Controller
         }
     }
 
-    public function cartItems($id)
+    public function cartItems()
     {
-        $cartItems = MobileCart::where('user_id', $id)->get();
+        $cartItems = MobileCart::where('user_id', Auth::user()->id)->get();
         return response()->json(CartResource::collection($cartItems));
     }
 

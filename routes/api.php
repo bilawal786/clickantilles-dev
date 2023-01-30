@@ -36,7 +36,5 @@ Route::get('category/products/{category_id}', 'API\CategoryController@categoryPr
 
 Route::get('/flash/sale', 'API\ProductController@flashSale')->name('flash.sale');
 Route::get('/website/slides', 'API\SettingsController@websiteSlides')->name('website.slides');
-Route::get('/cart/items/{id}', 'API\ProductController@cartItems')->name('cart.items');
+Route::get('/cart/items', 'API\ProductController@cartItems')->name('cart.items');
 Route::get('/cartitem/remove/{id}','API\ProductController@removeCartItem')->name('cartitem.remove');
-
-
