@@ -9,18 +9,19 @@ class CartResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-            'price'=> $this->price??'',
-            'quantity'=> $this->quantity??'',
-            'color'=> $this->color??'',
-            'size'=> $this->size??'',
-            'product_name'=>$this->product->title??'',
-            'product_image'=>$this->product->photo1??'',
+            'id' => $this->id,
+            'price' => $this->price ?? '',
+            'quantity' => $this->quantity ?? '',
+            'color' => $this->color ?? '',
+            'size' => $this->size ?? '',
+            'product_name' => $this->product->title ?? '',
+            'product_image' => $this->product->photo1 ?? '',
         ];
     }
 }

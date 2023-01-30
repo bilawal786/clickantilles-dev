@@ -24,7 +24,10 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
     Route::post('detailsAll', 'API\UserController@detailsAll');
     Route::post('/addtocart','API\ProductController@addtocart')->name('addtocart');
-
+    Route::post('/addRemoveWish/{id}','API\ProductController@addRemoveWish')->name('addRemove.wish');
+    Route::post('/userUpdate','API\UserController@userUpdate')->name('user.update');
+    Route::post('/userPhotoUpdate','API\UserController@userPhotoUpdate')->name('user.photoUpdate');
+    Route::post('/updatePassword','API\UserController@updatePassword')->name('update.password');
 });
 
 Route::get('categories', 'API\CategoryController@categories');
@@ -34,3 +37,6 @@ Route::get('category/products/{category_id}', 'API\CategoryController@categoryPr
 Route::get('/flash/sale', 'API\ProductController@flashSale')->name('flash.sale');
 Route::get('/website/slides', 'API\SettingsController@websiteSlides')->name('website.slides');
 Route::get('/cart/items/{id}', 'API\ProductController@cartItems')->name('cart.items');
+Route::get('/cartitem/remove/{id}','API\ProductController@removeCartItem')->name('cartitem.remove');
+
+

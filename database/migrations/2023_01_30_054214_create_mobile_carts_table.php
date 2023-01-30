@@ -15,7 +15,6 @@ class CreateMobileCartsTable extends Migration
     {
         Schema::create('mobile_carts', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
             $table->string('product_id');
             $table->string('price');
             $table->string('quantity');
