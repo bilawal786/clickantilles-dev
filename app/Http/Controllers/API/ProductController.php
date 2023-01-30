@@ -35,6 +35,7 @@ class ProductController extends Controller
             return response()->json(['error' => 'Remplir les champs obligatoires'], 400);
         }
         $cartItem = new MobileCart();
+        $cartItem->user_id = Auth::user()->id;
         $cartItem->product_id = $request->product_id;
         $cartItem->price = $request->price;
         $cartItem->quantity = $request->quantity;
