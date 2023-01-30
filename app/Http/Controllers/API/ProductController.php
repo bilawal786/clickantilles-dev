@@ -2,10 +2,56 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Resources\Product\CartResource;
+use Validator;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Product\ProductResource;
+use App\MobileCart;
+use App\Products;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function products(){}
+    public function flashSale()
+    {
+        $timeNow = Carbon::now();
+        $products = Products::where('deal_upto', '>', $timeNow)->paginate(15);
+        return response()->json(ProductResource::collection($products));
+    }
+
+    public function addtocart(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id'=>'required',
+            'product_id'=>'required',
+            'price'=>'required',
+            'quantity'=>'required',
+            'color'=>'required',
+            'size'=>'required',
+        ]);
+        if ($validator->fails()){
+            return response()->json(['error' => 'Fill Required Fields'], 400);
+        }
+        $cartItem = new MobileCart();
+        $cartItem->user_id = Auth::user()->id;
+        $cartItem->product_id = $request->product_id;
+        $cartItem->price = $request->price;
+        $cartItem->quantity = $request->quantity;
+        $cartItem->color = $request->color;
+        $cartItem->size = $request->size;
+        $cartItem->save();
+        if ($cartItem->save()){
+            return response()->json(['success' => 'Added to Cart']);
+        }else{
+            return response()->json(['error' => 'Something is wrong'], 400);
+        }
+    }
+
+    public function cartItems($id)
+    {
+        $cartItems = MobileCart::where('user_id', $id)->get();
+        return response()->json(CartResource::collection($cartItems));
+    }
 }

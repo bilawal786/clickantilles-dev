@@ -23,9 +23,14 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
     Route::post('detailsAll', 'API\UserController@detailsAll');
+    Route::post('/addtocart','API\ProductController@addtocart')->name('addtocart');
 
 });
 
 Route::get('categories', 'API\CategoryController@categories');
 Route::get('subcategory/products/{subcategory_id}', 'API\CategoryController@subCategoryProducts');
 Route::get('category/products/{category_id}', 'API\CategoryController@categoryProducts');
+
+Route::get('/flash/sale', 'API\ProductController@flashSale')->name('flash.sale');
+Route::get('/website/slides', 'API\SettingsController@websiteSlides')->name('website.slides');
+Route::get('/cart/items/{id}', 'API\ProductController@cartItems')->name('cart.items');
