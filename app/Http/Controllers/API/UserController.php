@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\User;
 use Image;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -37,10 +38,10 @@ class UserController extends Controller
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => 'Remplir les champs obligatoires'], 401);
+            return response()->json(['error' => $validator->errors()], 401);
         }
         $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
+        $input['password'] = Hash::make($input['password']);
         $user = User::create($input);
         $success['token'] = $user->createToken('MyApp')->accessToken;
         $success['name'] = $user->fname;
@@ -70,7 +71,7 @@ class UserController extends Controller
             'country' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => 'Remplir les champs obligatoires'], 401);
+            return response()->json(['error' => $validator->errors()], 400);
         }
         $user = Auth::user();
         $user->fname = $request->fname;
@@ -80,7 +81,6 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->city = $request->city;
         $user->country = $request->country;
-        $user->password = bcrypt($request->password);
         if ($user->save()) {
             return response()->json(['success' => 'Mise à jour du profil réussie']);
         } else {
@@ -94,7 +94,7 @@ class UserController extends Controller
             'photo' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => 'Aucun fichier sélectionné'], 401);
+            return response()->json(['error' => $validator->errors()], 400);
         }
         $user = Auth::user();
         if ($request->hasfile('photo')) {
@@ -120,18 +120,28 @@ class UserController extends Controller
             return response()->json(['error' => 'Quelque chose ne va pas'], 400);
         }
     }
+
     public function updatePassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'oldpassword' => 'required',
-            'password' => 'required',
+            'password' => ['required', 'string', 'min:8'],
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => 'Remplir les champs obligatoires'], 401);
+            return response()->json(['error' => $validator->errors()], 400);
         }
-//        $user = Auth::user();
-
+        $user = Auth::user();
+        if (Hash::check($request->oldpassword, $user->password)) {
+            $user->password = Hash::make($request->password);
+            if ($user->save()) {
+                return response()->json(['success' => 'Password Updated Successfully']);
+            } else {
+                return response()->json(['error' => 'Something went wrong'], 400);
+            }
+        } else {
+            return response()->json(['error' => 'Old Password not Matched'], 400);
+        }
     }
 
 }

@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         $timeNow = Carbon::now();
         $products = Products::where('deal_upto', '>', $timeNow)->paginate(15);
-        return response()->json(ProductResource::collection($products));
+        return ProductResource::collection($products);
     }
 
     public function addtocart(Request $request)
@@ -83,5 +83,11 @@ class ProductController extends Controller
                 return response()->json(['error' => 'Quelque chose ne va pas'], 400);
             }
         }
+    }
+    public function wishlist()
+    {
+        $wishItems = Wishlist::where('user_id', Auth::user()->id)->pluck('product_id');
+        $products = Products::whereIn('id', $wishItems)->paginate(10);
+        return ProductResource::collection($products);
     }
 }

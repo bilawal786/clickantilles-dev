@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/addtocart','API\ProductController@addtocart');
     Route::get('/cart/items', 'API\ProductController@cartItems');
     Route::post('/addRemoveWish/{id}','API\ProductController@addRemoveWish');
+    Route::get('/wishlist','API\ProductController@wishlist');
     Route::post('/userUpdate','API\UserController@userUpdate');
     Route::post('/userPhotoUpdate','API\UserController@userPhotoUpdate');
     Route::post('/updatePassword','API\UserController@updatePassword');
