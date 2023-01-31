@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Resources\Product\CartResource;
+use App\Http\Resources\Product\ProductReviewResource;
+use App\ProductReview;
 use App\Wishlist;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -51,7 +53,10 @@ class ProductController extends Controller
     public function cartItems()
     {
         $cartItems = MobileCart::where('user_id', Auth::user()->id)->get();
-        return response()->json(CartResource::collection($cartItems));
+        return response()->json([
+            'total_price' => $cartItems->sum('price'),
+            'items' => CartResource::collection($cartItems)
+        ]);
     }
 
     public function removeCartItem($id)
@@ -84,10 +89,49 @@ class ProductController extends Controller
             }
         }
     }
+
     public function wishlist()
     {
         $wishItems = Wishlist::where('user_id', Auth::user()->id)->pluck('product_id');
         $products = Products::whereIn('id', $wishItems)->paginate(10);
         return ProductResource::collection($products);
     }
+
+    public function addReview(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'rating' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        $product = ProductReview::where('product_id', $id)->where('user_id', Auth::user()->id)->first();
+        if ($product) {
+            return response()->json(['error' => 'Review Already Added'], 400);
+        } else {
+            $review = new ProductReview();
+            $review->product_id = $id;
+            $review->user_id = Auth::user()->id;
+            $review->rating = $request->rating;
+            $review->review = $request->review;
+            $review->save();
+            return response()->json(['success' => 'Review Added'], 200);
+        }
+    }
+
+    public function productReviews($id)
+    {
+        $reviews = ProductReview::where('product_id', $id)->get();
+        return response()->json([
+            'total_reviews' => $reviews->count() ?? '',
+            'avg_rating' => $reviews->avg('rating') ?? '',
+            '5_star' => $reviews->where('rating', 5)->count(),
+            '4_star' => $reviews->where('rating', 4)->count(),
+            '3_star' => $reviews->where('rating', 3)->count(),
+            '2_star' => $reviews->where('rating', 2)->count(),
+            '1_star' => $reviews->where('rating', 1)->count(),
+             'reviews' => ProductReviewResource::collection($reviews)
+        ]);
+    }
+
 }

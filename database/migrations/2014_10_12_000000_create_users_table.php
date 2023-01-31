@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('wallet')->default('0');
             $table->string('status')->default('0');
             $table->string('photo')->default('avatar.png');
-
+            $table->string('otp')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

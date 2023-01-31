@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
+use App\Jobs\SendOtpJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -34,7 +35,7 @@ class UserController extends Controller
             'fname' => 'required',
             'lname' => 'required',
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => ['required', 'string', 'min:8'],
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
@@ -141,6 +142,73 @@ class UserController extends Controller
             }
         } else {
             return response()->json(['error' => 'Old Password not Matched'], 400);
+        }
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            $user->otp = rand(1000, 9999);
+            if ($user->save()) {
+                $email = $user->email;
+                $otp = $user->otp;
+                dispatch(new SendOtpJob($email, $otp));
+                return response()->json(['success' => 'OTP Sent. Please Check your Email']);
+            } else {
+                return response()->json(['error' => 'Something went wrong. Try Again'], 400);
+            }
+        } else {
+            return response()->json(['error' => 'There is no match for this email'], 404);
+        }
+    }
+
+    public function confirmOtp(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'otp' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            if ($request->otp == $user->otp) {
+                $user->otp = null;
+                $user->save();
+                return response()->json(['success' => 'Success. Enter New Password']);
+            } else {
+                return response()->json(['error' => 'OTP not Matched'], 404);
+            }
+        } else {
+            return response()->json(['error' => 'Incorrect email'], 404);
+        }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => ['required', 'string', 'min:8'],
+            'c_password' => 'required|same:password',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        $user = User::where('email', $request->email)->first();
+        $user->password = Hash::make($request->password);
+        if ($user->save()) {
+            $success['token'] = $user->createToken('MyApp')->accessToken;
+            return response()->json(['success' => $success], $this->successStatus);
+        } else {
+            return response()->json(['error' => 'Something went wrong'], 400);
         }
     }
 

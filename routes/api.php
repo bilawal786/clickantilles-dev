@@ -30,12 +30,26 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/userUpdate','API\UserController@userUpdate');
     Route::post('/userPhotoUpdate','API\UserController@userPhotoUpdate');
     Route::post('/updatePassword','API\UserController@updatePassword');
+    Route::post('/add/review/{id}','API\ProductController@addReview');
+    Route::get('/product/reviews/{id}','API\ProductController@productReviews');
 });
+
+Route::post('/forgot/password','API\UserController@forgotPassword');
+Route::post('/confirm/otp','API\UserController@confirmOtp');
+Route::post('/reset/password','API\UserController@resetPassword');
 
 Route::get('categories', 'API\CategoryController@categories');
 Route::get('subcategory/products/{subcategory_id}', 'API\CategoryController@subCategoryProducts');
 Route::get('category/products/{category_id}', 'API\CategoryController@categoryProducts');
 
-Route::get('/flash/sale', 'API\ProductController@flashSale')->name('flash.sale');
-Route::get('/website/slides', 'API\SettingsController@websiteSlides')->name('website.slides');
-Route::get('/cartitem/remove/{id}','API\ProductController@removeCartItem')->name('cartitem.remove');
+Route::get('/flash/sale', 'API\ProductController@flashSale');
+Route::get('/website/slides', 'API\SettingsController@websiteSlides');
+Route::get('/cartitem/remove/{id}','API\ProductController@removeCartItem');
+
+Route::get('/clickconceptstores', 'API\WebsiteController@clickConceptStores');
+Route::get('/storeproducts/{id}', 'API\WebsiteController@storeProducts');
+
+
+
+
+
