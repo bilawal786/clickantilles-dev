@@ -36,17 +36,22 @@ class ProductController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => 'Remplir les champs obligatoires'], 400);
         }
-        $cartItem = new MobileCart();
-        $cartItem->user_id = Auth::user()->id;
-        $cartItem->product_id = $request->product_id;
-        $cartItem->price = $request->price;
-        $cartItem->quantity = $request->quantity;
-        $cartItem->color = $request->color;
-        $cartItem->size = $request->size;
-        if ($cartItem->save()) {
-            return response()->json(['success' => 'Ajouté au panier']);
+        $existing = MobileCart::where('user_id', Auth::user()->id)->where('product_id', $request->product_id)->first();
+        if ($existing) {
+            return response()->json(['error' => 'Product Already Added'],404);
         } else {
-            return response()->json(['error' => 'Quelque chose ne va pas'], 400);
+            $cartItem = new MobileCart();
+            $cartItem->user_id = Auth::user()->id;
+            $cartItem->product_id = $request->product_id;
+            $cartItem->price = $request->price;
+            $cartItem->quantity = $request->quantity;
+            $cartItem->color = $request->color;
+            $cartItem->size = $request->size;
+            if ($cartItem->save()) {
+                return response()->json(['success' => 'Ajouté au panier']);
+            } else {
+                return response()->json(['error' => 'Quelque chose ne va pas'], 400);
+            }
         }
     }
 
@@ -54,7 +59,9 @@ class ProductController extends Controller
     {
         $cartItems = MobileCart::where('user_id', Auth::user()->id)->get();
         return response()->json([
-            'total_price' => $cartItems->sum('price'),
+            'total_price' => $cartItems->sum(function ($cartItem) {
+                return $cartItem->price * $cartItem->quantity;
+            }),
             'items' => CartResource::collection($cartItems)
         ]);
     }
@@ -130,7 +137,7 @@ class ProductController extends Controller
             '3_star' => $reviews->where('rating', 3)->count(),
             '2_star' => $reviews->where('rating', 2)->count(),
             '1_star' => $reviews->where('rating', 1)->count(),
-             'reviews' => ProductReviewResource::collection($reviews)
+            'reviews' => ProductReviewResource::collection($reviews)
         ]);
     }
 
