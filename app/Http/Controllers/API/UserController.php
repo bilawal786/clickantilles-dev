@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Orders\OrderResource;
 use App\Http\Resources\UserResource;
 use App\Jobs\SendOtpJob;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -46,6 +48,7 @@ class UserController extends Controller
         $user = User::create($input);
         $success['token'] = $user->createToken('MyApp')->accessToken;
         $success['name'] = $user->fname;
+        $success['id'] = $user->id;
         return response()->json(['success' => $success], $this->successStatus);
     }
 
@@ -57,7 +60,7 @@ class UserController extends Controller
 
     public function detailsAll()
     {
-        return response()->json(UserResource::collection(User::all()));
+        return UserResource::collection(User::all());
     }
 
     public function userUpdate(Request $request)
@@ -210,6 +213,11 @@ class UserController extends Controller
         } else {
             return response()->json(['error' => 'Something went wrong'], 400);
         }
+    }
+    public function userOrders()
+    {
+        $orders = Order::where('user_id', Auth::user()->id)->where('status', 1)->get();
+        return OrderResource::collection($orders);
     }
 
 }

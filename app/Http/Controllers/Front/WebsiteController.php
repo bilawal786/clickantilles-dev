@@ -319,7 +319,6 @@ class WebsiteController extends Controller
         $order->update();
         \Cart::clear();
         dispatch(new SendInvoice($order));
-//        Mail::to($order->email)->send(new \App\Mail\OrderConfirmationMail($order, $pdf));
         return view('website.pages.payment_success', compact('order'));
     }
 
