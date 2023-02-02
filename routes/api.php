@@ -53,6 +53,8 @@ Route::get('/storeproducts/{id}', 'API\WebsiteController@storeProducts');
 
 Route::post('/search/product', 'API\ProductController@searchProduct');
 Route::get('/filter/options', 'API\ProductController@filterOptions');
+Route::post('/filter/product', 'API\ProductController@filterProduct');
+
 
 
 
