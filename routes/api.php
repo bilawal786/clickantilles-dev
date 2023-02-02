@@ -21,13 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('user/details', 'API\UserController@details');
+    Route::get('user/details', 'API\UserController@details');
     Route::post('/addtocart','API\ProductController@addtocart');
     Route::get('/cart/items', 'API\ProductController@cartItems');
     Route::post('/addRemoveWish/{id}','API\ProductController@addRemoveWish');
     Route::get('/wishlist','API\ProductController@wishlist');
     Route::post('/userUpdate','API\UserController@userUpdate');
-    Route::post('/userPhotoUpdate','API\UserController@userPhotoUpdate');
+    Route::post('/user/photo/update','API\UserController@userPhotoUpdate');
     Route::post('/updatePassword','API\UserController@updatePassword');
     Route::post('/add/review/{id}','API\ProductController@addReview');
     Route::get('/product/reviews/{id}','API\ProductController@productReviews');
@@ -50,6 +50,10 @@ Route::get('/cartitem/remove/{id}','API\ProductController@removeCartItem');
 
 Route::get('/clickconceptstores', 'API\WebsiteController@clickConceptStores');
 Route::get('/storeproducts/{id}', 'API\WebsiteController@storeProducts');
+
+Route::post('/search/product', 'API\ProductController@searchProduct');
+Route::get('/filter/options', 'API\ProductController@filterOptions');
+
 
 
 

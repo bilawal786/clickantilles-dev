@@ -38,7 +38,7 @@ class ProductController extends Controller
         }
         $existing = MobileCart::where('user_id', Auth::user()->id)->where('product_id', $request->product_id)->first();
         if ($existing) {
-            return response()->json(['error' => 'Product Already Added'],404);
+            return response()->json(['error' => 'Product Already Added'], 404);
         } else {
             $cartItem = new MobileCart();
             $cartItem->user_id = Auth::user()->id;
@@ -140,5 +140,50 @@ class ProductController extends Controller
             'reviews' => ProductReviewResource::collection($reviews)
         ]);
     }
+
+    public function searchProduct(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'search' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+        $search = $request->search;
+        $products = Products::where('product_section', 'Discounted Product')
+            ->where('title', 'LIKE', "%{$search}%")->paginate(10);
+        return ProductResource::collection($products);
+    }
+    public function filterOptions()
+    {
+        $sizes = Products::whereNotNull('size')
+            ->where('size', '<>', '')
+            ->get()
+            ->pluck('size')
+            ->toArray();
+        $separated_sizes = [];
+        foreach ($sizes as $size) {
+            $separated_sizes = array_merge($separated_sizes, explode(',', $size));
+        }
+        $unique_sizes = array_unique($separated_sizes);
+
+        $colors = Products::whereNotNull('color')
+            ->where('color', '<>', '')
+            ->get()
+            ->pluck('color')
+            ->toArray();
+        $separated_colors = [];
+        foreach ($colors as $color) {
+            $separated_colors = array_merge($separated_colors, explode(',', $color));
+        }
+        $unique_colors = array_unique($separated_colors);
+        $result = [
+            'sizes' => $unique_sizes,
+            'colors' => $unique_colors
+        ];
+        return response()->json($result);
+    }
+    public function filterProduct(Request $request)
+    {}
 
 }
