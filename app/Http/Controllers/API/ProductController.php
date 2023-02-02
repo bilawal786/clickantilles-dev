@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function flashSale()
     {
         $timeNow = Carbon::now();
-        $products = Products::where('deal_upto', '>', $timeNow)->paginate(15);
+        $products = Products::where('product_section', 'Discounted Product')->where('deal_upto', '>', $timeNow)->paginate(15);
         return ProductResource::collection($products);
     }
 

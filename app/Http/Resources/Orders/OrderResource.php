@@ -22,6 +22,9 @@ class OrderResource extends JsonResource
             'phone' => $this->phone ?? '',
             'total' => $this->total ?? '',
             'order_status' => $this->admin_status ?? '',
+            'products' => json_decode($this->products) ?? [],
+            'payment_method' => $this->payment_method ?? '',
+            'invoice_number' => $this->invoice_number ?? '',
             'created_at' => $this->created_at->format('d/m/Y'),
         ];
     }

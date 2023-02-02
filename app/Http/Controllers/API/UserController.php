@@ -58,11 +58,6 @@ class UserController extends Controller
         return response()->json(new UserResource($user));
     }
 
-    public function detailsAll()
-    {
-        return UserResource::collection(User::all());
-    }
-
     public function userUpdate(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -217,7 +212,7 @@ class UserController extends Controller
     public function userOrders()
     {
         $orders = Order::where('user_id', Auth::user()->id)->where('status', 1)->get();
-        return OrderResource::collection($orders);
+        return response()->json(OrderResource::collection($orders));
     }
 
 }
