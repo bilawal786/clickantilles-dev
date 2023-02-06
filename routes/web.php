@@ -52,6 +52,7 @@ Route::get('/concept/products', 'Front\WebsiteController@conceptProducts')->name
 Route::get('/flash/sale', 'Front\WebsiteController@flashSale')->name('flash.sale');
 
 Route::get('/products/filter/{category_id}', 'Front\WebsiteController@filterProducts')->name('products.filter');
+Route::get('/products/subcategory/{subcategory_id}', 'Front\WebsiteController@subcategoryProducts')->name('products.subcategory');
 Route::get('/product/search', 'Front\WebsiteController@productSearch')->name('product.search');
 
 Route::get('/0/product/{slug}/{id}', 'Front\WebsiteController@singleProduct')->name('front.single.product');

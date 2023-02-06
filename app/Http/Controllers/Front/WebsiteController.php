@@ -104,6 +104,12 @@ class WebsiteController extends Controller
         $products = Products::latest()->where('category_id', $id)->where('product_section', 'Discounted Product')->paginate(15);
         return view('website.pages.product-listing', compact('title', 'products'));
     }
+    public function subcategoryProducts($id)
+    {
+        $title = "Produits liés à la catégorie sélectionnée";
+        $products = Products::latest()->where('subcategory_id', $id)->where('product_section', 'Discounted Product')->paginate(15);
+        return view('website.pages.product-listing', compact('title', 'products'));
+    }
 
     public function productSearch(Request $request)
     {
