@@ -353,10 +353,10 @@ $settings = App\Settings::first();
                                     <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">PRODUITS
                                         À PRIX RÉDUIT</a>
                                 </li>
-                                <li class="menu-item animate-dropdown">
-                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.pro.products')}}">CLICK
-                                        PRO</a>
-                                </li>
+{{--                                <li class="menu-item animate-dropdown">--}}
+{{--                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.pro.products')}}">CLICK--}}
+{{--                                        PRO</a>--}}
+{{--                                </li>--}}
                                 <li class="menu-item animate-dropdown">
                                     <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.sourcing.products')}}">SOURCING
                                         PRODUCTS</a>
