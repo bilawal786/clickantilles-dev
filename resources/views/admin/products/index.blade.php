@@ -86,6 +86,7 @@
                             </tbody>
                         </table>
                         <br>
+                        {{$products->links()}}
                     </div>
                 </div>
             </div>
