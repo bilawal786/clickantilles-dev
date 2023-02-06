@@ -223,11 +223,11 @@
                                                 @foreach($category->subcategories->take(4) as $subcategory)
                                                     <div class="col-md-6 col-6" style="padding: 0px">
                                                         <div class="card-body">
-                                                            <a href="{{route('products.subcategory', ['id' => $subcategory->id])}}">
+                                                            <a href="{{route('products.subcategory', ['subcategory_id' => $subcategory->id])}}">
                                                                 <img src="{{asset($subcategory->photo)}}"
                                                                      alt="product image 01" class="img-fluid">
                                                             </a>
-                                                            <a href="{{route('products.subcategory', ['id' => $subcategory->id])}}">{{$subcategory->name??""}}</a>
+                                                            <a href="{{route('products.subcategory', ['subcategory_id' => $subcategory->id])}}">{{$subcategory->name??""}}</a>
                                                         </div>
                                                     </div>
                                                 @endforeach
