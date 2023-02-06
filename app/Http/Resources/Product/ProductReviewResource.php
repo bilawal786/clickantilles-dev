@@ -18,7 +18,7 @@ class ProductReviewResource extends JsonResource
             'id' => $this->id,
             'username' => $this->user->fname.' '.$this->user->lname ??'',
             'rating' => $this->rating ?? '',
-            'review' => $this->review ?? '',
+            'review' => (string)$this->review ?? '',
             'created_at' => $this->created_at->format('d/m/Y') ?? '',
         ];
     }
