@@ -25,7 +25,7 @@
                 <a href="{{route('front.index')}}">
                     <div class="overlay-div"
                          style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
-                        <div class="blink"> PRÊT À PARTIR </div>
+                        <div class="blink"> PRÊT À PARTIR</div>
                     </div>
                 </a>
             </div>
@@ -41,51 +41,80 @@
             <div class="row">
                 <div id="primary" style="max-width: 100% !important;" class="content-area">
                     <main id="main" class="site-main">
-                        <div class="row">
-                            @foreach($categories->whereIn('id', [1,2,3,4,5,6]) as $category)
-                                <div class="col-sm-2 col-6">
-                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">
-                                        <div class="team-member">
-                                            <img src="{{asset($category->photo)}}" alt="">
-                                            <div class="profile">
-                                                <h3>{{$category->name}}</h3>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
                         <br>
-                        <div class="row">
-                            @foreach($categories->whereIn('id', [7,8,9,16,17,18]) as $category)
-                                <div class="col-sm-2 col-6">
-                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">
-                                        <div class="team-member">
-                                            <img src="{{asset($category->photo??"category-images/06.png")}}" alt="">
-                                            <div class="profile">
-                                                <h3>{{$category->name}}</h3>
-                                            </div>
+                        <section class="section-landscape-products-carousel recently-viewed" id="recently-viewed">
+                            <header class="section-header">
+                                <nav class="custom-slick-nav"></nav>
+                            </header>
+                            <div class="products-carousel" data-ride="tm-slick-carousel" data-wrap=".products" data-slick="{&quot;slidesToShow&quot;:5,&quot;slidesToScroll&quot;:2,&quot;dots&quot;:true,&quot;arrows&quot;:true,&quot;prevArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-right\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;nextArrow&quot;:&quot;&lt;a href=\&quot;#\&quot;&gt;&lt;i class=\&quot;tm tm-arrow-left\&quot;&gt;&lt;\/i&gt;&lt;\/a&gt;&quot;,&quot;appendArrows&quot;:&quot;#recently-viewed .custom-slick-nav&quot;,&quot;responsive&quot;:[{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesToScroll&quot;:2}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}},{&quot;breakpoint&quot;:1400,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesToScroll&quot;:3}},{&quot;breakpoint&quot;:1700,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesToScroll&quot;:4}}]}">
+                                <div class="container-fluid">
+                                    <div class="woocommerce columns-5">
+                                        <div class="products">
+                                            @foreach($categories->whereIn('id', [1,2,3,4,5,6, 7,8,9,16,17,18]) as $category)
+                                                <div class="col-sm-2 col-6">
+                                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">
+                                                        <div class="team-member">
+                                                            <img src="{{asset($category->photo)}}" alt="">
+                                                            <div class="profile">
+                                                                <h3>{{$category->name}}</h3>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    </a>
+                                    </div>
+                                    <!-- .woocommerce -->
                                 </div>
-                            @endforeach
-                        </div>
-{{--                        <div class="home-v4-slider home-slider">--}}
-{{--                            <div class="slider-1"--}}
-{{--                                 style="background-image: url({{asset($slides->mainbg)}});">--}}
-{{--                                <div class="caption">--}}
-{{--                                    <div class="title">{{$slides->mainbgheading}}--}}
-{{--                                    </div>--}}
-{{--                                    <div class="sub-title">{{$slides->mainbgdescription}}--}}
-{{--                                    </div>--}}
-{{--                                    <a href="{{$slides->link_8}}">--}}
-{{--                                        <div class="button">{{$slides->button_text}}--}}
-{{--                                            <i class="tm tm-long-arrow-right"></i>--}}
+                                <!-- .container-fluid -->
+                            </div>
+                            <!-- .products-carousel -->
+                        </section>
+{{--                        <div class="row">--}}
+{{--                            @foreach($categories->whereIn('id', [1,2,3,4,5,6]) as $category)--}}
+{{--                                <div class="col-sm-2 col-6">--}}
+{{--                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">--}}
+{{--                                        <div class="team-member">--}}
+{{--                                            <img src="{{asset($category->photo)}}" alt="">--}}
+{{--                                            <div class="profile">--}}
+{{--                                                <h3>{{$category->name}}</h3>--}}
+{{--                                            </div>--}}
 {{--                                        </div>--}}
 {{--                                    </a>--}}
 {{--                                </div>--}}
-{{--                            </div>--}}
+{{--                            @endforeach--}}
 {{--                        </div>--}}
+
+{{--                        <div class="row">--}}
+{{--                            @foreach($categories->whereIn('id', [7,8,9,16,17,18]) as $category)--}}
+{{--                                <div class="col-sm-2 col-6">--}}
+{{--                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">--}}
+{{--                                        <div class="team-member">--}}
+{{--                                            <img src="{{asset($category->photo??"category-images/06.png")}}" alt="">--}}
+{{--                                            <div class="profile">--}}
+{{--                                                <h3>{{$category->name}}</h3>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+                        {{--                        <div class="home-v4-slider home-slider">--}}
+                        {{--                            <div class="slider-1"--}}
+                        {{--                                 style="background-image: url({{asset($slides->mainbg)}});">--}}
+                        {{--                                <div class="caption">--}}
+                        {{--                                    <div class="title">{{$slides->mainbgheading}}--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div class="sub-title">{{$slides->mainbgdescription}}--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <a href="{{$slides->link_8}}">--}}
+                        {{--                                        <div class="button">{{$slides->button_text}}--}}
+                        {{--                                            <i class="tm tm-long-arrow-right"></i>--}}
+                        {{--                                        </div>--}}
+                        {{--                                    </a>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
                         <br>
                         <div class="">
                             <div id="amazonImageSlider"
@@ -133,34 +162,35 @@
                                 <!-- Prouct Row Starts -->
                                 <div class="row">
                                     @foreach($stores->take(4) as $store)
-                                    <div class="col-lg-3">
-                                        <div class="card my-2 my-lg-0">
-                                            <h3 class="card-h">{{$store->name}}</h3>
-                                            <div class="card-body d-flex justify-content-center">
-                                                <a href="{{route('store.single', ['id' => $store->id])}}"><img src="{{asset($store->photo)}}"
-                                                                                   alt="product image 01"
-                                                                                   class="img-fluid"></a>
+                                        <div class="col-lg-3">
+                                            <div class="card my-2 my-lg-0">
+                                                <h3 class="card-h">{{$store->name}}</h3>
+                                                <div class="card-body d-flex justify-content-center">
+                                                    <a href="{{route('store.single', ['id' => $store->id])}}"><img
+                                                            src="{{asset($store->photo)}}"
+                                                            alt="product image 01"
+                                                            class="img-fluid"></a>
+                                                </div>
+                                                <a class="card-link"
+                                                   href="{{route('store.single', ['id' => $store->id])}}">Decouvrir</a>
                                             </div>
-                                            <a class="card-link"
-                                               href="{{route('store.single', ['id' => $store->id])}}">Decouvrir</a>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div> <!-- Prouct Row Ends -->
                             </div>
                         </div>
-{{--                        <h1 style="font-weight: bold; letter-spacing: 1px">{{$slides->h1}}</h1>--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="col-md-4">--}}
-{{--                                <a href="{{$slides->link_5}}"><img src="{{asset($slides->image6)}}" alt=""></a>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-md-4">--}}
-{{--                                <a href="{{$slides->link_6}}"><img src="{{asset($slides->image7)}}" alt=""></a>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-md-4">--}}
-{{--                                <a href="{{$slides->link_7}}"> <img src="{{asset($slides->image8)}}" alt=""></a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{--                        <h1 style="font-weight: bold; letter-spacing: 1px">{{$slides->h1}}</h1>--}}
+                        {{--                        <div class="row">--}}
+                        {{--                            <div class="col-md-4">--}}
+                        {{--                                <a href="{{$slides->link_5}}"><img src="{{asset($slides->image6)}}" alt=""></a>--}}
+                        {{--                            </div>--}}
+                        {{--                            <div class="col-md-4">--}}
+                        {{--                                <a href="{{$slides->link_6}}"><img src="{{asset($slides->image7)}}" alt=""></a>--}}
+                        {{--                            </div>--}}
+                        {{--                            <div class="col-md-4">--}}
+                        {{--                                <a href="{{$slides->link_7}}"> <img src="{{asset($slides->image8)}}" alt=""></a>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
                         <div
                             class="container mb-5 home-v4-slider home-slider slick-initialized slick-slider carousel slide"
                             style="margin-top: 30px; max-width: 100vw !important;">
@@ -190,21 +220,21 @@
                                 @endforeach
                             </div>
                         </div>
-{{--                        <h1>Les bonnes affaires sur la mode homme</h1>--}}
-{{--                        <div class="row">--}}
-{{--                            @foreach($categories->whereIn('id', [10,11,12,13,14,15]) as $category)--}}
-{{--                                <div class="col-sm-2 col-6">--}}
-{{--                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">--}}
-{{--                                        <div class="team-member">--}}
-{{--                                            <img src="{{asset($category->photo)}}" alt="">--}}
-{{--                                            <div class="profile">--}}
-{{--                                                <h3>{{$category->name}}</h3>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
+                        {{--                        <h1>Les bonnes affaires sur la mode homme</h1>--}}
+                        {{--                        <div class="row">--}}
+                        {{--                            @foreach($categories->whereIn('id', [10,11,12,13,14,15]) as $category)--}}
+                        {{--                                <div class="col-sm-2 col-6">--}}
+                        {{--                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">--}}
+                        {{--                                        <div class="team-member">--}}
+                        {{--                                            <img src="{{asset($category->photo)}}" alt="">--}}
+                        {{--                                            <div class="profile">--}}
+                        {{--                                                <h3>{{$category->name}}</h3>--}}
+                        {{--                                            </div>--}}
+                        {{--                                        </div>--}}
+                        {{--                                    </a>--}}
+                        {{--                                </div>--}}
+                        {{--                            @endforeach--}}
+                        {{--                        </div>--}}
 
                     </main>
                     <!-- #main -->
@@ -223,7 +253,7 @@
         var countDownDate = new Date("{{$slides->timer->format('M d, Y H:m')}}").getTime();
 
         // Update the count down every 1 second
-        var x = setInterval(function() {
+        var x = setInterval(function () {
 
             // Get today's date and time
             var now = new Date().getTime();
