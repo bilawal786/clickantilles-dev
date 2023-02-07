@@ -90,9 +90,6 @@
                 <img src="{{asset('frontend/assets/images/logo.png')}}" alt="logo"/> </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
-            <ul class="navbar-nav">
-                <li class="nav-item font-weight-semibold d-none d-lg-block">Help : +050 2992 709</li>
-            </ul>
             <form class="ml-auto search-form d-none d-md-block" action="#">
                 <div class="form-group">
                     <input type="search" class="form-control" placeholder="Search Here">

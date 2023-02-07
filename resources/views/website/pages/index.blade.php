@@ -197,7 +197,7 @@
                             style="margin-top: 30px; max-width: 100vw !important;">
                             <!-- Prouct Row Starts -->
                             <div class="row amaz-sec">
-                                @foreach($categories->whereIn('id', [4,7,8,9]) as $category)
+                                @foreach($categories->whereIn('id', [4,7,8,1]) as $category)
                                     <div class="col-lg-3">
                                         <div class="card my-2 my-lg-0">
                                             <h3 style="padding: 7px; margin: 0px; padding-bottom: 0px">{{$category->name??""}}</h3>
