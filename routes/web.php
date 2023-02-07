@@ -121,14 +121,14 @@ Route::group(['middleware' => ['auth', 'web']], function() {
     Route::get('/user/orders/view/{id}', 'Front\UserController@orderView')->name('user.order.view');
 
     Route::get('/payment/success/{id}', 'Front\WebsiteController@paymentSuccess')->name('payment.success');
-    Route::get('/payment/success/mobile/{id}/{user_id}', 'API\WebsiteController@paymentSuccessMobile')->name('payment.success.mobile');
-    Route::get('/payment/fail/mobile', 'API\WebsiteController@paymentFailMobile')->name('payment.fail.mobile');
     Route::get('/checkout', 'Front\WebsiteController@checkout')->name('front.checkout');
     Route::post('/checkout', 'Front\WebsiteController@checkoutSubmit')->name('checkout.submit');
     Route::get('/wishlist', 'Front\WebsiteController@wishlist')->name('front.wishlist');
 
 
 });
+Route::get('/payment/success/mobile/{id}/{user_id}', 'API\WebsiteController@paymentSuccessMobile')->name('payment.success.mobile');
+Route::get('/payment/fail/mobile', 'API\WebsiteController@paymentFailMobile')->name('payment.fail.mobile');
 
 Route::get('send-mail', function () {
 
