@@ -478,59 +478,7 @@ $settings = App\Settings::first();
         <!-- #content -->
         <footer class="site-footer footer-v1">
             <div class="col-full">
-                <div class="before-footer-wrap">
-                    <div class="col-full">
-                        <div class="footer-newsletter">
-                            <div class="media">
-                                <i class="footer-newsletter-icon tm tm-newsletter"></i>
-                                <div class="media-body">
-                                    <div class="clearfix">
-                                        <div class="newsletter-header">
-                                            <h5 class="newsletter-title">Inscrivez-vous à la newsletter</h5>
-                                            <span class="newsletter-marketing-text">...et recevoir
-                                                    <strong>Coupon de 20 $ pour le premier achat</strong>
-                                                </span>
-                                        </div>
-                                        <!-- .newsletter-header -->
-                                        <div class="newsletter-body">
-                                            <form class="newsletter-form">
-                                                <input type="text" placeholder="Enter your email address">
-                                                <button class="button" type="button">S'inscrire</button>
-                                            </form>
-                                        </div>
-                                        <!-- .newsletter body -->
-                                    </div>
-                                    <!-- .clearfix -->
-                                </div>
-                                <!-- .media-body -->
-                            </div>
-                            <!-- .media -->
-                        </div>
-                        <!-- .footer-newsletter -->
-                        <div class="footer-social-icons">
-                            <ul class="social-icons nav">
-                                <li class="nav-item">
-                                    <a class="sm-icon-label-link nav-link" href="{{$settings->facebook}}">
-                                        <i class="fa fa-facebook"></i> Facebook</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="sm-icon-label-link nav-link" href="{{$settings->twitter}}">
-                                        <i class="fa fa-twitter"></i> Twitter</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="sm-icon-label-link nav-link" href="{{$settings->instagram}}">
-                                        <i class="fa fa-instagram"></i> Instagram</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="sm-icon-label-link nav-link" href="{{$settings->utube}}">
-                                        <i class="fa fa-youtube"></i> Youtube</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- .footer-social-icons -->
-                    </div>
-                    <!-- .col-full -->
-                </div>
+
                 <!-- .before-footer-wrap -->
                 <div class="footer-widgets-block">
                     <div class="row">

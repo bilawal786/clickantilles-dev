@@ -47,7 +47,7 @@ class ClickConceptController extends Controller
             $image6->move($destinationPath, $name6);
             $store->photo = 'category-images/' . $name6;
             $path6 = public_path('category-images/'.$name6);
-            Image::make($path6)->resize(1000, 450)->save($path6);
+            Image::make($path6)->resize(610 , 546)->save($path6);
         }
         $store->save();
         $notification = array(
@@ -98,7 +98,7 @@ class ClickConceptController extends Controller
             $image6->move($destinationPath, $name6);
             $store->photo = 'category-images/' . $name6;
             $path6 = public_path('category-images/'.$name6);
-            Image::make($path6)->resize(1000, 450)->save($path6);
+            Image::make($path6)->resize(610 , 546)->save($path6);
         }
         $store->save();
         $notification = array(

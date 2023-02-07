@@ -29,7 +29,8 @@ class WebsiteController extends Controller
         $settings = Settings::first();
         $products = Products::latest()->where('product_section', 'Discounted Product')->take(10)->get();
         $categories = Category::latest()->get();
-        return view('website.pages.index', compact('categories', 'products', 'slides', 'settings'));
+        $stores = ClickConcept::latest()->get();
+        return view('website.pages.index', compact('categories', 'products', 'slides', 'settings', 'stores'));
     }
 
     public function stores()
