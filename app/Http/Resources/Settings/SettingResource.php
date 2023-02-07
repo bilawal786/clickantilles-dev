@@ -30,7 +30,7 @@ class SettingResource extends JsonResource
             'about' => $this->about ?? '',
             'terms' => $this->terms ?? '',
             'privacy' => $this->privacy ?? '',
-            'return' => $this->return ?? '',
+            'return_policy' => $this->return ?? '',
             'help' => $this->help ?? '',
         ];
     }
