@@ -215,7 +215,7 @@
                                                 @endforeach
                                             </div>
                                             <a style="padding: 7px; margin: 0px; padding-top: 0px; color: blue"
-                                               href="">Voir Plus</a>
+                                               href="{{route('products.filter', ['category_id' => $category->id])}}">Voir Plus</a>
                                         </div>
                                     </div>
                                 @endforeach
