@@ -131,7 +131,7 @@ class ProductController extends Controller
         $reviews = ProductReview::where('product_id', $id)->get();
         return response()->json([
             'total_reviews' => $reviews->count() ?? '',
-            'avg_rating' => $reviews->avg('rating') ?? '',
+            'avg_rating' => (string) $reviews->avg('rating') ?? '',
             '5_star' => $reviews->where('rating', 5)->count(),
             '4_star' => $reviews->where('rating', 4)->count(),
             '3_star' => $reviews->where('rating', 3)->count(),

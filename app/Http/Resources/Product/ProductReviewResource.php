@@ -17,6 +17,7 @@ class ProductReviewResource extends JsonResource
         return [
             'id' => $this->id,
             'username' => $this->user->fname.' '.$this->user->lname ??'',
+            'image' => $this->user->photo ??'',
             'rating' => (string)$this->rating ?? '',
             'review' => (string)$this->review ?? '',
             'created_at' => $this->created_at->format('d/m/Y') ?? '',
