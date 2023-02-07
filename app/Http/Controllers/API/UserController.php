@@ -211,8 +211,8 @@ class UserController extends Controller
     }
     public function userOrders()
     {
-        $orders = Order::where('user_id', Auth::user()->id)->where('status', 1)->get();
-        return response()->json(OrderResource::collection($orders));
+        $orders = Order::where('user_id', Auth::user()->id)->where('status', 1)->paginate(10);
+        return OrderResource::collection($orders);
     }
 
 }
