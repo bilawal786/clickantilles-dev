@@ -497,7 +497,7 @@ $settings = App\Settings::first();
                                             </span>
                                         <div class="media-body">
                                             <span class="call-us-title">Vous avez des questions ? Appelez-nous 24h/24 et 7j/7!</span>
-                                            <span class="call-us-text">{{$settings->phone1}}, {{$settings->phone2}}</span>
+                                            <span class="call-us-text">{{$settings->phone1}}</span>
                                             <address class="footer-contact-address">{{$settings->address}}
                                             </address>
                                         </div>
