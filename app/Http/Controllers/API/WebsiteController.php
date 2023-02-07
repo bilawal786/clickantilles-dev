@@ -92,7 +92,7 @@ class WebsiteController extends Controller
         $order->update();
         $cartItems = MobileCart::where('user_id', $user_id);
         $cartItems->delete();
-        dispatch(new SendInvoice($order));
+//        dispatch(new SendInvoice($order));
         return view('mobile_checkout.success', compact('order'));
     }
 
