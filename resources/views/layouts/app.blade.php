@@ -34,6 +34,12 @@
     <link rel="stylesheet" href="{{asset('chosen/chosen.css')}}">
 
     <style>
+        .small-box{
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
         .navbar {
             position: relative;
             min-height: 50px;
