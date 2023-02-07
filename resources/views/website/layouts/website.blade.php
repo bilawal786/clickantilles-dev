@@ -207,7 +207,7 @@ $settings = App\Settings::first();
                     @auth
                         <li class="menu-item">
                             <a title="My Account" href="{{route('user.dashboard')}}">
-                                <i class="tm tm-login-register"></i>Tableau de bord</a>
+                                <i class="tm tm-login-register"></i>Mon compte</a>
                         </li>
                     @else
                         <li class="menu-item">
@@ -358,10 +358,6 @@ $settings = App\Settings::first();
 {{--                                        PRO</a>--}}
 {{--                                </li>--}}
                                 <li class="menu-item animate-dropdown">
-                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.sourcing.products')}}">SOURCING
-                                        PRODUCTS</a>
-                                </li>
-                                <li class="menu-item animate-dropdown">
                                     <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.aboutus')}}">À PROPOS DE NOUS</a>
                                 </li>
 {{--                                <li class="menu-item animate-dropdown">--}}
@@ -431,10 +427,6 @@ $settings = App\Settings::first();
                                         <li class="menu-item animate-dropdown">
                                             <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.pro.products')}}">CLICK
                                                 PRO</a>
-                                        </li>
-                                        <li class="menu-item animate-dropdown">
-                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.sourcing.products')}}">SOURCING
-                                                PRODUCTS</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
                                             <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.aboutus')}}">À PROPOS DE NOUS</a>
