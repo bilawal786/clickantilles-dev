@@ -19,6 +19,7 @@ class OrderResource extends JsonResource
         foreach (json_decode($this->products) as $key => $item){
             $product = Products::find($item->id);
             $data = [
+                'product_id' => (string)$item->id,
                 'name' => (string)$item->name,
                 'image' => (string)$product->photo1,
                 'quantity' => (string)$item->quantity,
