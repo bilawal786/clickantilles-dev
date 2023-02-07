@@ -52,7 +52,7 @@
                                                             <input required type="text" class="form-control" value="{{$store->name}}" name="name" id="exampleInputName1" placeholder="Name">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Image (1000*450)</label>
+                                                            <label>Image (610 * 546)</label>
                                                             <input class="form-control" type="file" accept="image/*" name="photo" >
                                                         </div>
                                                         <div class="form-group">
