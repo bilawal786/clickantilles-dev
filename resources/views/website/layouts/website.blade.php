@@ -31,7 +31,8 @@
 {{--    !-- jQuery Version Rating(V3) -->--}}
     <link rel="stylesheet" href="{{asset('frontend/assets/raty/lib/jquery.raty.css')}}">
     <script src="{{asset('frontend/assets/raty/lib/jquery.raty.js')}}"></script>
-
+    <link rel="stylesheet" href="{{asset('owl/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('owl/owlcarousel/owl.theme.default.min.css')}}">
 
     <style>
         .myul {
@@ -178,7 +179,30 @@
         .selectedColor {
             outline: 3px solid black;
         }
+        .owl-prev {
+            position: absolute;
+            top: 40%;
+            margin-left: -20px;
+            display: block !important;
+            border:0px solid black;
+            border-radius: 50%;
+            height: 50px !important;
+            width: 50px !important;
+            background-color: #f6f5f0 !important;
+        }
 
+        .owl-next {
+            position: absolute;
+            top: 40%;
+            right: -25px;
+            display: block !important;
+            border:0px solid black;
+            border-radius: 50%;
+            height: 50px !important;
+            width: 50px !important;
+            background-color: #f6f5f0 !important;
+        }
+        .owl-prev i, .owl-next i {color: #000000; font-size: 30px}
     </style>
 </head>
 <?php
@@ -466,7 +490,65 @@ $settings = App\Settings::first();
         <!-- ============================================================= Header End ============================================================= -->
 
         @yield('content')
-
+        <div class="features-list">
+            <div class="features">
+                <div class="feature">
+                    <div class="media">
+                        <i class="feature-icon d-flex mr-3 tm tm-free-delivery"></i>
+                        <div class="media-body feature-text">
+                            <h5 class="mt-0">Livraison gratuite</h5>
+                            <span>à partir de 50 $</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- .feature -->
+                <div class="feature">
+                    <div class="media">
+                        <i class="feature-icon d-flex mr-3 tm tm-feedback"></i>
+                        <div class="media-body feature-text">
+                            <h5 class="mt-0">99 % client</h5>
+                            <span>Commentaires</span>
+                        </div>
+                    </div>
+                    <!-- .media -->
+                </div>
+                <!-- .feature -->
+                <div class="feature">
+                    <div class="media">
+                        <i class="feature-icon d-flex mr-3 tm tm-free-return"></i>
+                        <div class="media-body feature-text">
+                            <h5 class="mt-0">365 jours</h5>
+                            <span>pour un retour gratuit</span>
+                        </div>
+                    </div>
+                    <!-- .media -->
+                </div>
+                <!-- .feature -->
+                <div class="feature">
+                    <div class="media">
+                        <i class="feature-icon d-flex mr-3 tm tm-safe-payments"></i>
+                        <div class="media-body feature-text">
+                            <h5 class="mt-0">Paiement</h5>
+                            <span>Système sécurisé</span>
+                        </div>
+                    </div>
+                    <!-- .media -->
+                </div>
+                <!-- .feature -->
+                <div class="feature">
+                    <div class="media">
+                        <i class="feature-icon d-flex mr-3 tm tm-best-brands"></i>
+                        <div class="media-body feature-text">
+                            <h5 class="mt-0">Seul le meilleur</h5>
+                            <span>Marques</span>
+                        </div>
+                    </div>
+                    <!-- .media -->
+                </div>
+                <!-- .feature -->
+            </div>
+            <!-- .features -->
+        </div>
         <!-- #content -->
         <footer class="site-footer footer-v1">
             <div class="col-full">
@@ -626,7 +708,7 @@ $settings = App\Settings::first();
 <script type="text/javascript" src="{{asset('frontend/assets/js/scripts.js')}}"></script>
 {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
+<script src="{{asset('owl/owl.carousel.min.js')}}"></script>
 @yield('script')
 <script>
 
@@ -694,6 +776,34 @@ $settings = App\Settings::first();
             break;
     }
     @endif
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            items: 4,
+            loop: false,
+            nav:true,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:3,
+                    nav:true
+                },
+                1000:{
+                    items:4,
+                    nav:true,
+                }
+            }
+
+        });
+    });
+
 </script>
 
 <script>
