@@ -71,7 +71,71 @@
                             </div>
                             <!-- .products-carousel -->
                         </section>
-{{--                        <div class="row">--}}
+                        <div class="row" style="text-align: center; display: block"><h2>Meilleures ventes</h2></div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="{{asset('frontend/assets/images/32.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{asset('frontend/assets/images/26.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{asset('frontend/assets/images/33.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{asset('frontend/assets/images/34.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center; display: block"><h2>Stock prêt à partir !</h2></div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="{{asset('frontend/assets/images/27.png')}}" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <img src="{{asset('frontend/assets/images/28.png')}}" alt="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/29.png')}}" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/30.png')}}" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/31.png')}}" alt="">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row" style="text-align: center; display: block"><h2>Meilleures ventes</h2></div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="{{asset('frontend/assets/images/32.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{asset('frontend/assets/images/26.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{asset('frontend/assets/images/33.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="{{asset('frontend/assets/images/34.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row" style="text-align: center; display: block"><h2>Click Concept</h2></div>
+
+                        {{--                        <div class="row">--}}
 {{--                            @foreach($categories->whereIn('id', [1,2,3,4,5,6]) as $category)--}}
 {{--                                <div class="col-sm-2 col-6">--}}
 {{--                                    <a href="{{route('products.filter', ['category_id' => $category->id])}}">--}}
@@ -158,7 +222,6 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
-                            </div>
                             <div class="container mb-5 section-c">
                                 <!-- Prouct Row Starts -->
                                 <div class="row">
@@ -178,6 +241,26 @@
                                         </div>
                                     @endforeach
                                 </div> <!-- Prouct Row Ends -->
+                            </div>
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row" style="text-align: center; display: block"><h2>Actus et tendances</h2></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/35.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                <a href=""><p style="text-align: center; color: #d20202">Discover></p></a>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/36.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                <a href=""><p style="text-align: center; color: #d20202">Discover></p></a>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="{{asset('frontend/assets/images/37.png')}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                <a href=""><p style="text-align: center; color: #d20202">Discover></p></a>
                             </div>
                         </div>
                         {{--                        <h1 style="font-weight: bold; letter-spacing: 1px">{{$slides->h1}}</h1>--}}
