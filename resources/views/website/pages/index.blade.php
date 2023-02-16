@@ -72,8 +72,16 @@
                             </div>
                             <!-- .products-carousel -->
                         </section>
+                        <div class="owl-two owl-carousel">
+                            <div>
+                                <img src="{{asset('frontend/assets/images/42.png')}}" alt="">
+                            </div>
+                            <div>
+                                <img src="{{asset('frontend/assets/images/42.png')}}" alt="">
+                            </div>
+                        </div>
                         <div class="row" style="text-align: center; display: block"><h2>Meilleures ventes</h2></div>
-                        <div class="owl-carousel">
+                        <div class="owl-one owl-carousel">
                             <div>
                                 <img src="{{asset('frontend/assets/images/32.png')}}" alt="">
                                 <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
@@ -124,7 +132,7 @@
                         </div>
                         <br>
                         <div class="row" style="text-align: center; display: block"><h2>Meilleures ventes</h2></div>
-                        <div class="owl-carousel">
+                        <div class="owl-one owl-carousel">
                             <div>
                                 <img src="{{asset('frontend/assets/images/32.png')}}" alt="">
                                 <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy

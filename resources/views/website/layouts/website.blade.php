@@ -777,7 +777,7 @@ $settings = App\Settings::first();
     }
     @endif
     $(document).ready(function(){
-        $(".owl-carousel").owlCarousel({
+        $(".owl-one").owlCarousel({
             autoplay: true,
             autoplayTimeout: 3000,
             autoplayHoverPause: true,
@@ -797,6 +797,36 @@ $settings = App\Settings::first();
                 },
                 1000:{
                     items:4,
+                    nav:true,
+                }
+            }
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $(".owl-two").owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            items: 1,
+            loop: false,
+            dots: true,
+            nav:true,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true
+                },
+                600:{
+                    items:1,
+                    nav:true
+                },
+                1000:{
+                    items:1,
                     nav:true,
                 }
             }
