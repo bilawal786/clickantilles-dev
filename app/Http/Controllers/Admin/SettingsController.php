@@ -80,25 +80,25 @@ class SettingsController extends Controller
     }
     public function slidesUpdate(Request $request){
         $slides = Slides::find(1);
-        $slides->mainbgheading = $request->mainbgheading;
-        $slides->mainbgdescription = $request->mainbgdescription;
-        $slides->heading_1 = $request->heading_1;
-        $slides->heading_2 = $request->heading_2;
-        $slides->heading_3 = $request->heading_3;
-        $slides->heading_4 = $request->heading_4;
-        $slides->link_1 = $request->link_1;
-        $slides->link_2 = $request->link_2;
-        $slides->link_3 = $request->link_3;
-        $slides->link_4 = $request->link_4;
-        $slides->link_5 = $request->link_5;
-        $slides->link_6 = $request->link_6;
-        $slides->link_7 = $request->link_7;
-        $slides->link_8 = $request->link_8;
-        $slides->h1 = $request->h1;
+        $slides->mainbgheading = $request->mainbgheading??"";
+        $slides->mainbgdescription = $request->mainbgdescription??"";
+        $slides->heading_1 = $request->heading_1??"";
+        $slides->heading_2 = $request->heading_2??"";
+        $slides->heading_3 = $request->heading_3??"";
+        $slides->heading_4 = $request->heading_4??"";
+        $slides->link_1 = $request->link_1??"";
+        $slides->link_2 = $request->link_2??"";
+        $slides->link_3 = $request->link_3??"";
+        $slides->link_4 = $request->link_4??"";
+        $slides->link_5 = $request->link_5??"";
+        $slides->link_6 = $request->link_6??"";
+        $slides->link_7 = $request->link_7??"";
+        $slides->link_8 = $request->link_8??"";
+        $slides->h1 = $request->h1??"";
         if ($request->timer){
             $slides->timer = $request->timer;
         }
-        $slides->button_text = $request->button_text;
+        $slides->button_text = $request->button_text??"";
         if($request->hasfile('mainbg') ){
             $image1 = $request->file('mainbg');
             $name1 = time() . 'img' . '.' . $image1->getClientOriginalExtension();
@@ -160,7 +160,7 @@ class SettingsController extends Controller
             $image6->move($destinationPath, $name6);
             $slides->image1 = 'slides/' . $name6;
             $path6 = public_path('slides/'.$name6);
-            Image::make($path6)->resize(610,546)->save($path6);
+            Image::make($path6)->resize(855,473)->save($path6);
         }
         if($request->hasfile('image2') ){
             $image6 = $request->file('image2');
@@ -169,7 +169,7 @@ class SettingsController extends Controller
             $image6->move($destinationPath, $name6);
             $slides->image2 = 'slides/' . $name6;
             $path6 = public_path('slides/'.$name6);
-            Image::make($path6)->resize(610,546)->save($path6);
+            Image::make($path6)->resize(855,473)->save($path6);
         }
         if($request->hasfile('image3') ){
             $image6 = $request->file('image3');
@@ -178,7 +178,16 @@ class SettingsController extends Controller
             $image6->move($destinationPath, $name6);
             $slides->image3 = 'slides/' . $name6;
             $path6 = public_path('slides/'.$name6);
-            Image::make($path6)->resize(610,546)->save($path6);
+            Image::make($path6)->resize(560,469)->save($path6);
+        }
+        if($request->hasfile('image4') ){
+            $image6 = $request->file('image4');
+            $name6 = time() . 'img' . '.' . $image6->getClientOriginalExtension();
+            $destinationPath = 'slides/';
+            $image6->move($destinationPath, $name6);
+            $slides->image4 = 'slides/' . $name6;
+            $path6 = public_path('slides/'.$name6);
+            Image::make($path6)->resize(560,469)->save($path6);
         }
         if($request->hasfile('image5') ){
             $image6 = $request->file('image5');
@@ -187,7 +196,7 @@ class SettingsController extends Controller
             $image6->move($destinationPath, $name6);
             $slides->image5 = 'slides/' . $name6;
             $path6 = public_path('slides/'.$name6);
-            Image::make($path6)->resize(610,546)->save($path6);
+            Image::make($path6)->resize(560,469)->save($path6);
         }
         if($request->hasfile('image6') ){
             $image6 = $request->file('image6');
@@ -196,7 +205,7 @@ class SettingsController extends Controller
             $image6->move($destinationPath, $name6);
             $slides->image6 = 'slides/' . $name6;
             $path6 = public_path('slides/'.$name6);
-            Image::make($path6)->resize(834,690)->save($path6);
+            Image::make($path6)->resize(1740,539)->save($path6);
         }
         if($request->hasfile('image7') ){
             $image6 = $request->file('image7');
@@ -205,7 +214,7 @@ class SettingsController extends Controller
             $image6->move($destinationPath, $name6);
             $slides->image7 = 'slides/' . $name6;
             $path6 = public_path('slides/'.$name6);
-            Image::make($path6)->resize(834,690)->save($path6);
+            Image::make($path6)->resize(1740,539)->save($path6);
         }
         if($request->hasfile('image8') ){
             $image6 = $request->file('image8');
@@ -214,7 +223,7 @@ class SettingsController extends Controller
             $image6->move($destinationPath, $name6);
             $slides->image8 = 'slides/' . $name6;
             $path6 = public_path('slides/'.$name6);
-            Image::make($path6)->resize(834,690)->save($path6);
+            Image::make($path6)->resize(1740,539)->save($path6);
         }
         $slides->update();
         $notification = array(

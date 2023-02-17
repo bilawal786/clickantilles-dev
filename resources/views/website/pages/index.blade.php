@@ -74,10 +74,13 @@
                         </section>
                         <div class="owl-two owl-carousel">
                             <div>
-                                <img src="{{asset('frontend/assets/images/42.png')}}" alt="">
+                                <a href="{{$slides->link_5}}"><img src="{{asset($slides->image6)}}" alt=""></a>
                             </div>
                             <div>
-                                <img src="{{asset('frontend/assets/images/42.png')}}" alt="">
+                                <a href="{{$slides->link_6}}"><img src="{{asset($slides->image7)}}" alt=""></a>
+                            </div>
+                            <div>
+                                <a href="{{$slides->link_7}}"><img src="{{asset($slides->image8)}}" alt=""></a>
                             </div>
                         </div>
                         <div class="row" style="text-align: center; display: block"><h2>Meilleures ventes</h2></div>
@@ -112,22 +115,22 @@
                         <br>
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="{{asset('frontend/assets/images/27.png')}}" alt="">
+                                <a href="{{$slides->link_1}}"><img src="{{asset($slides->image1)}}" alt=""></a>
                             </div>
                             <div class="col-md-6">
-                                <img src="{{asset('frontend/assets/images/28.png')}}" alt="">
+                                <a href="{{$slides->link_2}}"><img src="{{asset($slides->image2)}}" alt=""></a>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{asset('frontend/assets/images/29.png')}}" alt="">
+                                <a href="{{$slides->link_3}}"><img src="{{asset($slides->image3)}}" alt=""></a>
                             </div>
                             <div class="col-md-4">
-                                <img src="{{asset('frontend/assets/images/30.png')}}" alt="">
+                                <a href="{{$slides->link_8}}"><img src="{{asset($slides->image4)}}" alt=""></a>
                             </div>
                             <div class="col-md-4">
-                                <img src="{{asset('frontend/assets/images/31.png')}}" alt="">
+                                <a href="{{$slides->link_4}}"><img src="{{asset($slides->image5)}}" alt=""></a>
                             </div>
                         </div>
                         <br>
