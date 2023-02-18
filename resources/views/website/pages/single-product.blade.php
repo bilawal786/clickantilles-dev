@@ -161,12 +161,12 @@
                                             <strong>Livraison gratuite</strong>
                                         </div>
                                         <!-- .additional-info -->
+                                        @auth
                                         <p class="price">
                                             <?php
-                                            use Carbon\Carbon;
-                                            $dealExpiry = Carbon::parse($product->deal_upto)
+                                            $dealExpiry = \Carbon\Carbon::parse($product->deal_upto);
                                             ?>
-                                            @if(Carbon::now()->lessThan($dealExpiry))
+                                            @if(\Carbon\Carbon::now()->lessThan($dealExpiry))
                                                 <del>
                                                             <span class="woocommerce-Price-amount amount">
                                                                {{$product->price}} €</span>
@@ -178,13 +178,17 @@
                                                 </del>
                                             @endif
                                             <span id="Price-amount" class="woocommerce-Price-amount amount">
-                                            @if($product->deal_percentage && Carbon::now()->lessThan($dealExpiry))
+                                            @if($product->deal_percentage && \Carbon\Carbon::now()->lessThan($dealExpiry))
                                                         {{$product->price - ($product->price* $product->deal_percentage/100)}}
                                             @else
                                                         {{$product->price}}
                                             @endif
                                             </span> €
                                         </p>
+                                        @endauth
+                                        @guest
+                                            <a href="{{route('login')}}">Connectez-vous pour voir les prix</a>
+                                        @endguest
                                         <?php
                                         $availableclr = explode(',', $product->color);
                                         $availableSize = explode(',', $product->size);

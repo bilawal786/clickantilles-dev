@@ -85,31 +85,12 @@
                         </div>
                         <div class="row" style="text-align: center; display: block"><h2>Meilleures ventes</h2></div>
                         <div class="owl-one owl-carousel">
-                            <div>
-                                <img src="{{asset('frontend/assets/images/32.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
+                            @foreach($products as $product)
+                            <div class="p-2">
+                                <img src="{{asset($product->photo1)}}" alt="">
+                                <p style="text-align: center; padding: 40px; color: black">{{$product->title}}</p>
                             </div>
-                            <div>
-                                <img src="{{asset('frontend/assets/images/26.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
-                            <div>
-                                <img src="{{asset('frontend/assets/images/33.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
-                            <div>
-                                <img src="{{asset('frontend/assets/images/34.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
-                            <div>
-                                <img src="{{asset('frontend/assets/images/26.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="row" style="text-align: center; display: block"><h2>Stock prêt à partir !</h2></div>
                         <br>

@@ -16,6 +16,7 @@
         @endif
         <img width="224" height="197" alt="" class="attachment-shop_catalog size-shop_catalog wp-post-image"
              src="{{asset($product->photo1)}}">
+        @auth
         <span class="price">
             <span class="woocommerce-Price-amount amount">
                 @if(Carbon::now()->lessThan($dealExpiry))
@@ -31,6 +32,7 @@
         @endif
 
         </span>
+        @endauth
         <h2 class="woocommerce-loop-product__title">{{$product->title??""}}
             <p style="color: #18bef1" id="custom-timer{{$product->id}}"></p>
         </h2>
