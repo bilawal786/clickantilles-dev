@@ -49,13 +49,16 @@
                                         <label for="exampleInputEmail3">Rubrique produit</label>
                                         <select  onchange="changeProductSection(this)" required class="form-control" name="product_section" id="">
                                             <option value="">Sélectionnez la section du produit</option>
-                                            <option value="Discounted Product">Produit à prix réduit</option>
-                                            <option value="Click Pro">Cliquez Pro</option>
-                                            <option value="Sourcing Product">Sourcing Product</option>
-                                            <option value="Click Goodies">Click Goodies</option>
-                                            <option value="CLick Emballages">CLick Emballages</option>
+                                            <option value="General">Général</option>
+                                            <option value="Best Selling">Meilleures ventes</option>
+                                            <option value="Unavoidable">Les Incontournables</option>
+                                            <option value="Ready To Go">Prêt à partir</option>
+{{--                                            <option value="Click Pro">Cliquez Pro</option>--}}
+{{--                                            <option value="Sourcing Product">Sourcing Product</option>--}}
+{{--                                            <option value="Click Goodies">Click Goodies</option>--}}
+{{--                                            <option value="CLick Emballages">CLick Emballages</option>--}}
                                             <option value="Click Concept">Click Concept</option>
-                                            <option value="Click Baby">Click Baby</option>
+{{--                                            <option value="Click Baby">Click Baby</option>--}}
                                         </select>
                                     </div>
                                 </div>

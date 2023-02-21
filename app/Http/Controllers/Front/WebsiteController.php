@@ -27,10 +27,11 @@ class WebsiteController extends Controller
     {
         $slides = Slides::first();
         $settings = Settings::first();
-        $products = Products::latest()->where('product_section', 'Discounted Product')->take(10)->get();
+        $productsBest = Products::latest()->where('product_section', 'Best Selling')->take(10)->get();
+        $Unavoidables = Products::latest()->where('product_section', 'Unavoidable')->take(10)->get();
         $categories = Category::latest()->get();
         $stores = ClickConcept::latest()->get();
-        return view('website.pages.index', compact('categories', 'products', 'slides', 'settings', 'stores'));
+        return view('website.pages.index', compact('categories', 'productsBest', 'slides', 'settings', 'stores', 'Unavoidables'));
     }
 
     public function stores()
@@ -51,7 +52,7 @@ class WebsiteController extends Controller
     public function discountedProducts()
     {
         $title = "Produits à prix réduit";
-        $products = Products::latest()->where('product_section', 'Discounted Product')->paginate(15);
+        $products = Products::latest()->where('product_section', 'Best Selling')->paginate(15);
         return view('website.pages.product-listing', compact('title', 'products'));
     }
 
@@ -102,20 +103,20 @@ class WebsiteController extends Controller
     public function filterProducts($id)
     {
         $title = "Produits liés à la catégorie sélectionnée";
-        $products = Products::latest()->where('category_id', $id)->where('product_section', 'Discounted Product')->paginate(15);
+        $products = Products::latest()->where('category_id', $id)->where('product_section', 'General')->paginate(15);
         return view('website.pages.product-listing', compact('title', 'products'));
     }
     public function subcategoryProducts($id)
     {
         $title = "Produits liés à la catégorie sélectionnée";
-        $products = Products::latest()->where('subcategory_id', $id)->where('product_section', 'Discounted Product')->paginate(15);
+        $products = Products::latest()->where('subcategory_id', $id)->where('product_section', 'General')->paginate(15);
         return view('website.pages.product-listing', compact('title', 'products'));
     }
 
     public function productSearch(Request $request)
     {
         $title = "Produits liés à la catégorie sélectionnée";
-        $products = Products::latest()->where('category_id', $request->product_category)->where('title', 'like', '%' . $request->search . '%')->where('product_section', 'Discounted Product')->paginate(15);
+        $products = Products::latest()->where('category_id', $request->product_category)->where('title', 'like', '%' . $request->search . '%')->where('product_section', 'General')->paginate(15);
         return view('website.pages.product-listing', compact('title', 'products'));
     }
 

@@ -85,7 +85,7 @@
                         </div>
                         <div class="row" style="text-align: center; display: block"><h2>Meilleures ventes</h2></div>
                         <div class="owl-one owl-carousel">
-                            @foreach($products as $product)
+                            @foreach($productsBest as $product)
                                 <a href="{{route('front.single.product', ['slug' => $product->slug, 'id' => $product->id])}}">
                                 <div class="p-2">
                                     <img src="{{asset($product->photo1)}}" alt="">
@@ -93,7 +93,7 @@
                                 </div></a>
                             @endforeach
                         </div>
-                        <div class="row" style="text-align: center; display: block"><h2>Stock prêt à partir !</h2></div>
+                        <div id="best_selling" class="row" style="text-align: center; display: block"><h2>Stock prêt à partir !</h2></div>
                         <br>
                         <div class="row">
                             <div class="col-md-6">
@@ -116,36 +116,18 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row" style="text-align: center; display: block"><h2>Meilleures ventes</h2></div>
+                        <div class="row" style="text-align: center; display: block"><h2>Les Incontournables</h2></div>
                         <div class="owl-one owl-carousel">
-                            <div>
-                                <img src="{{asset('frontend/assets/images/32.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
-                            <div>
-                                <img src="{{asset('frontend/assets/images/26.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
-                            <div>
-                                <img src="{{asset('frontend/assets/images/33.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
-                            <div>
-                                <img src="{{asset('frontend/assets/images/34.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
-                            <div>
-                                <img src="{{asset('frontend/assets/images/26.png')}}" alt="">
-                                <p style="text-align: center; padding: 40px; color: black">Lorem Ipsum is simply dummy
-                                    text of the printing and typesetting industry</p>
-                            </div>
+                            @foreach($Unavoidables as $Unavoidable)
+                                <a href="{{route('front.single.product', ['slug' => $Unavoidable->slug, 'id' => $Unavoidable->id])}}">
+                                    <div class="p-2">
+                                        <img src="{{asset($Unavoidable->photo1)}}" alt="">
+                                        <p style="text-align: center; padding: 40px; color: black">{{$Unavoidable->title}}</p>
+                                    </div></a>
+                            @endforeach
                         </div>
                         <br>
-                        <div class="row" style="text-align: center; display: block"><h2>Click Concept</h2></div>
+                        <div id="click_concept" class="row" style="text-align: center; display: block"><h2>Click Concept</h2></div>
 
                         {{--                        <div class="row">--}}
                         {{--                            @foreach($categories->whereIn('id', [1,2,3,4,5,6]) as $category)--}}
@@ -257,7 +239,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="row" style="text-align: center; display: block"><h2>Actus et tendances</h2></div>
+                        <div id="team" class="row" style="text-align: center; display: block"><h2>Nos équipes</h2></div>
                         <div class="row">
                             <div class="col-md-4">
                                 <img src="{{asset('frontend/assets/images/35.png')}}" alt="">

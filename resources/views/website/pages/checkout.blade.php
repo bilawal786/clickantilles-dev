@@ -12,7 +12,7 @@
                     <span class="delimiter">
                                 <i class="tm tm-breadcrumbs-arrow-right"></i>
                             </span>
-                    Checkout
+                    Vérifier
                 </nav>
                 <!-- .woocommerce-breadcrumb -->
                 <div class="content-area" id="primary">
@@ -26,7 +26,7 @@
                                         <div id="customer_details" class="col2-set">
                                             <div class="col-1">
                                                 <div class="woocommerce-billing-fields">
-                                                    <h3>Billing Details</h3>
+                                                    <h3>Détails de la facturation</h3>
                                                     <div class="woocommerce-billing-fields__field-wrapper-outer">
                                                         <div class="woocommerce-billing-fields__field-wrapper">
                                                             <p id="billing_first_name_field"

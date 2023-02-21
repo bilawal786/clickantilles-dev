@@ -18,13 +18,13 @@ class CategoryController extends Controller
 
     public function categoryProducts($id)
     {
-        $products = Products::latest()->where('product_section', 'Discounted Product')->where('category_id', $id)->paginate(15);
+        $products = Products::latest()->where('product_section', 'Best Selling')->where('category_id', $id)->paginate(15);
         return ProductResource::collection($products);
     }
 
     public function subCategoryProducts($id)
     {
-        $products = Products::latest()->where('product_section', 'Discounted Product')->where('subcategory_id', $id)->paginate(15);
+        $products = Products::latest()->where('product_section', 'Best Selling')->where('subcategory_id', $id)->paginate(15);
         return ProductResource::collection($products);
     }
 

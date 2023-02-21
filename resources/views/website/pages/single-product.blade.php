@@ -187,7 +187,7 @@
                                         </p>
                                         @endauth
                                         @guest
-                                            <a href="{{route('login')}}">Connectez-vous pour voir les prix</a>
+                                            <a href="{{route('login')}}">Connectez-vous pour connaître le tarif de ce produit</a>
                                         @endguest
                                         <?php
                                         $availableclr = explode(',', $product->color);
@@ -214,19 +214,22 @@
 {{--                                                                                                </tr>--}}
 {{--                                                </tbody>--}}
 {{--                                            </table>--}}
+                                            @if(!$product->color == null)
                                             <label for=""><strong> Sélectionnez la Couleur </strong></label>
                                             <div style="display: flex;">
                                                 @foreach($availableclr as $key=> $color)
                                                     <div id="color-select{{$key}}" class="circle mr-3" data-color="{{$color}}" style="background-color: {{$color}}"></div>
                                                 @endforeach
                                             </div>
+                                            @endif
+                                            @if(!$product->size == null)
                                             <label for="" class="mt-3"><strong>Sélectionnez la Taille</strong></label>
                                             <select name="size" id="size">
                                                 @foreach($availableSize as $size)
                                                     <option value="{{$size}}">{{$size}}</option>
                                                 @endforeach
                                             </select>
-
+                                            @endif
                                             <div class="single_variation_wrap">
                                                 <div
                                                     class="woocommerce-variation-add-to-cart variations_button woocommerce-variation-add-to-cart-disabled">

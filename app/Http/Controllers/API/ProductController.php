@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function flashSale()
     {
         $timeNow = Carbon::now();
-        $products = Products::where('product_section', 'Discounted Product')->where('deal_upto', '>', $timeNow)->paginate(15);
+        $products = Products::where('product_section', 'Best Selling')->where('deal_upto', '>', $timeNow)->paginate(15);
         return ProductResource::collection($products);
     }
 
@@ -150,7 +150,7 @@ class ProductController extends Controller
             return response()->json(['error' => $validator->errors()], 400);
         }
         $search = $request->search;
-        $products = Products::where('product_section', 'Discounted Product')
+        $products = Products::where('product_section', 'Best Selling')
             ->where('title', 'LIKE', "%{$search}%")->paginate(10);
         return ProductResource::collection($products);
     }
@@ -189,7 +189,7 @@ class ProductController extends Controller
         $size = $request->size;
         $max_price = $request->max_price;
         $min_price = $request->min_price ? $request->min_price : 0;
-        $products = Products::where('product_section', 'Discounted Product')->where('color', 'LIKE', "%{$color}%")
+        $products = Products::where('product_section', 'Best Selling')->where('color', 'LIKE', "%{$color}%")
             ->where('size','LIKE', "%{$size}%");
         if ($max_price) {
             $products = $products->whereBetween('price', [$min_price, $max_price]);

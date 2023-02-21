@@ -374,19 +374,20 @@ $settings = App\Settings::first();
                                     <a title="ALL CATEGORIES" href="{{route('front.index')}}">ACCUEIL</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">PRODUITS
-                                        À PRIX RÉDUIT</a>
+                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">Meilleures ventes</a>
                                 </li>
-{{--                                <li class="menu-item animate-dropdown">--}}
-{{--                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.pro.products')}}">CLICK--}}
-{{--                                        PRO</a>--}}
-{{--                                </li>--}}
+                                <li class="menu-item animate-dropdown">
+                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}#best_selling">Prêt à partir</a>
+                                </li>
+                                <li class="menu-item animate-dropdown">
+                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}#click_concept">Concept store</a>
+                                </li>
+                                <li class="menu-item animate-dropdown">
+                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}#team">Nos équipes</a>
+                                </li>
                                 <li class="menu-item animate-dropdown">
                                     <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.aboutus')}}">À PROPOS DE NOUS</a>
                                 </li>
-{{--                                <li class="menu-item animate-dropdown">--}}
-{{--                                    <a title="COMPUTERS &amp; LAPTOPS" href="#">NOUS CONTACTER</a>--}}
-{{--                                </li>--}}
                                 <li class="techmarket-flex-more-menu-item dropdown">
                                     <a title="..." href="#" data-toggle="dropdown" class="dropdown-toggle">...</a>
                                     <ul class="overflow-items dropdown-menu"></ul>
@@ -445,12 +446,16 @@ $settings = App\Settings::first();
                                             <a title="ALL CATEGORIES" href="{{route('front.index')}}">ACCUEIL</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
-                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">PRODUITS
-                                                À PRIX RÉDUIT</a>
+                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">Meilleures ventes</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
-                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.pro.products')}}">CLICK
-                                                PRO</a>
+                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">Prêt à partir</a>
+                                        </li>
+                                        <li class="menu-item animate-dropdown">
+                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}#click_concept">Concept store</a>
+                                        </li>
+                                        <li class="menu-item animate-dropdown">
+                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}">Nos équipes</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
                                             <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.aboutus')}}">À PROPOS DE NOUS</a>

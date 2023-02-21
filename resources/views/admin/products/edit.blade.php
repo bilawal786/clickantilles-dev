@@ -54,13 +54,16 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Rubrique produit</label>
                                         <select onchange="changeProductSection(this)" required class="form-control" name="product_section" id="">
-                                            <option {{$product->product_section == "Discounted Product" ? "selected" : ""}} value="Discounted Product">Produit à prix réduit</option>
-                                            <option {{$product->product_section == "Click Pro" ? "selected" : ""}} value="Click Pro">Cliquez Pro</option>
-                                            <option {{$product->product_section == "Sourcing Product" ? "selected" : ""}} value="Sourcing Product">Sourcing Product</option>
-                                            <option {{$product->product_section == "Click Goodies" ? "selected" : ""}} value="Click Goodies">Click Goodies</option>
-                                            <option {{$product->product_section == "CLick Emballages" ? "selected" : ""}} value="CLick Emballages">CLick Emballages</option>
+                                            <option {{$product->product_section == "General" ? "selected" : ""}} value="General">Général</option>
+                                            <option {{$product->product_section == "Best Selling" ? "selected" : ""}} value="Best Selling">Meilleures ventes</option>
+                                            <option {{$product->product_section == "Unavoidable" ? "selected" : ""}} value="Unavoidable">Les Incontournables</option>
+                                            <option {{$product->product_section == "Ready To Go" ? "selected" : ""}} value="Ready To Go">Prêt à partir</option>
+{{--                                            <option {{$product->product_section == "Click Pro" ? "selected" : ""}} value="Click Pro">Cliquez Pro</option>--}}
+{{--                                            <option {{$product->product_section == "Sourcing Product" ? "selected" : ""}} value="Sourcing Product">Sourcing Product</option>--}}
+{{--                                            <option {{$product->product_section == "Click Goodies" ? "selected" : ""}} value="Click Goodies">Click Goodies</option>--}}
+{{--                                            <option {{$product->product_section == "CLick Emballages" ? "selected" : ""}} value="CLick Emballages">CLick Emballages</option>--}}
                                             <option {{$product->product_section == "Click Concept" ? "selected" : ""}} value="Click Concept">Click Concept</option>
-                                            <option {{$product->product_section == "Click Baby" ? "selected" : ""}} value="Click Baby">Click Baby</option>
+{{--                                            <option {{$product->product_section == "Click Baby" ? "selected" : ""}} value="Click Baby">Click Baby</option>--}}
                                         </select>
                                     </div>
                                 </div>
