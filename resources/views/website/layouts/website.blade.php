@@ -377,7 +377,7 @@ $settings = App\Settings::first();
                                     <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">Meilleures ventes</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
-                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}#best_selling">Prêt à partir</a>
+                                    <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.ready')}}">Prêt à partir</a>
                                 </li>
                                 <li class="menu-item animate-dropdown">
                                     <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}#click_concept">Concept store</a>
@@ -449,13 +449,13 @@ $settings = App\Settings::first();
                                             <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">Meilleures ventes</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
-                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.dicounted.products')}}">Prêt à partir</a>
+                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.ready')}}">Prêt à partir</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
                                             <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}#click_concept">Concept store</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
-                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}">Nos équipes</a>
+                                            <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.index')}}#team">Nos équipes</a>
                                         </li>
                                         <li class="menu-item animate-dropdown">
                                             <a title="COMPUTERS &amp; LAPTOPS" href="{{route('front.aboutus')}}">À PROPOS DE NOUS</a>

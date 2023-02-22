@@ -56,6 +56,13 @@ class WebsiteController extends Controller
         return view('website.pages.product-listing', compact('title', 'products'));
     }
 
+    public function ready()
+    {
+        $title = "Prêt à partir";
+        $products = Products::latest()->where('product_section', 'Ready To Go')->paginate(15);
+        return view('website.pages.product-listing', compact('title', 'products'));
+    }
+
     public function proProducts()
     {
         $title = "Produits professionnels";

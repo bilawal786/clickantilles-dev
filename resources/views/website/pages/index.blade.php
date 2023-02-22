@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-md-2">
-                <a href="{{route('front.index')}}">
+                <a href="{{route('front.ready')}}">
                     <div class="overlay-div"
                          style="background-color: purple; padding: 20px; color: white; text-align: center; font-weight: bold">
                         <div class="blink"> PRÊT À PARTIR</div>

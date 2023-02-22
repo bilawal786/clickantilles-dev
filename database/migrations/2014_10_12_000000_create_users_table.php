@@ -25,11 +25,20 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
+            $table->string('postal')->nullable();
             $table->string('points')->default('0');
             $table->string('wallet')->default('0');
             $table->string('status')->default('0');
             $table->string('photo')->default('avatar.png');
             $table->string('otp')->nullable();
+
+            $table->string('company_name')->nullable();
+            $table->string('company_address')->nullable();
+            $table->string('siren')->nullable();
+            $table->string('tva')->nullable();
+            $table->string('website')->nullable();
+            $table->string('nature')->nullable();
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

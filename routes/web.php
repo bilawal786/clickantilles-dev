@@ -46,6 +46,7 @@ Route::get('/removecart/{id}', 'Front\WebsiteController@removecartweb')->name('r
 Route::get('/stores', 'Front\WebsiteController@stores')->name('front.stores');
 Route::get('/store/single/{id}', 'Front\WebsiteController@singleStore')->name('store.single');
 Route::get('/discounted/products', 'Front\WebsiteController@discountedProducts')->name('front.dicounted.products');
+Route::get('/ready/to/go', 'Front\WebsiteController@ready')->name('front.ready');
 Route::get('/goodies/products', 'Front\WebsiteController@goodiesProducts')->name('front.goodies.products');
 Route::get('/emballeges/products', 'Front\WebsiteController@emballagesProducts')->name('front.emballeges.products');
 Route::get('/concept/products', 'Front\WebsiteController@conceptProducts')->name('front.concept.products');

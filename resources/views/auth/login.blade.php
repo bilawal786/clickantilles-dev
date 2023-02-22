@@ -182,21 +182,38 @@
                                                                class="woocommerce-Input woocommerce-Input--text input-text">
                                                     </p>
                                                     <p class="form-row form-row-wide">
-                                                        <label for="reg_email">Pays
-                                                            <span class="required">*</span>
-                                                        </label>
-                                                        <select class="form-control" name="country" id="deliver_to">
-                                                            <option value="Guadeloupe">Guadeloupe</option>
-                                                            <option value="Martinique">Martinique</option>
-                                                            <option value="France">France</option>
-                                                            <option value="French Guiana">French Guiana</option>
-                                                        </select>
-                                                    </p>
-                                                    <p class="form-row form-row-wide">
                                                         <label for="reg_email">Telephone
                                                             <span class="required">*</span>
                                                         </label>
                                                         <input required type="text" name="phone"
+                                                               class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Nom de votre entreprise
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input required type="text" name="company_name"
+                                                               class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Numéro de SIREN
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input required type="text" name="siren"
+                                                               class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Numéro de TVA intracommunautaire
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input required type="text" name="tva"
+                                                               class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">URL site web
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input required type="text" name="website"
                                                                class="woocommerce-Input woocommerce-Input--text input-text">
                                                     </p>
                                                     <p class="form-row form-row-wide">
@@ -206,6 +223,13 @@
                                                         <input type="text" name="address"
                                                                class="woocommerce-Input woocommerce-Input--text input-text">
                                                     </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Code Postal
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <input type="text" name="postal"
+                                                               class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
 
                                                     <p class="form-row form-row-wide">
                                                         <label for="reg_email">Ville
@@ -213,6 +237,17 @@
                                                         </label>
                                                         <input type="text" name="city"
                                                                class="woocommerce-Input woocommerce-Input--text input-text">
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <label for="reg_email">Pays
+                                                            <span class="required">*</span>
+                                                        </label>
+                                                        <select class="form-control" name="country" id="deliver_to">
+                                                            <option value="Guadeloupe">Guadeloupe</option>
+                                                            <option value="Martinique">Martinique</option>
+                                                            <option value="France">France</option>
+                                                            <option value="French Guiana">French Guiana</option>
+                                                        </select>
                                                     </p>
                                                     @error('password')
                                                     <p style="color: red">
