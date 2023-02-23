@@ -103,9 +103,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail3">Stocker</label>
+                                        <label for="exampleInputEmail3">Montant minimum de commande</label>
                                         <input required type="number" class="form-control" name="stock"
-                                               placeholder="Stocker">
+                                               placeholder="Montant minimum de commande">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

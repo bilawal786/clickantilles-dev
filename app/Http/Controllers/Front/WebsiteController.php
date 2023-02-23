@@ -282,44 +282,46 @@ class WebsiteController extends Controller
         return view('website.pages.checkout', compact('cartitems', 'cartTotalQuantity', 'total', 'totalVolume', 'shipping_source', 'user'));
     }
 
-    public function checkoutSubmit(Request $request)
+    public function checkoutSubmit($checkoutSubmit)
     {
+        $user = Auth::user();
         $cartitems = \Cart::getContent();
+        $total = \Cart::getTotal();
         $order = new Order();
         $order->ip = request()->ip();
-        $order->user_id = Auth::user()->id;
-        $order->name = $request->fname . ' ' . $request->lname;
-        $order->email = $request->email;
-        $order->phone = $request->phone;
-        $order->address = $request->address;
-        $order->notes = $request->notes;
-        $order->country = $request->country;
-        $order->total = $request->total;
-        $order->postal_code = $request->postal_code;
+        $order->user_id = $user->id;
+        $order->name = $user->fname . ' ' . $user->lname;
+        $order->email = $user->email;
+        $order->phone = $user->phone;
+        $order->address = $user->address;
+        $order->notes = "";
+        $order->country = $user->country;
+        $order->total = $total;
+        $order->postal_code = $user->postal??"";
         $order->payment_method = "Stripe";
         $order->products = $cartitems;
         $order->order_number = "ON-" . rand(100000000, 900000000);
         $order->save();
-        Stripe::setApiKey(env("STRIPE_SECRET_KEY"));
-
-        $checkout_session = \Stripe\Checkout\Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [[
-                'price_data' => [
-                    'currency' => "EUR",
-                    'unit_amount' => round($request->total, 2) * 100,
-                    'product_data' => [
-                        'name' => "Click Antilles",
-                        'images' => [asset('frontend/assets/images/logo.png')],
-                    ],
-                ],
-                'quantity' => 1,
-            ]],
-            'mode' => 'payment',
-            'success_url' => route('payment.success', ['id' => $order->id]),
-            'cancel_url' => url()->previous(),
-        ]);
-        return redirect($checkout_session->url);
+//        Stripe::setApiKey(env("STRIPE_SECRET_KEY"));
+//
+//        $checkout_session = \Stripe\Checkout\Session::create([
+//            'payment_method_types' => ['card'],
+//            'line_items' => [[
+//                'price_data' => [
+//                    'currency' => "EUR",
+//                    'unit_amount' => round($request->total, 2) * 100,
+//                    'product_data' => [
+//                        'name' => "Click Antilles",
+//                        'images' => [asset('frontend/assets/images/logo.png')],
+//                    ],
+//                ],
+//                'quantity' => 1,
+//            ]],
+//            'mode' => 'payment',
+//            'success_url' => route('payment.success', ['id' => $order->id]),
+//            'cancel_url' => url()->previous(),
+//        ]);
+        return redirect()->route('payment.success', ['id' => $order->id]);
 
     }
 

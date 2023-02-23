@@ -123,7 +123,7 @@ Route::group(['middleware' => ['auth', 'web']], function() {
 
     Route::get('/payment/success/{id}', 'Front\WebsiteController@paymentSuccess')->name('payment.success');
     Route::get('/checkout', 'Front\WebsiteController@checkout')->name('front.checkout');
-    Route::post('/checkout', 'Front\WebsiteController@checkoutSubmit')->name('checkout.submit');
+    Route::get('/checkout/submit/{shipping_id}', 'Front\WebsiteController@checkoutSubmit')->name('checkout.submit');
     Route::get('/wishlist', 'Front\WebsiteController@wishlist')->name('front.wishlist');
 
 

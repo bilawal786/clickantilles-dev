@@ -4,6 +4,20 @@
 @endsection
 
 @section('content')
+    <style>
+        .card-header {
+            background-color: #813181;
+            color: white;
+        }
+
+        .card-header h4 {
+            color: white;
+        }
+
+        .card {
+            margin-bottom: 30px;
+        }
+    </style>
     <div id="content" class="site-content">
         <div class="col-full">
             <div class="row">
@@ -20,117 +34,46 @@
                         <div class="type-page hentry">
                             <div class="entry-content">
                                 <div class="woocommerce">
-                                    <form action="{{route('checkout.submit')}}" class="checkout woocommerce-checkout"
+                                    <form action="" class="checkout woocommerce-checkout"
                                           method="post">
                                         @csrf
                                         <div id="customer_details" class="col2-set">
                                             <div class="col-1">
                                                 <div class="woocommerce-billing-fields">
-                                                    <h3>Détails de la facturation</h3>
-                                                    <div class="woocommerce-billing-fields__field-wrapper-outer">
-                                                        <div class="woocommerce-billing-fields__field-wrapper">
-                                                            <p id="billing_first_name_field"
-                                                               class="form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field">
-                                                                <label class="" for="billing_first_name">Prénom
-                                                                    <abbr title="required" class="required">*</abbr>
-                                                                </label>
-                                                                <input type="text" value="{{$user->fname}}" placeholder=""
-                                                                       id="billing_first_name" name="fname" required
-                                                                       class="input-text ">
-                                                            </p>
-                                                            <p id="billing_last_name_field"
-                                                               class="form-row form-row-last validate-required">
-                                                                <label class="" for="billing_last_name">Nom de famille
-                                                                    <abbr title="required" class="required">*</abbr>
-                                                                </label>
-                                                                <input type="text" value="{{$user->lname}}" placeholder=""
-                                                                       id="billing_last_name" name="lname" required
-                                                                       class="input-text ">
-                                                            </p>
-                                                            <p id="billing_phone_field"
-                                                               class="form-row form-row-last validate-required validate-phone">
-                                                                <label class="" for="billing_phone">Téléphone
-                                                                    <abbr title="required" class="required">*</abbr>
-                                                                </label>
-                                                                <input type="tel" value="{{$user->phone}}" placeholder=""
-                                                                       id="billing_phone" name="phone" required
-                                                                       class="input-text ">
-                                                            </p>
-                                                            <p id="billing_email_field"
-                                                               class="form-row form-row-first validate-required validate-email">
-                                                                <label class="" for="billing_email">Email
-                                                                    <abbr title="required" class="required">*</abbr>
-                                                                </label>
-                                                                <input type="email" value="{{$user->email}}" placeholder=""
-                                                                       id="billing_email" name="email" required
-                                                                       class="input-text ">
-                                                            </p>
-                                                            <div class="clear"></div>
-                                                            <p id="billing_country_field"
-                                                               class="form-row form-row-wide validate-required validate-email">
-                                                                <label class="" for="billing_country">Pays
-                                                                    <abbr title="required" class="required">*</abbr>
-                                                                </label>
-                                                                <select class="form-control" name="country"
-                                                                        id="deliver_to">
-                                                                    <option {{$user->country == 'Guadeloupe' ? "selected" : ""}} value="Guadeloupe">Guadeloupe</option>
-                                                                    <option {{$user->country == 'Martinique' ? "selected" : ""}} value="Martinique">Martinique</option>
-                                                                    <option {{$user->country == 'France' ? "selected" : ""}} value="France">France</option>
-                                                                    <option {{$user->country == 'French Guiana' ? "selected" : ""}} value="French Guiana">French Guiana</option>
-                                                                </select>
-                                                            </p>
-                                                            <p id="billing_address_1_field"
-                                                               class="form-row form-row-wide address-field validate-required">
-                                                                <label class="" for="billing_address_1">Adresse de rue
-                                                                    <abbr title="required" class="required">*</abbr>
-                                                                </label>
-                                                                <input type="text" value="{{$user->address}}" placeholder="Street address"
-                                                                       id="billing_address_1" required name="address"
-                                                                       class="input-text ">
-                                                            </p>
-                                                            <p id="billing_city_field"
-                                                               class="form-row form-row-wide address-field validate-required"
-                                                               data-o_class="form-row form-row form-row-wide address-field validate-required">
-                                                                <label class="" for="billing_city">Ville
-                                                                    <abbr title="required" class="required">*</abbr>
-                                                                </label>
-                                                                <input type="text" value="{{$user->city}}" placeholder=""
-                                                                       id="billing_city" name="city" required
-                                                                       class="input-text ">
-                                                            </p>
-                                                            <div class="clear"></div>
-                                                            <p id="billing_postcode_field"
-                                                               class="form-row form-row-wide address-field validate-postcode validate-required"
-                                                               data-o_class="form-row form-row form-row-last address-field validate-required validate-postcode">
-                                                                <label class="" for="billing_postcode">Code postal
-                                                                    <abbr title="required" class="required">*</abbr>
-                                                                </label>
-                                                                <input type="text" value="" placeholder=""
-                                                                       id="billing_postcode" name="postal_code" required
-                                                                       class="input-text ">
-                                                            </p>
-                                                        </div>
+                                                    <h3>Shipping Methods</h3>
+                                                    <div class="row">
+                                                        @foreach($shipping_source as $shipping)
+                                                            <div class="col-md-6">
+                                                                <div class="card">
+                                                                    <div class="card-header">
+                                                                        <h4>{{$shipping->name}}</h4>
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <p class="p-3">
+                                                                            Prix ​​d'expédition dans votre
+                                                                            pays: {{$shipping->price}} €
+                                                                            <br>
+                                                                            Volume total de {{$shipping->source}}
+                                                                            : {{$shipping->volume}} m³
+                                                                            <br>
+                                                                            Heure de
+                                                                            livraison: {{$shipping->time_required}}
+                                                                        </p>
+                                                                        <div class="p-3">
+                                                                            @if($total>0)
+                                                                                <a class="button wc-forward text-center" href="{{route('checkout.submit', ['shipping_id' => $shipping->id])}}">
+                                                                                    Sélectionnez cette méthode et
+                                                                                    continuez
+                                                                                </a>
+                                                                            @endif</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
-                                                    <!-- .woocommerce-billing-fields__field-wrapper-outer -->
+
                                                 </div>
                                             </div>
-                                            <!-- .col-1 -->
-                                            <div class="col-2">
-                                                <div class="woocommerce-additional-fields">
-                                                    <div class="woocommerce-additional-fields__field-wrapper">
-                                                        <p id="order_comments_field" class="form-row notes">
-                                                            <label class="" for="order_comments">Notes d'ordre</label>
-                                                            <textarea cols="5" rows="2"
-                                                                      placeholder="Remarques concernant votre commande, par ex. notes spéciales pour la livraison."
-                                                                      id="comments" class="input-text "
-                                                                      name="notes"></textarea>
-                                                        </p>
-                                                    </div>
-                                                    <!-- .woocommerce-additional-fields__field-wrapper-->
-                                                </div>
-                                                <!-- .woocommerce-additional-fields -->
-                                            </div>
-                                            <!-- .col-2 -->
                                         </div>
                                         <!-- .col2-set -->
                                         <h3 id="order_review_heading">Votre commande</h3>
@@ -175,50 +118,47 @@
                                                     </tr>
                                                     </tfoot>
                                                 </table>
-                                                <h3>Méthodes de livraison</h3>
-                                                <p>Votre volume total de produits : {{$totalVolume}} m³</p>
-                                                <div class="woocommerce-checkout-payment" id="payment">
-                                                    <ul class="wc_payment_methods payment_methods methods">
-                                                        @foreach($shipping_source as $shipping)
-                                                            @if($shipping->volume > $totalVolume)
-                                                                <li class="wc_payment_method payment_method_bacs">
-                                                                    <input type="radio" data-order_button_text=""
-                                                                           checked="checked" value="bacs"
-                                                                           name="payment_method"
-                                                                           class="input-radio"
-                                                                           id="payment_method_bacs{{$shipping->id}}">
-                                                                    <label
-                                                                        for="payment_method_bacs{{$shipping->id}}">{{$shipping->name}}</label>
-                                                                    <p class="p-3">
-                                                                        Prix ​​d'expédition dans votre pays: {{$shipping->price}} €
-                                                                        <br>
-                                                                        Volume total de {{$shipping->source}}
-                                                                        : {{$shipping->volume}} m³
-                                                                        <br>
-                                                                        Heure de livraison: {{$shipping->time_required}}
-                                                                    </p>
-                                                                </li>
-                                                            @endif
-                                                        @endforeach
-                                                    </ul>
-                                                    <div class="form-row place-order">
-                                                        <p class="form-row terms wc-terms-and-conditions woocommerce-validated">
-                                                            <label
-                                                                class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                                                                <input type="checkbox" id="terms" name="terms"
-                                                                       class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox">
-                                                                <span>J'ai lu et j'accepte le <a
-                                                                        class="woocommerce-terms-and-conditions-link"
-                                                                        href="#">termes et conditions</a></span>
-                                                                <span class="required">*</span>
-                                                            </label>
-                                                            <input type="hidden" value="1" name="terms-field">
-                                                        </p>
-                                                        @if($total>0)
-                                                            <button class="button wc-forward text-center">Passer la commande </button>
-                                                        @endif
-                                                    </div>
-                                                </div>
+                                                {{--                                                <h3>Méthodes de livraison</h3>--}}
+                                                {{--                                                <p>Votre volume total de produits : {{$totalVolume}} m³</p>--}}
+                                                {{--                                                <div class="woocommerce-checkout-payment" id="payment">--}}
+                                                {{--                                                    <ul class="wc_payment_methods payment_methods methods">--}}
+                                                {{--                                                        @foreach($shipping_source as $shipping)--}}
+                                                {{--                                                            @if($shipping->volume > $totalVolume)--}}
+                                                {{--                                                                <li class="wc_payment_method payment_method_bacs">--}}
+                                                {{--                                                                    <input type="radio" data-order_button_text=""--}}
+                                                {{--                                                                           checked="checked" value="bacs"--}}
+                                                {{--                                                                           name="payment_method"--}}
+                                                {{--                                                                           class="input-radio"--}}
+                                                {{--                                                                           id="payment_method_bacs{{$shipping->id}}">--}}
+                                                {{--                                                                    <label--}}
+                                                {{--                                                                        for="payment_method_bacs{{$shipping->id}}">{{$shipping->name}}</label>--}}
+                                                {{--                                                                    <p class="p-3">--}}
+                                                {{--                                                                        Prix ​​d'expédition dans votre pays: {{$shipping->price}} €--}}
+                                                {{--                                                                        <br>--}}
+                                                {{--                                                                        Volume total de {{$shipping->source}}--}}
+                                                {{--                                                                        : {{$shipping->volume}} m³--}}
+                                                {{--                                                                        <br>--}}
+                                                {{--                                                                        Heure de livraison: {{$shipping->time_required}}--}}
+                                                {{--                                                                    </p>--}}
+                                                {{--                                                                </li>--}}
+                                                {{--                                                            @endif--}}
+                                                {{--                                                        @endforeach--}}
+                                                {{--                                                    </ul>--}}
+                                                {{--                                                    <div class="form-row place-order">--}}
+                                                {{--                                                        <p class="form-row terms wc-terms-and-conditions woocommerce-validated">--}}
+                                                {{--                                                            <label--}}
+                                                {{--                                                                class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">--}}
+                                                {{--                                                                <input type="checkbox" id="terms" name="terms"--}}
+                                                {{--                                                                       class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox">--}}
+                                                {{--                                                                <span>J'ai lu et j'accepte le <a--}}
+                                                {{--                                                                        class="woocommerce-terms-and-conditions-link"--}}
+                                                {{--                                                                        href="#">termes et conditions</a></span>--}}
+                                                {{--                                                                <span class="required">*</span>--}}
+                                                {{--                                                            </label>--}}
+                                                {{--                                                            <input type="hidden" value="1" name="terms-field">--}}
+                                                {{--                                                        </p>--}}
+                                                {{--                                                    </div>--}}
+                                                {{--                                                </div>--}}
                                                 <!-- /.woocommerce-checkout-payment -->
                                             </div>
                                             <!-- /.order-review-wrapper -->

@@ -21,7 +21,7 @@
                                 <th>Catégorie</th>
                                 <th>Prix</th>
                                 <th>Rubrique produit</th>
-                                <th>Statut de l'offre</th>
+{{--                                <th>Statut de l'offre</th>--}}
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -38,8 +38,8 @@
                                     <td>{{$product->category->name??"Deleted"}}</td>
                                     <td>{{$product->price}} €</td>
                                     <td>{{$product->product_section}}</td>
-                                    <?php $dealExpiry = Carbon::parse($product->deal_upto) ?>
-                                    <td>{{Carbon::now()->lessThan($dealExpiry) ? 'Active' : 'nulle'}}</td>
+{{--                                    <?php $dealExpiry = Carbon::parse($product->deal_upto) ?>--}}
+{{--                                    <td>{{Carbon::now()->lessThan($dealExpiry) ? 'Active' : 'nulle'}}</td>--}}
                                     <td>
                                         <a href="{{route('product.edit', $product->id)}}"><button class="btn btn-sm btn-primary"  title="edit">
                                             <i class="fa fa-pencil"></i>
@@ -51,35 +51,35 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
-                                        <button data-toggle="modal" data-target="#dealModal{{$product->id}}" id="deal" class="btn btn-sm btn-info"  title="Set Deal">
-                                            <i class="fa fa-gift"></i>
-                                        </button>
+{{--                                        <button data-toggle="modal" data-target="#dealModal{{$product->id}}" id="deal" class="btn btn-sm btn-info"  title="Set Deal">--}}
+{{--                                            <i class="fa fa-gift"></i>--}}
+{{--                                        </button>--}}
                                     </td>
-                                    <div class="modal fade" id="dealModal{{$product->id}}" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Deal</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form class="forms-sample" method="post" action="{{route('product.deal', $product->id)}}">
-                                                        @csrf
-                                                        <div class="form-group">
-                                                            <label for="exampleInputName1">Discount Percentage (%)</label>
-                                                            <input required type="text" class="form-control" value="{{$product->deal_percentage}}" name="deal_percentage" id="deal_percentage" placeholder="Deal Percentage">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Deal Upto</label>
-                                                            <input type="date" class="form-control" value="{{optional($product->deal_upto)->format('Y-m-d')}}" name="deal_upto" id="deal_upto">
-                                                        </div>
-                                                        <br>
-                                                        <button type="submit" class="btn btn-success mr-2">Sauver</button>
-                                                        <button class="btn btn-light" data-dismiss="modal">Annuler</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <div class="modal fade" id="dealModal{{$product->id}}" role="dialog">--}}
+{{--                                        <div class="modal-dialog">--}}
+{{--                                            <div class="modal-content">--}}
+{{--                                                <div class="modal-header">--}}
+{{--                                                    <h4 class="modal-title">Deal</h4>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="modal-body">--}}
+{{--                                                    <form class="forms-sample" method="post" action="{{route('product.deal', $product->id)}}">--}}
+{{--                                                        @csrf--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <label for="exampleInputName1">Discount Percentage (%)</label>--}}
+{{--                                                            <input required type="text" class="form-control" value="{{$product->deal_percentage}}" name="deal_percentage" id="deal_percentage" placeholder="Deal Percentage">--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <label>Deal Upto</label>--}}
+{{--                                                            <input type="date" class="form-control" value="{{optional($product->deal_upto)->format('Y-m-d')}}" name="deal_upto" id="deal_upto">--}}
+{{--                                                        </div>--}}
+{{--                                                        <br>--}}
+{{--                                                        <button type="submit" class="btn btn-success mr-2">Sauver</button>--}}
+{{--                                                        <button class="btn btn-light" data-dismiss="modal">Annuler</button>--}}
+{{--                                                    </form>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
                                 </tr>
                             @endforeach

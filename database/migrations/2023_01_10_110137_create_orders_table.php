@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->string('invoice')->nullable();
             $table->string('discount')->nullable();
             $table->string('ip')->nullable();
+            $table->string('invoice_number')->nullable();
 
             $table->longText('products');
             $table->longText('country');

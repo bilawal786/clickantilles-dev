@@ -152,15 +152,9 @@
                                 <div class="product-actions-wrapper">
                                     <div class="product-actions">
                                         <div class="availability">
-                                            Disponibilité:
-                                            <p class="stock in-stock">{{$product->stock}} en stock</p>
+                                            Montant minimum de commande :
+                                            <p class="stock in-stock">{{$product->stock}}</p>
                                         </div>
-                                        <!-- .availability -->
-                                        <div class="additional-info">
-                                            <i class="tm tm-free-delivery"></i>Article avec
-                                            <strong>Livraison gratuite</strong>
-                                        </div>
-                                        <!-- .additional-info -->
                                         @auth
                                         <p class="price">
                                             <?php
@@ -230,15 +224,16 @@
                                                 @endforeach
                                             </select>
                                             @endif
+                                            <br>
                                             <div class="single_variation_wrap">
                                                 <div
                                                     class="woocommerce-variation-add-to-cart variations_button woocommerce-variation-add-to-cart-disabled">
                                                     <div class="quantity">
                                                         <label for="quantity-input">Quantité</label>
-                                                        <input id="quantity" type="number" name="quantity"
-                                                               min="1" value="1" title="Qty" max="{{$product->stock}}"
+                                                        <input style="width: 8.235801em" id="quantity" type="number" name="quantity"
+                                                               min="{{$product->stock}}" value="{{$product->stock}}" title="Qty"
                                                                class="input-text qty text"
-                                                               size="4">
+                                                               size="40">
                                                     </div>
                                                     <input type="hidden" value="" id="customize-image"
                                                            name="customize_image">
