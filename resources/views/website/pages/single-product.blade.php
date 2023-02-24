@@ -237,10 +237,18 @@
                                                     </div>
                                                     <input type="hidden" value="" id="customize-image"
                                                            name="customize_image">
+                                                    @auth
                                                     <button type="button" onclick="addtocart(this, {{$product->id}})"
                                                             class="single_add_to_cart_button button alt wc-variation-selection-needed"
                                                     >Ajouter au panier
                                                     </button>
+                                                    @endauth
+                                                    @guest
+                                                        <button type="button" onclick="return alert('Connectez-vous d\'abord voir les prix puis ajoutez au panier')"
+                                                                class="single_add_to_cart_button button alt wc-variation-selection-needed"
+                                                        >Ajouter au panier
+                                                        </button>
+                                                        @endguest
                                                     <input type="hidden" value="2471" name="add-to-cart">
                                                     <input type="hidden" value="2471" name="product_id">
                                                     <input type="hidden" value="0" class="variation_id"
