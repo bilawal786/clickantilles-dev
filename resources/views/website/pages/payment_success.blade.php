@@ -24,7 +24,10 @@
                                     <div class="woocommerce-order">
 
                                         <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">
-                                            Merci. votre commande a été reçue.</p>
+                                            Merci. votre commande a été reçue. <br>
+                                            Un commerciale va vous recontacter afin de finaliser votre commande dans les 24h à la réception de votre commande.
+
+                                        </p>
 
                                         <ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
 
@@ -42,9 +45,9 @@
                                                             class="woocommerce-Price-currencySymbol"></span>{{$order->total}} €</span></strong>
                                             </li>
 
-                                            <li class="woocommerce-order-overview__payment-method method">
-                                                Mode de paiement: <strong>{{$order->payment_method??""}}</strong>
-                                            </li>
+{{--                                            <li class="woocommerce-order-overview__payment-method method">--}}
+{{--                                                Mode de paiement: <strong>{{$order->payment_method??""}}</strong>--}}
+{{--                                            </li>--}}
 
                                         </ul>
                                         <!-- .woocommerce-order-overview -->
